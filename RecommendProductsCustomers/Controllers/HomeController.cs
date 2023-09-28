@@ -53,6 +53,10 @@ namespace RecommendProductsCustomers.Controllers
 
             ViewBag.UpdatePeople = updatePeople;
 
+            int countDelete = await Repo.Delete(LabelCommon.People, value);
+
+            ViewBag.CountDelete = countDelete;
+
             return View();
         }
     }

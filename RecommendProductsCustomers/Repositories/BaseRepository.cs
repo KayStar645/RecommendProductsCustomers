@@ -42,16 +42,18 @@ namespace RecommendProductsCustomers.Repositories
             return result;
         }
 
-        public async Task<JObject> Add(string pLabel, JObject pJoject)
+        // Thêm nút
+        public async Task<JObject> Add(string pLabel, JObject pJobject)
         {
             using var session = _driver.AsyncSession();
 
             var result = await session.ExecuteWriteAsync(async tx =>
             {
-                string json = Format.JObjectToString(pJoject);
+                string json = Format.JObjectToString(pJobject);
                 string command = $"create (n:{pLabel} {json}) return n";
 
-                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + "\n\n");
+                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + "\n\n" +
+                    "");
 
                 var commandResult = await tx.RunAsync(command);
 
@@ -71,6 +73,7 @@ namespace RecommendProductsCustomers.Repositories
             return jobject;
         }
 
+        // Thêm/Sửa thuộc tính nút
         public async Task<List<JObject>> Update(string pLabel, JObject pWhere, JObject pNewValue)
         {
             using var session = _driver.AsyncSession();
@@ -102,6 +105,29 @@ namespace RecommendProductsCustomers.Repositories
                     }
                     return jobject;
                 }).ToList();
+            });
+
+            return result;
+        }
+
+
+        // Xóa nút
+        public async Task<int> Delete(string pLabel, JObject pJobject)
+        {
+            using var session = _driver.AsyncSession();
+
+            var result = await session.ExecuteWriteAsync(async tx =>
+            {
+                string json = Format.JObjectToString(pJobject);
+
+                string command = $"match (n:{pLabel} {json}) delete n return count(n) as deletedCount";
+
+                var commandResult = await tx.RunAsync(command);
+
+                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + "\n\n");
+
+                var record = await commandResult.SingleAsync();
+                return record["deletedCount"].As<int>();
             });
 
             return result;

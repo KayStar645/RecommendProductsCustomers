@@ -4,6 +4,7 @@
     var people = ViewBag.Peoples as List<JObject>;
     var newPeople = ViewBag.NewPeople as JObject;
     var updatePeople = ViewBag.UpdatePeople as List<JObject>;
+    var countDelete = ViewBag.CountDelete;
 }
 
 <div class="text-center">
@@ -57,5 +58,6 @@
             }
         }
         
+        <h2>Đã xóa @countDelete record</h2>
     </div>
 </div>
