@@ -1,55 +1,20 @@
-CREATE (n:People {
-  id: "1",
-  name: "xxxxxxx"
-}) RETURN n
-CREATE (n:People {
-  id: "1",
-  name: "xxxxxxx"
-}) RETURN n
-CREATE (n:People {
-  id: "1",
-  name: "xxxxxxx"
-}) RETURN n
-CREATE (n:People {
-  id: "1",
-  name: "xxxxxxx"
-}) RETURN n
-CREATE (n:People {
-  id: "1",
-  name: "xxxxxxx"
-}) RETURN n
-CREATE (n:People {
-  id: "1",
-  name: "xxxxxxx"
-}) RETURN n
-CREATE (n:People {
-  id: "1",
-  name: "xxxxxxx"
-}) RETURN n
-CREATE (n:People {
-  id: "1",
-  name: "xxxxxxx"
-}) RETURN n
-CREATE (n:People {
-  id: "1",
-  name: "xxxxxxx"
-}) RETURN n
-CREATE (n:People {
-  id: "1",
-  name: "xxxxxxx"
-}) RETURN n
-CREATE (n:People {
-  id: "1",
-  name: "Phạm Tấn Thuận",
-  age: "19"
-}) RETURN n
-CREATE (n:People {
-  id: "1",
-  name: "Phạm Tấn Thuận",
-  age: "19"
-}) RETURN n
 create (n:People {
   id: "1",
   name: "Phạm Tấn Thuận",
   age: "19"
 }) return n
+
+match (n {
+  name: "Phạm Tấn Thuận"
+}) set n.name="Thuận",n.age="21",n.class="11DHTH4" return n
+
+create (n:People {
+  id: "1",
+  name: "Phạm Tấn Thuận",
+  age: "19"
+}) return n
+
+match (n {
+  name: "Phạm Tấn Thuận"
+}) set n.name="Thuận",n.age="21",n.class="11DHTH4" return n
+

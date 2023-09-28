@@ -23,6 +23,8 @@ namespace RecommendProductsCustomers.Controllers
 
             List<JObject> peoples = await Repo.Get(LabelCommon.People);
 
+            ViewBag.Peoples = peoples;
+
             var jsonPeople = new JObject()
             {
                 {"id", "1" },
@@ -32,9 +34,24 @@ namespace RecommendProductsCustomers.Controllers
 
             JObject newPeople = await Repo.Add(LabelCommon.People, jsonPeople);
 
-            ViewBag.Peoples = peoples;
 
             ViewBag.NewPeople = newPeople;
+
+            var where = new JObject()
+            {
+                {"name", "Phạm Tấn Thuận" },
+            };
+
+            var value = new JObject()
+            {
+                {"name", "Thuận" },
+                {"age", "21" },
+                {"class", "11DHTH4" },
+            };
+
+            List<JObject> updatePeople = await Repo.Update(LabelCommon.People, where, value);
+
+            ViewBag.UpdatePeople = updatePeople;
 
             return View();
         }

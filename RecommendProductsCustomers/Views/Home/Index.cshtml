@@ -3,15 +3,16 @@
     ViewData["Title"] = "Home Page";
     var people = ViewBag.Peoples as List<JObject>;
     var newPeople = ViewBag.NewPeople as JObject;
+    var updatePeople = ViewBag.UpdatePeople as List<JObject>;
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
 
     <div>
-        @if (people != null)
+        <h2>Danh sách nè</h2>
+        @if(people != null)
         {
-            <h2>Danh sách nè</h2>
             @foreach (var item in people)
             {
                 <div>
@@ -24,7 +25,11 @@
                     </ul>
                 </div>
             }
-            <h2>Mới thêm vô nè</h2>
+        }
+        
+        <h2>Mới thêm vô nè</h2>
+        @if(newPeople != null)
+        {
             <div>
                 <ul>
                     @foreach (var property in newPeople.Properties())
@@ -34,9 +39,23 @@
                 </ul>
             </div>
         }
-        else
+        
+        <h2>Cập nhật nè nè</h2>
+        @if(updatePeople != null)
         {
-            <p>No data available.</p>
+            @foreach (var item in updatePeople)
+            {
+                <div>
+                    <ul>
+                        @foreach (var property in item.Properties())
+                        {
+                            <li>@property.Name: @property.Value</li>
+                        }
+                        <li>thuận thêm nè: @item["id"]</li>
+                    </ul>
+                </div>
+            }
         }
+        
     </div>
 </div>

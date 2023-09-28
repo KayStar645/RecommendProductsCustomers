@@ -1,11 +1,6 @@
 ﻿using Neo4j.Driver;
 using Newtonsoft.Json.Linq;
 using RecommendProductsCustomers.Common;
-using System.Reflection.Emit;
-using System.Xml.Linq;
-using Neo4j.Driver;
-using Newtonsoft.Json;
-using System.Text.RegularExpressions;
 
 namespace RecommendProductsCustomers.Repositories
 {
@@ -28,7 +23,7 @@ namespace RecommendProductsCustomers.Repositories
 
                 var queryResult = await tx.RunAsync(query);
 
-                File.AppendAllText(SettingCommon.Connect(FileCommon.FileQueries), query + "\n");
+                File.AppendAllText(SettingCommon.Connect(FileCommon.FileQueries), query + "\n\n");
 
                 var records = await queryResult.ToListAsync();
 
@@ -56,7 +51,7 @@ namespace RecommendProductsCustomers.Repositories
                 string json = Format.JObjectToString(pJoject);
                 string command = $"create (n:{pLabel} {json}) return n";
 
-                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + "\n");
+                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + "\n\n");
 
                 var commandResult = await tx.RunAsync(command);
 
@@ -75,6 +70,43 @@ namespace RecommendProductsCustomers.Repositories
 
             return jobject;
         }
+
+        public async Task<List<JObject>> Update(string pLabel, JObject pWhere, JObject pNewValue)
+        {
+            using var session = _driver.AsyncSession();
+
+            var result = await session.ExecuteWriteAsync(async tx =>
+            {
+                string where = Format.JObjectToString(pWhere);
+                List<string> valueSet = new List<string>();
+                foreach (var item in pNewValue.Properties())
+                {
+                    valueSet.Add($"n.{item.Name}=\"{item.Value}\"");
+                }
+
+                string command = $"match (n {where}) set {string.Join(",", valueSet)} return n";
+
+                var commandResult = await tx.RunAsync(command);
+
+                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + "\n\n");
+
+                var records = await commandResult.ToListAsync();
+
+                return records.Select(record =>
+                {
+                    // Chuyển đổi mỗi bản ghi thành một đối tượng JObject
+                    var jobject = new JObject();
+                    foreach (var pair in record["n"].As<INode>().Properties)
+                    {
+                        jobject.Add(pair.Key, JToken.FromObject(pair.Value));
+                    }
+                    return jobject;
+                }).ToList();
+            });
+
+            return result;
+        }
+
 
 
         public void Dispose()
