@@ -1,0 +1,42 @@
+﻿@using Newtonsoft.Json.Linq;
+@{
+    ViewData["Title"] = "Home Page";
+    var people = ViewBag.Peoples as List<JObject>;
+    var newPeople = ViewBag.NewPeople as JObject;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+
+    <div>
+        @if (people != null)
+        {
+            <h2>Danh sách nè</h2>
+            @foreach (var item in people)
+            {
+                <div>
+                    <ul>
+                        @foreach (var property in item.Properties())
+                        {
+                            <li>@property.Name: @property.Value</li>
+                        }
+                        <li>thuận thêm nè: @item["id"]</li>
+                    </ul>
+                </div>
+            }
+            <h2>Mới thêm vô nè</h2>
+            <div>
+                <ul>
+                    @foreach (var property in newPeople.Properties())
+                    {
+                        <li>@property.Name: @property.Value</li>
+                    }
+                </ul>
+            </div>
+        }
+        else
+        {
+            <p>No data available.</p>
+        }
+    </div>
+</div>
