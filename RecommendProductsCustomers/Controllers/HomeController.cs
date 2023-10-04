@@ -77,8 +77,15 @@ namespace RecommendProductsCustomers.Controllers
                 {"age", "19" }
             };
 
-            //await Repo.CreateRelationShip(LabelCommon.People, A, LabelCommon.People, B, "Nợ tiền", null, -1);
-            await Repo.DeleteRelationShip(LabelCommon.People, B, "ChuNo", -1);
+            //await Repo.CreateRelationShip(LabelCommon.People, A, LabelCommon.People, B, "xxx", null, false);
+            //await Repo.DeleteRelationShip(LabelCommon.People, B, "ChuNo", false);
+
+            var update = new JObject() 
+            {
+                {"since", "2015" }
+            };
+
+           await Repo.UpdateRelationShip(LabelCommon.People, A, "friend", LabelCommon.People, B, update, true, false);
             return View();
         }
     }

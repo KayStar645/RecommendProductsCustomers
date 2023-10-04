@@ -178,8 +178,8 @@ namespace RecommendProductsCustomers.Repositories
             }
 
             // Lấy hướng
-            string direction1 = type == -1 ? "<-" : "-";
-            string direction2 = type == -1 ? "-" : "->";
+            string direction1 = type == false ? "<-" : "-";
+            string direction2 = type == false ? "-" : "->";
 
             // Thuộc tính của quan hệ
             string properties = propertiesRela == null ? string.Empty : $"{{{Format.JObjectToString(propertiesRela)}}}";
@@ -232,12 +232,90 @@ namespace RecommendProductsCustomers.Repositories
         }
 
         // Create or Update properties RelationShip
-        //public async Task<List<JObject>> UpdateRelationShip(string pLabelA, JObject pWhereA, string pRelationShip,
-        //    string pLabelB, JObject pWhereB, bool? type = true, bool? pUpdate = true)
-        //{
+        public async Task<List<JObject>> UpdateRelationShip(string pLabelA, JObject pWhereA, string pRelationShip,
+            string pLabelB, JObject pWhereB, JObject pNewValue, bool? type = true, bool? pUpdate = true)
+        {
+            using var session = _driver.AsyncSession();
 
+            var result = await session.ExecuteWriteAsync(async tx =>
+            {
+                List<string> whereA = new List<string>();
+                foreach (var item in pWhereA.Properties())
+                {
+                    whereA.Add($"{item.Name}:\"{item.Value}\"");
+                }
 
-        //}
+                List<string> whereB = new List<string>();
+                foreach (var item in pWhereB.Properties())
+                {
+                    whereB.Add($"{item.Name}:\"{item.Value}\"");
+                }
+
+                // Lấy hướng
+                string direction1 = type == false ? "<-" : "-";
+                string direction2 = type == false ? "-" : "->";
+                string command = "";
+
+                if (pUpdate == true)
+                {
+                    List<string> valueSet = new List<string>();
+                    foreach (var item in pNewValue.Properties())
+                    {
+                        valueSet.Add($"r.{item.Name}=\"{item.Value}\"");
+                    }
+
+                    command = $"match (a:{pLabelA} {{{string.Join(",", whereA)}}}) " +
+                              $"{direction1}[r:{pRelationShip}]{direction2} " +
+                              $"(b:{pLabelB} {{{string.Join(",", whereB)}}}) " +
+                              $"set {string.Join(",", valueSet)} " +
+                              $"return a, b, r";
+                }
+                else
+                {
+                    List<string> propertiesDelete = new List<string>();
+                    foreach (var item in pNewValue.Properties())
+                    {
+                        propertiesDelete.Add($"r.{item.Name}");
+                    }
+
+                    command = $"match (a:{pLabelA} {{{string.Join(",", whereA)}}}) " +
+                              $"{direction1}[r:{pRelationShip}]{direction2} " +
+                              $"(b:{pLabelB} {{{string.Join(",", whereB)}}}) " +
+                              $"remove {string.Join(",", propertiesDelete)} " +
+                              $"return a, b, r";
+                }
+
+                var commandResult = await tx.RunAsync(command);
+
+                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + "\n\n");
+
+                var records = await commandResult.ToListAsync();
+
+                return records.Select(record =>
+                {
+                    // Chuyển đổi mỗi bản ghi thành một đối tượng JObject
+                    var jobject = new JObject();
+                    jobject.Add("a", JToken.FromObject(record["a"].As<INode>().Properties));
+                    jobject.Add("b", JToken.FromObject(record["b"].As<INode>().Properties));
+                    jobject.Add("r", JToken.FromObject(record["r"].As<IRelationship>().Properties));
+                    return jobject;
+                }).ToList();
+
+                //return records.Select(record =>
+                //{
+                //    // Chuyển đổi mỗi bản ghi thành một đối tượng JObject
+                //    var jobject = new JObject();
+                //    foreach (var pair in record["r"].As<INode>().Properties)
+                //    {
+                //        jobject.Add(pair.Key, JToken.FromObject(pair.Value));
+                //    }
+                //    return jobject;
+                //}).ToList();
+            });
+
+            return result;
+
+        }
 
         // Delete RelationShip
         public async Task<int> DeleteRelationShip(string pLapel, JObject pWhere,
