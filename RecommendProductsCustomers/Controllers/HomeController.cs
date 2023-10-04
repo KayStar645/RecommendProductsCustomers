@@ -21,42 +21,64 @@ namespace RecommendProductsCustomers.Controllers
                                                            SettingCommon.Connect("UserName"),
                                                            SettingCommon.Connect("Password"));
 
-            List<JObject> peoples = await Repo.Get(LabelCommon.People);
+            //List<JObject> peoples = await Repo.Get(LabelCommon.People);
 
-            ViewBag.Peoples = peoples;
+            //ViewBag.Peoples = peoples;
 
-            var jsonPeople = new JObject()
+            //var jsonPeople = new JObject()
+            //{
+            //    {"id", "1" },
+            //    {"name", "Phạm Tấn Tài" },
+            //    {"age", "19" }
+            //};
+
+            //JObject newPeople = await Repo.Add(LabelCommon.People, jsonPeople);
+
+
+            //ViewBag.NewPeople = newPeople;
+
+            //var where = new JObject()
+            //{
+            //    {"name", "Phạm Tấn Thuận" },
+            //};
+
+            //var value = new JObject()
+            //{
+            //    {"name", "Thuận" },
+            //    {"age", "21" },
+            //    {"class", "11DHTH4" },
+            //};
+
+            //List<JObject> updatePeople = await Repo.Update(LabelCommon.People, where, value);
+
+            //ViewBag.UpdatePeople = updatePeople;
+
+            //var delete = new JObject()
+            //{
+            //    {"name", "Phạm Tấn Thuận" },
+            //};
+
+            //int countDelete = await Repo.Delete(LabelCommon.People, delete);
+
+            //ViewBag.CountDelete = countDelete;
+
+            // RelationShip
+            var A = new JObject()
             {
                 {"id", "1" },
                 {"name", "Phạm Tấn Thuận" },
                 {"age", "19" }
             };
 
-            JObject newPeople = await Repo.Add(LabelCommon.People, jsonPeople);
-
-
-            ViewBag.NewPeople = newPeople;
-
-            var where = new JObject()
+            var B = new JObject()
             {
-                {"name", "Phạm Tấn Thuận" },
+                {"id", "1" },
+                {"name", "Phạm Tấn Tài" },
+                {"age", "19" }
             };
 
-            var value = new JObject()
-            {
-                {"name", "Thuận" },
-                {"age", "21" },
-                {"class", "11DHTH4" },
-            };
-
-            List<JObject> updatePeople = await Repo.Update(LabelCommon.People, where, value);
-
-            ViewBag.UpdatePeople = updatePeople;
-
-            int countDelete = await Repo.Delete(LabelCommon.People, value);
-
-            ViewBag.CountDelete = countDelete;
-
+            //await Repo.CreateRelationShip(LabelCommon.People, A, LabelCommon.People, B, "Nợ tiền", null, -1);
+            await Repo.DeleteRelationShip(LabelCommon.People, B, "ChuNo", -1);
             return View();
         }
     }
