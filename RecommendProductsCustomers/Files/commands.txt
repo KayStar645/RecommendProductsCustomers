@@ -54,3 +54,19 @@ match (n:People {
   class: "11DHTH4"
 }) delete n return count(n) as deletedCount
 
+match (a:People {id:"1",name:"Phạm Tấn Thuận",age:"19"}) -[r:friend]-> (b:People {id:"1",name:"Phạm Tấn Tài",age:"19"}) remove r.since return a, b, r
+
+match (a:People {id:"1",name:"Phạm Tấn Thuận",age:"19"}) -[r:friend]-> (b:People {id:"1",name:"Phạm Tấn Tài",age:"19"}) remove r.since return a, b, r
+
+match (a:People {id:"1",name:"Phạm Tấn Thuận",age:"19"}) -[r:friend]-> (b:People {id:"1",name:"Phạm Tấn Tài",age:"19"}) remove r.since return a, b, r
+
+match (a:People {id:"1",name:"Phạm Tấn Thuận",age:"19"}) -[r:friend]-> (b:People {id:"1",name:"Phạm Tấn Tài",age:"19"}) remove r.since return a, b, r
+
+match (a:People {id:"1",name:"Phạm Tấn Thuận",age:"19"}) -[r:friend]-> (b:People {id:"1",name:"Phạm Tấn Tài",age:"19"}) remove r.since return a, b, r
+
+match (a:People {id:"1",name:"Phạm Tấn Thuận",age:"19"}) -[r:friend]-> (b:People {id:"1",name:"Phạm Tấn Tài",age:"19"}) remove r.since return a, b, r
+
+match (a:People {id:"1",name:"Phạm Tấn Thuận",age:"19"}) -[r:friend]-> (b:People {id:"1",name:"Phạm Tấn Tài",age:"19"}) remove r.since return a, b, r
+
+match (a:People {id:"1",name:"Phạm Tấn Thuận",age:"19"}) -[r:friend]-> (b:People {id:"1",name:"Phạm Tấn Tài",age:"19"}) remove r.since return a, b, r
+

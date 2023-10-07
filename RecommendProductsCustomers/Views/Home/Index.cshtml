@@ -1,4 +1,4 @@
-﻿@using Newtonsoft.Json.Linq;
+﻿@*@using Newtonsoft.Json.Linq;
 @{
     ViewData["Title"] = "Home Page";
     var people = ViewBag.Peoples as List<JObject>;
@@ -6,6 +6,8 @@
     var updatePeople = ViewBag.UpdatePeople as List<JObject>;
     var countDelete = ViewBag.CountDelete;
 }
+
+
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
@@ -61,3 +63,4 @@
         <h2>Đã xóa @countDelete record</h2>
     </div>
 </div>
+*@
