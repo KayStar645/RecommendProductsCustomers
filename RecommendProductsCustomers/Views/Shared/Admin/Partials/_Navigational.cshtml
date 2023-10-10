@@ -1,0 +1,67 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<style>
+    .text-menu {
+        font-size: 28px;
+        font-weight: 500;
+    }
+
+    .active, .nav-item:hover {
+        background-color: rgb(36, 97, 252);
+        cursor: pointer;
+    }
+
+    .active .text-menu, .nav-item:hover .text-menu {
+        color: #fff !important;
+    }
+</style>
+
+<div>
+    <ul class="navbar-nav flex-grow-1">
+        <li class="nav-item px-4 hover active">
+            <a class="nav-link text-dark text-menu"
+               asp-controller="Customer"
+               asp-action="Index">Khách hàng</a>
+        </li>
+        <li class="nav-item px-4 hover">
+            <a class="nav-link text-dark text-menu"
+               asp-controller="ImportBill"
+               asp-action="Index">Nhập hàng</a>
+        </li>
+        <li class="nav-item px-4 hover">
+            <a class="nav-link text-dark text-menu"
+               asp-controller="Product"
+               asp-action="Index">Sản phẩm</a>
+        </li>
+        <li class="nav-item px-4 hover">
+            <a class="nav-link text-dark text-menu"
+               asp-controller="Order"
+               asp-action="Index">Hóa đơn</a>
+        </li>
+        <li class="nav-item px-4 hover">
+            <a class="nav-link text-dark text-menu"
+               asp-controller="Employee"
+               asp-action="Index">Nhân viên</a>
+        </li>
+    </ul>
+</div>
+
+<script>
+    var menuItems = Array.from(document.querySelectorAll(".nav-item"));
+
+    // Gắn sự kiện click cho mỗi mục menu
+    menuItems.forEach(function (menuItem) {
+        menuItem.addEventListener("click", function () {
+            // Loại bỏ lớp 'selected' từ tất cả các mục menu
+            menuItems.forEach(function (item) {
+                item.classList.remove("active");
+            });
+
+            // Thêm lớp 'selected' cho mục menu được chọn
+            this.classList.add("active");
+        });
+    });
+</script>

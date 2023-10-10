@@ -1,0 +1,35 @@
+﻿<style>
+    .label {
+        font-size: 19px !important;
+    }
+
+    input {
+        width: 100%;
+        padding: 4px 8px;
+        font-size: 18px;
+    }
+</style>
+
+<div class="container">
+    @using (@Html.BeginForm("ImportCommodity", "ImportBill"))
+    {
+        <div class="col-12 p-4 d-flex">
+            <div class="col-4 px-4">
+                <label class="p-1 fw-bolder label">Nhân viên</label> <br />
+                <input type="text" value="" readonly />
+            </div>
+
+            <div class="col-4 px-4">
+                <label class="p-1 fw-bolder label">Ngày nhập</label> <br />
+                <input type="date" value="" readonly />
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+    var today = new Date();
+    var formattedDate = today.toISOString().split('T')[0];
+
+    document.querySelector("input[type='date']").value = formattedDate;
+</script>
