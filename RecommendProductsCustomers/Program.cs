@@ -14,7 +14,22 @@ builder.Services.AddJsEngineSwitcher(options => options.DefaultEngineName = V8Js
 builder.Services.AddControllersWithViews()
         .AddRazorRuntimeCompilation();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("MyCorsPolicy", builder =>
+    {
+        builder.WithOrigins("http://localhost:YOUR_PORT")
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
+
+app.UseCors(builder => builder
+    .WithOrigins("*")
+    .AllowAnyMethod()
+    .AllowAnyHeader());
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -25,6 +40,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("MyCorsPolicy");
 
 app.UseReact(config =>
 {

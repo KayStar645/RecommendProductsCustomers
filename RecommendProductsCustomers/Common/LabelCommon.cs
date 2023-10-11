@@ -4,7 +4,7 @@
     {
         public static string People = "People";
 
-        public static string Greeting = "Greeting";
+        public static string Employee = "Employee";
 
     }
 }

@@ -1,56 +1,30 @@
-create (n:People {
-  id: "1",
+match (n:Employee) where id(n)=28 detach delete n return count(n) as deletedCount
+
+create (n:Employee {
+  internalCode: "2001200553",
   name: "Phạm Tấn Thuận",
-  age: "19"
+  gender: "Nam",
+  dateBirth: "2002-12-02",
+  phone: "0329641343"
 }) return n
 
-match (n {
-  name: "Phạm Tấn Thuận"
-}) set n.name="Thuận",n.age="21",n.class="11DHTH4" return n
+create (n:Employee {
+  internalCode: "2001200584",
+  name: "Nguyễn Trần Hoàng Phát",
+  gender: "Nam",
+  dateBirth: "2002-06-03"}) return n
 
-create (n:People {
-  id: "1",
-  name: "Phạm Tấn Thuận",
-  age: "19"
-}) return n
+create (n:Employee {
+  internalCode: "2001200326",
+  name: "Nguyễn Sỹ Minh Quân",
+  gender: "Nam"}) return n
 
-match (n {
-  name: "Phạm Tấn Thuận"
-}) set n.name="Thuận",n.age="21",n.class="11DHTH4" return n
+match (n:Employee) where id(n)=29 set n.internalCode="2001200553",n.name="Phạm Tấn Thuận",n.gender="Nam",n.dateBirth="2002-02-18",n.phone="0329641343" return n
 
-create (n:People {
-  id: "1",
-  name: "Phạm Tấn Thuận",
-  age: "19"
-}) return n
+match (n:Employee) where id(n)=7 set n.internalCode="2001200584",n.name="Nguyễn Trần Hoàng Phát",n.gender="Nam",n.dateBirth="2002-03-06" return n
 
-match (n {
-  name: "Phạm Tấn Thuận"
-}) set n.name="Thuận",n.age="21",n.class="11DHTH4" return n
-
-create (n:People {
-  id: "1",
-  name: "Phạm Tấn Thuận",
-  age: "19"
-}) return n
-
-match (n {
-  name: "Phạm Tấn Thuận"
-}) set n.name="Thuận",n.age="21",n.class="11DHTH4" return n
-
-create (n:People {
-  id: "1",
-  name: "Phạm Tấn Thuận",
-  age: "19"
-}) return n
-
-match (n {
-  name: "Phạm Tấn Thuận"
-}) set n.name="Thuận",n.age="21",n.class="11DHTH4" return n
-
-match (n:People {
-  name: "Thuận",
-  age: "21",
-  class: "11DHTH4"
-}) delete n return count(n) as deletedCount
+create (n:Employee {
+  name: "Mai Tuấn Mạnh",
+  gender: "Nam",
+  dateBirth: "2002-08-31"}) return n
 

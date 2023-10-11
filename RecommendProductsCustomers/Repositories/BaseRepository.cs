@@ -14,13 +14,14 @@ namespace RecommendProductsCustomers.Repositories
         }
 
 
-        public async Task<List<JObject>> Get(string pLabel, int? pLimit = 10)
+        public async Task<List<JObject>> Get(string pLabel, int? pLimit = 100)
         {
             using var session = _driver.AsyncSession();
 
             var result = await session.ExecuteWriteAsync(async tx =>
             {
-                string query = $"match (n:{pLabel}) return n limit {pLimit}";
+                string query = $"match (n:{pLabel}) " +
+                               $"return n limit {pLimit}";
 
                 var queryResult = await tx.RunAsync(query);
 
@@ -32,6 +33,7 @@ namespace RecommendProductsCustomers.Repositories
                 {
                     // Chuyển đổi mỗi bản ghi thành một đối tượng JObject
                     var jobject = new JObject();
+                    jobject.Add("id", JToken.FromObject(record["n"].As<INode>().Id.ToString()));
                     foreach (var pair in record["n"].As<INode>().Properties)
                     {
                         jobject.Add(pair.Key, JToken.FromObject(pair.Value));
@@ -53,10 +55,10 @@ namespace RecommendProductsCustomers.Repositories
             var result = await session.ExecuteWriteAsync(async tx =>
             {
                 string newValue = Format.JObjectToString(pJobject);
-                string command = $"create (n:{pLabel} {newValue}) return n";
+                string command = $"create (n:{pLabel} {newValue}) " +
+                                 $"return n";
 
-                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + "\n\n" +
-                    "");
+                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + "\n\n");
 
                 var commandResult = await tx.RunAsync(command);
 
@@ -92,10 +94,16 @@ namespace RecommendProductsCustomers.Repositories
                     List<string> valueSet = new List<string>();
                     foreach (var item in pNewValue.Properties())
                     {
+                        if(string.IsNullOrEmpty(item.Value.ToString()))
+                        {
+                            continue;
+                        }    
                         valueSet.Add($"n.{item.Name}=\"{item.Value}\"");
                     }
 
-                    command = $"match (n:{pLabel} {where}) set {string.Join(",", valueSet)} return n";
+                    command = $"match (n:{pLabel} {where}) " +
+                              $"set {string.Join(",", valueSet)} " +
+                              $"return n";
                 }    
                 else
                 {
@@ -105,9 +113,71 @@ namespace RecommendProductsCustomers.Repositories
                         propertiesDelete.Add($"n.{item.Name}");
                     }
 
-                    command = $"match (n:{pLabel} {where}) remove {string.Join(",", propertiesDelete)} return n";
+                    command = $"match (n:{pLabel} {where}) " +
+                              $"remove {string.Join(",", propertiesDelete)} " +
+                              $"return n";
                 }   
                 
+                var commandResult = await tx.RunAsync(command);
+
+                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + "\n\n");
+
+                var records = await commandResult.ToListAsync();
+
+                return records.Select(record =>
+                {
+                    // Chuyển đổi mỗi bản ghi thành một đối tượng JObject
+                    var jobject = new JObject();
+                    foreach (var pair in record["n"].As<INode>().Properties)
+                    {
+                        jobject.Add(pair.Key, JToken.FromObject(pair.Value));
+                    }
+                    return jobject;
+                }).ToList();
+            });
+
+            return result;
+        }
+
+        public async Task<List<JObject>> Update(string pLabel, string pIdentity, JObject pNewValue, bool? pUpdate = true)
+        {
+            using var session = _driver.AsyncSession();
+
+            var result = await session.ExecuteWriteAsync(async tx =>
+            {
+                string command = "";
+
+                if (pUpdate == true)
+                {
+                    List<string> valueSet = new List<string>();
+                    foreach (var item in pNewValue.Properties())
+                    {
+                        if (string.IsNullOrEmpty(item.Value.ToString()))
+                        {
+                            continue;
+                        }
+                        valueSet.Add($"n.{item.Name}=\"{item.Value}\"");
+                    }
+
+                    command = $"match (n:{pLabel}) " +
+                              $"where id(n)={pIdentity} " +
+                              $"set {string.Join(",", valueSet)} " +
+                              $"return n";
+                }
+                else
+                {
+                    List<string> propertiesDelete = new List<string>();
+                    foreach (var item in pNewValue.Properties())
+                    {
+                        propertiesDelete.Add($"n.{item.Name}");
+                    }
+
+                    command = $"match (n:{pLabel}) " +
+                              $"where id(n)={pIdentity} " +
+                              $"remove {string.Join(",", propertiesDelete)} " +
+                              $"return n";
+                }
+
                 var commandResult = await tx.RunAsync(command);
 
                 File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + "\n\n");
@@ -138,7 +208,9 @@ namespace RecommendProductsCustomers.Repositories
             {
                 string where = Format.JObjectToString(pWhere);
 
-                string command = $"match (n:{pLabel} {where}) detach delete n return count(n) as deletedCount";
+                string command = $"match (n:{pLabel} {where}) " +
+                                 $"detach delete n " +
+                                 $"return count(n) as deletedCount";
 
                 var commandResult = await tx.RunAsync(command);
 
@@ -150,6 +222,31 @@ namespace RecommendProductsCustomers.Repositories
 
             return result;
         }
+
+        public async Task<int> Delete(string pLabel, string pIdentity)
+        {
+            using var session = _driver.AsyncSession();
+
+            var result = await session.ExecuteWriteAsync(async tx =>
+            {
+
+                string command = $"match (n:{pLabel}) " +
+                                 $"where id(n)={pIdentity} " +
+                                 $"detach delete n " +
+                                 $"return count(n) as deletedCount";
+
+                var commandResult = await tx.RunAsync(command);
+
+                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + "\n\n");
+
+                var record = await commandResult.SingleAsync();
+                return record["deletedCount"].As<int>();
+            });
+
+            return result;
+        }
+
+
 
         #endregion
 
