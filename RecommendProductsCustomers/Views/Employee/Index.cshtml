@@ -354,9 +354,9 @@
     $(document).ready(function () {
         $(".fa-solid.fa-trash").on("click", function () {
             var itemId = $(this).closest("tr").find("td[data-id]").data("id");
-
+            
             $.ajax({
-                url: "/Employee/Delete?id=" + itemId,
+                url: "/Employee/Delete?pId=" + itemId,
                 method: "DELETE",
                 success: function (data) {
                     $(this).closest("tr").remove();
