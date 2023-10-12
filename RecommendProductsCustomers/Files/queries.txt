@@ -1123,3 +1123,153 @@ match (a:Employee ) -[:own]-(b:User {
 
 match (a:ImportBill) with a return max(a.internalCode) as max
 
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:ImportBill) with a return max(a.internalCode) as max
+
+match (a:Employee ) return a limit 100
+
+match (a:ImportBill) with a return max(a.internalCode) as max
+
+match (a:ImportBill) with a return max(a.internalCode) as max
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:ImportBill) with a return max(a.internalCode) as max
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+

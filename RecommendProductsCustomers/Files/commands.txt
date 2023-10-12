@@ -40,3 +40,50 @@ create (n:User {
 
 match (a:Employee {internalCode:"2001200551",name:"Nguyễn Sỹ Minh Quân",gender:"Nam",dateBirth:"",phone:""}), (b:User {userName:"2001200551",password:"2001200551"}) create (a)-[r:own]->(b) return a, b, r
 
+match (n:Employee) where id(n)= detach delete n return count(n) as deletedCount
+
+match (n:Employee) where id(n)= detach delete n return count(n) as deletedCount
+
+match (n:Employee) where id(n)= detach delete n return count(n) as deletedCount
+
+match (n:Employee) where id(n)= detach delete n return count(n) as deletedCount
+
+match (n:Employee) where id(n)= detach delete n return count(n) as deletedCount
+
+match (n:Employee) where id(n)= detach delete n return count(n) as deletedCount
+
+match (n:Employee) where id(n)= detach delete n return count(n) as deletedCount
+
+match (n:Employee) where id(n)= detach delete n return count(n) as deletedCount
+
+match (n:Employee) where id(n)= detach delete n return count(n) as deletedCount
+
+match (n:Employee) where id(n)= detach delete n return count(n) as deletedCount
+
+match (n:Employee) where id(n)= detach delete n return count(n) as deletedCount
+
+match (n:Employee) where id(n)=0 detach delete n return count(n) as deletedCount
+
+match (n:Employee) where id(n)=1 detach delete n return count(n) as deletedCount
+
+match (n:Employee) where id(n)=2 detach delete n return count(n) as deletedCount
+
+match (n:Employee) where id(n)=3 detach delete n return count(n) as deletedCount
+
+create (n:Employee {
+  internalCode: "2001200548",
+  name: "Tan",
+  gender: "Nam",
+  dateBirth: "2001-04-18",
+  phone: "0215487459"
+}) return n
+
+create (n:User {
+  userName: "2001200548",
+  password: "2001200548"
+}) return n
+
+match (a:Employee {internalCode:"2001200548",name:"Tan",gender:"Nam",dateBirth:"2001-04-18",phone:"0215487459"}), (b:User {userName:"2001200548",password:"2001200548"}) create (a)-[r:own]->(b) return a, b, r
+
+match (n:Employee) where id(n)=7 detach delete n return count(n) as deletedCount
+
