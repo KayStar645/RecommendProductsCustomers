@@ -1,6 +1,8 @@
 using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
 using JavaScriptEngineSwitcher.V8;
 using React.AspNet;
+using RecommendProductsCustomers.Services;
+using RecommendProductsCustomers.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +25,12 @@ builder.Services.AddCors(options =>
                .AllowAnyMethod();
     });
 });
+
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+builder.Services.AddScoped<IImportBillService, ImportBillService>();
+
+builder.Services.AddSession();
 
 var app = builder.Build();
 
@@ -48,6 +56,8 @@ app.UseReact(config =>
 });
 
 app.UseStaticFiles();
+
+app.UseSession();
 
 app.UseRouting();
 

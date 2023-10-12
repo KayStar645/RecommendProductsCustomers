@@ -1,0 +1,289 @@
+﻿@using RecommendProductsCustomers.Models;
+@{
+    var employee = ViewData["employee"] as EmployeeModel;
+    var internalCode = ViewData["internalCode"] as string;
+}
+
+
+<style>
+    .label {
+        font-size: 19px !important;
+    }
+
+    select, input {
+        width: 100%;
+        padding: 4px 8px;
+        font-size: 18px;
+    }
+
+    #overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+
+    #popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60%;
+        height: auto;
+        background-color: rgba(255, 255, 255, 1);
+        z-index: 1000;
+        border-radius: 6px;
+    }
+
+    #closePopupButton {
+        position: absolute;
+        top: 13px;
+        right: -1px;
+        cursor: pointer;
+        color: #d10000;
+    }
+</style>
+
+<div class="container">
+    <div class="card my-3 py-3">
+        <div class="container">
+            <div class="card my-3 py-3">
+                <div class="container col-12 d-flex flex-lg-wrap">
+                    <div class="col-4 pe-5">
+                        <label class="p-1 fw-bolder label">Mã đơn nhập</label> <br />
+                        <input type="text" name="internalCode" value="@internalCode" readonly />
+                    </div>
+
+                    <div class="col-4 pe-5">
+                        <label class="p-1 fw-bolder label">Ngày nhập</label> <br />
+                        <input type="text" id="importDate" name="importDate" readonly />
+                    </div>
+
+                    <div class="col-4 pe-5">
+                        <label class="p-1 fw-bolder label">Nhân viên</label> <br />
+                        <input type="text" name="employee" value="@employee?.name" readonly />
+                    </div>
+
+                    <div class="col-4 pe-5">
+                        <label class="p-1 fw-bolder label">Nhà phân phối</label> <br />
+                        <input type="text" name="distributor" />
+                    </div>
+
+                    <div class="col-4 pe-5">
+                        <label class="p-1 fw-bolder label">Liên hệ</label> <br />
+                        <input type="text" name="contact" />
+                    </div>
+
+                    <div class="col-4 pe-5">
+                        <label class="p-1 fw-bolder label">Thành tiền</label> <br />
+                        <input type="text" name="money" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="card my-3 py-3">
+                <div class="container">
+                    <div class="card p-2">
+                        <div class="col-12 d-flex align-items-center">
+                            <div class="col-8 pt-2 d-inline-block">
+                                <h3>Danh sách sản phẩm</h3>
+                            </div>
+                            <div class="col-2 text-end pt-2 d-inline-block">
+                                <button id="saveChange"
+                                        class="bg-info border-0 py-2 px-4 fw-bold text-white rounded">
+                                    Lưu thay đổi
+                                </button>
+                            </div>
+                            <div class="col-2 text-end pt-2 d-inline-block">
+                                <button id="openPopupCreate"
+                                        class="bg-info border-0 py-2 px-4 fw-bold text-white rounded">
+                                    Thêm sản phẩm
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table-info w-100 mt-4" border="2">
+                        <thead>
+                            <tr>
+                                <th class="min-vw-10"></th>
+                                <th class="text-center">Mã đơn nhập</th>
+                                <th class="text-center">Ngày nhập</th>
+                                <th class="text-center">Nhân viên</th>
+                                <th class="text-center">Nhà phân phối</th>
+                                <th class="text-center">Thành tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">
+                                    <i class="fa-regular fa-pen-to-square pe-3" style="color:blue"></i>
+                                    <i class="fa-solid fa-trash" style="color:red"></i>
+                                </td>
+                                <td class="text-center d-none" data-id="importBill.id">id</td>
+                                <td class="text-center">DH0001</td>
+                                <td class="text-center">15-10-2023</td>
+                                <td class="text-center">Phạm Tấn Thuận</td>
+                                <td class="text-center">abc</td>
+                                <td class="text-center">10 chịu đồng</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="overlay"></div>
+<div id="popup">
+    <div id="popupContent">
+        <div class="card d-block">
+            <h3 id="title" class="px-4 py-2"></h3>
+            <i id="closePopupButton"
+               class="fa-solid fa-rectangle-xmark fa-2xl"
+               style="color: #d10000;"></i>
+        </div>
+        @using (@Html.BeginForm("Create", "Imployee"))
+        {
+            <div class="container">
+                <div class="card px-lg-5 py-2">
+                    <div class="col-12 d-flex flex-lg-wrap">
+                        <div class="col-12 d-none">
+                            <input type="text" name="id" value="" />
+                        </div>
+
+                        <div class="col-3 pe-3">
+                            <label class="p-1 fw-bolder label">Mã sản phẩm</label> <br />
+                            <input type="text" name="internalCode" value="" />
+                        </div>
+
+                        <div class="col-8 pe-3">
+                            <label class="p-1 fw-bolder label">Tên sản phẩm</label> <br />
+                            <input type="text" name="name" value="" />
+                        </div>
+
+                        <div class="col-1">
+                            <label class="p-1 fw-bolder label">Size</label> <br />
+                            <select name="size">
+                                <option value="S">S</option>
+                                <option value="X">X</option>
+                                <option value="L">L</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="p-1 fw-bolder label">Mô tả</label> <br />
+                            <input type="date" name="dateBirth" value="" />
+                        </div>
+
+                        <div class="col-12">
+                            <label class="p-1 fw-bolder label">Giới tính</label> <br />
+                            <select name="gender">
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                                <option value="Khác">Khác</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="p-1 fw-bolder label">Số điện thoại</label> <br />
+                            <input type="text" name="phone" value="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="text-end">
+                    <button id="saveProductButton"
+                            class="bg-info border-0 py-2 px-4 fw-bold text-white my-3 rounded">
+                        Lưu
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    $("#goBackButton").click(function () {
+        $.ajax({
+            url: "/ImportBill/Index",
+            type: "GET",
+            success: function (data) {
+                $("#content").html(data);
+            }
+        });
+    });
+
+    document.getElementById("importDate").value = (new Date()).toLocaleDateString();
+</script>
+
+<script>
+    var createOpen = document.getElementById("openPopupCreate");
+    var updateOpens = document.querySelectorAll(".fa-regular.fa-pen-to-square");
+    var closeButton = document.getElementById("closePopupButton");
+    var overlay = document.getElementById("overlay");
+    var popup = document.getElementById("popup");
+
+    createOpen.addEventListener("click", function () {
+        overlay.style.display = "block";
+        popup.style.display = "block";
+
+        var rowData = {
+            internalCode: "",
+            name: "",
+            dateBirth: "",
+            gender: "",
+            phone: "",
+        };
+
+        document.getElementById("title").innerText = "Thêm sản phẩm mới";
+        document.getElementById("createButton").style.display = "inline-block";
+        document.getElementById("updateButton").style.display = "none";
+
+        loadData(rowData);
+    });
+
+    updateOpens.forEach(function (button) {
+        button.addEventListener("click", function () {
+            overlay.style.display = "block";
+            popup.style.display = "block";
+
+            var parentRow = button.closest("tr");
+            var rowData = {
+                id: parentRow.querySelector("td:nth-child(2)").textContent,
+                internalCode: parentRow.querySelector("td:nth-child(3)").textContent,
+                name: parentRow.querySelector("td:nth-child(4)").textContent,
+                dateBirth: parentRow.querySelector("td:nth-child(5)").textContent,
+                gender: parentRow.querySelector("td:nth-child(6)").textContent,
+                phone: parentRow.querySelector("td:nth-child(7)").textContent,
+            };
+
+            document.getElementById("title").innerText = "Cập nhật thông tin sản phẩm";
+            document.getElementById("createButton").style.display = "none";
+            document.getElementById("updateButton").style.display = "inline-block";
+
+            loadData(rowData);
+        });
+    });
+
+    closeButton.addEventListener("click", function () {
+        overlay.style.display = "none";
+        popup.style.display = "none";
+    });
+
+    function loadData(data) {
+        const dateParts = data.dateBirth.split('/');
+
+        document.querySelector('input[name="id"]').value = data.id;
+        document.querySelector('input[name="internalCode"]').value = data.internalCode;
+        document.querySelector('input[name="name"]').value = data.name;
+        document.querySelector('input[name="dateBirth"]').value = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+        document.querySelector('select[name="gender"]').value = data.gender;
+        document.querySelector('input[name="phone"]').value = data.phone;
+    }
+</script>

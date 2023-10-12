@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/fonts/fontawesome-free-6.0.0-web/css/all.css" rel="stylesheet" />
+    <link href="~/fonts/fontawesome-free-6.0.0-web/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+    <div id="container" class="grid d-flex flex-lg-wrap">
+        <div class="col-12">
+            <label class="p-1 fw-bolder label">Tài khoản</label> <br />
+            <input type="text" name="userName" value="" />
+        </div>
+
+        <div class="col-12">
+            <label class="p-1 fw-bolder label">Mật khẩu</label> <br />
+            <input type="password" name="password" value="" />
+        </div>
+
+        <button id="login" class="bg-info border-0 mt-3 py-2 px-4 fw-bold text-white rounded">
+            Đăng nhập
+        </button>
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        $(document).ready(function () {
+            $("#login").on("click", function (e) {
+                e.preventDefault();
+
+                var formData = getData();
+
+                $.ajax({
+                    url: "/Login/Login",
+                    method: "POST",
+                    data: JSON.stringify(formData),
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        //console.log(data)
+                        window.location.href = "/_Home/Index_Home";
+                    },
+                });
+            });
+        });
+
+        function getData() {
+            var formData = {
+                userName: $("input[name='userName']").val(),
+                password: $("input[name='password']").val(),
+            };
+            return formData;
+        }
+    </script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 ﻿using Neo4j.Driver;
 using Newtonsoft.Json.Linq;
 using RecommendProductsCustomers.Common;
+using System.Security.Principal;
 
 namespace RecommendProductsCustomers.Repositories
 {
@@ -14,14 +15,28 @@ namespace RecommendProductsCustomers.Repositories
         }
 
 
-        public async Task<List<JObject>> Get(string pLabel, int? pLimit = 100)
+        public async Task<List<JObject>> Get(string? pLabel = "", JObject? pWhere = null, string? pRelationShip = "", string? pLabelB = "", JObject? pWhereB = null, int? pLimit = 100)
         {
             using var session = _driver.AsyncSession();
 
             var result = await session.ExecuteWriteAsync(async tx =>
             {
-                string query = $"match (n:{pLabel}) " +
-                               $"return n limit {pLimit}";
+                string where = pWhere == null ? "" : Format.JObjectToString(pWhere);
+                string whereB = pWhereB == null ? "" : Format.JObjectToString(pWhereB);
+
+                string query = "";
+                if(string.IsNullOrEmpty(pRelationShip) == false)
+                {
+                    query = $"match (a:{pLabel} {where}) " +
+                               $"-[:{pRelationShip}]-" +
+                               $"(b:{pLabelB} {whereB}) " +
+                               $"return a limit {pLimit}";
+                }    
+                else
+                {
+                    query = $"match (a:{pLabel} {where}) " +
+                               $"return a limit {pLimit}";
+                }
 
                 var queryResult = await tx.RunAsync(query);
 
@@ -33,8 +48,8 @@ namespace RecommendProductsCustomers.Repositories
                 {
                     // Chuyển đổi mỗi bản ghi thành một đối tượng JObject
                     var jobject = new JObject();
-                    jobject.Add("id", JToken.FromObject(record["n"].As<INode>().Id.ToString()));
-                    foreach (var pair in record["n"].As<INode>().Properties)
+                    jobject.Add("id", JToken.FromObject(record["a"].As<INode>().Id.ToString()));
+                    foreach (var pair in record["a"].As<INode>().Properties)
                     {
                         jobject.Add(pair.Key, JToken.FromObject(pair.Value));
                     }
@@ -444,6 +459,28 @@ namespace RecommendProductsCustomers.Repositories
 
                 var record = await commandResult.SingleAsync();
                 return record["deletedCount"].As<int>();
+            });
+
+            return result;
+        }
+
+        public async Task<string> Max(string pLabel, string property)
+        {
+            using var session = _driver.AsyncSession();
+
+            var result = await session.ExecuteWriteAsync(async tx =>
+            {
+
+                string command = $"match (a:{pLabel}) " +
+                                 $"with a " +
+                                 $"return max(a.{property}) as max";
+
+                var commandResult = await tx.RunAsync(command);
+
+                File.AppendAllText(SettingCommon.Connect(FileCommon.FileQueries), command + "\n\n");
+
+                var record = await commandResult.SingleAsync();
+                return record["max"].As<string>();
             });
 
             return result;

@@ -10,26 +10,67 @@
     }
 </style>
 
-<div class="container">
-    @using (@Html.BeginForm("ImportCommodity", "ImportBill"))
-    {
-        <div class="col-12 p-4 d-flex">
-            <div class="col-4 px-4">
-                <label class="p-1 fw-bolder label">Nhân viên</label> <br />
-                <input type="text" value="" readonly />
+<div id="importBill">
+    <div class="container">
+        <div class="card my-3 py-3">
+            <div class="container d-flex align-items-center">
+                <div class="mb-4 col-5">
+                    <label class="p-1 fw-bolder label">Tìm kiếm</label> <br />
+                    <input type="text" name="search" />
+                </div>
+                <div class="col-7 text-end pt-2">
+                    <button id="openPopupCreate"
+                            class="bg-info border-0 py-2 px-4 fw-bold text-white rounded">
+                        Nhập hàng
+                    </button>
+                </div>
             </div>
 
-            <div class="col-4 px-4">
-                <label class="p-1 fw-bolder label">Ngày nhập</label> <br />
-                <input type="date" value="" readonly />
+            <div class="container">
+                <table class="table-info w-100" border="2">
+                    <thead>
+                        <tr>
+                            <th class="min-vw-10"></th>
+                            <th class="text-center">Mã đơn nhập</th>
+                            <th class="text-center">Ngày nhập</th>
+                            <th class="text-center">Nhân viên</th>
+                            <th class="text-center">Nhà phân phối</th>
+                            <th class="text-center">Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-center">
+                                <i class="fa-solid fa-eye pe-3" style="color:blue"></i>
+                                @* <i class="fa-solid fa-trash" style="color:red"></i> *@
+                            </td>
+                            <td class="text-center d-none" data-id="importBill.id">id</td>
+                            <td class="text-center">DH0001</td>
+                            <td class="text-center">15-10-2023</td>
+                            <td class="text-center">Phạm Tấn Thuận</td>
+                            <td class="text-center">abc</td>
+                            <td class="text-center">10 chịu đồng</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-    }
+    </div>
 </div>
 
-<script>
-    var today = new Date();
-    var formattedDate = today.toISOString().split('T')[0];
 
-    document.querySelector("input[type='date']").value = formattedDate;
+<script>
+    $("#openPopupCreate").click(function () {
+        $.ajax({
+            url: "/ImportBill/Detail?pIdentity=1",
+            type: "GET",
+            success: function (data) {
+                $("#importBill").html(data);
+            },
+            error: function () {
+                console.log("Lỗi khi tải trang mới.");
+            }
+        });
+    });
+
 </script>

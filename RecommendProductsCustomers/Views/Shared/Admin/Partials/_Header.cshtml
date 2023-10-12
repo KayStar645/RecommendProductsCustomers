@@ -11,10 +11,30 @@
 </style>
 
 <div class="border grid d-flex p-2 align-items-center">
-    <div class="col-9">
+    <div class="col-1">
+        <i id="goBackButton" class="fa-solid fa-arrow-left fa-2xl" style="color: #2db5d7;"></i>
+    </div>
+    <div class="col-8">
         <h3 id="headerContent" class="ps-xxl-5">Trang chủ</h3>
     </div>
     <div class="col-3 text-end">
-        <button class="d-inline-block border-0">Đăng xuất</button>
+        <button id="logout" class="d-inline-block border-0 rounded">Đăng xuất</button>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $("#logout").on("click", function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: "/Login/Logout",
+                method: "GET",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    window.location.href = "/Login/Login";
+                },
+            });
+        });
+    });
+</script>
