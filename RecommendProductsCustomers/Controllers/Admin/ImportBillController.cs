@@ -1,8 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
-using RecommendProductsCustomers.Common;
-using RecommendProductsCustomers.Models;
-using RecommendProductsCustomers.Repositories;
 using RecommendProductsCustomers.Services.Interfaces;
 
 namespace RecommendProductsCustomers.Controllers.Admin

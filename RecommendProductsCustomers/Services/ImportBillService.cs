@@ -24,5 +24,10 @@ namespace RecommendProductsCustomers.Services
             }
             return "MDN0000001";
         }
+
+        public async Task CreateOrUpdate()
+        {
+
+        }    
     }
 }

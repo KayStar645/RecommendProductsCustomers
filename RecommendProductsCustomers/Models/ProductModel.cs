@@ -20,10 +20,9 @@
 
         // Hình ảnh gốc lấy cái đầu
         public List<string>? images { get; set; }
-        
-        // Đối tượng phù hợp
-        public List<string>? interest { get; set; }
 
-        public string? price { get; set; }
+        public int? quantity { get; set; }
+
+        public long? price { get; set; }
     }
 }
