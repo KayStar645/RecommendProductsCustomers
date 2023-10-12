@@ -5,20 +5,33 @@
 }
 <script src="~/js/ckeditor5-40.0.0-6l8voimkm18w/build/ckeditor.js"></script>
 
+
 <script>
+    let _description, _material, _preserve;
+
 
     ClassicEditor
-        .create(document.querySelector('#description'))
+        .create(document.querySelector('#_description'))
+        .then(newEditor => {
+            _description = newEditor;
+        })
+        .catch(error => {
+        });
+
+
+    ClassicEditor
+        .create(document.querySelector('#_material'))
+        .then(newEditor => {
+            _material = newEditor;
+        })
         .catch(error => {
         });
 
     ClassicEditor
-        .create(document.querySelector('#material'))
-        .catch(error => {
-        });
-
-    ClassicEditor
-        .create(document.querySelector('#preserve'))
+        .create(document.querySelector('#_preserve'))
+        .then(newEditor => {
+            _preserve = newEditor;
+        })
         .catch(error => {
         });
 </script>
@@ -70,7 +83,7 @@
         color: #d10000;
     }
 
-    #savePopup{
+    #savePopup {
         height: calc(100vh - 150px);
         overflow: auto;
         padding-bottom: 80px;
@@ -85,12 +98,12 @@
         flex-wrap: wrap;
     }
 
-    #imageContainer img {
-        width: 100px;
-        height: 100px;
-        margin: 5px;
-        object-fit: cover;
-    }
+        #imageContainer img {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            object-fit: cover;
+        }
 </style>
 
 <div class="container">
@@ -125,7 +138,7 @@
 
                     <div class="col-4 pe-5">
                         <label class="p-1 fw-bolder label">Thành tiền</label> <br />
-                        <input type="text" name="money" readonly />
+                        <input type="text" name="money" value="0" readonly />
                     </div>
                 </div>
             </div>
@@ -164,29 +177,31 @@
                                 <th class="text-center">Mã sản phẩm</th>
                                 <th class="text-center">Tên sản phẩm</th>
                                 <th class="text-center">Hình ảnh</th>
+                                <th class="text-center">Kích thước</th>
                                 <th class="text-center">Số lượng </th>
                                 <th class="text-center">Đơn giá</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td class="text-center">
-                                    <i class="fa-regular fa-pen-to-square pe-3" style="color:blue"></i>
-                                    <i class="fa-solid fa-trash" style="color:red"></i>
-                                </td>
-                                <td class="text-center d-none" data-id="importBill.id">id</td>
-                                <td class="text-center">SP0001</td>
-                                <td class="text-center">XL - Áo thun</td>
-                                <td class="text-center">
-                                    <img src="~/images/logo.webp" class="w-80" />
-                                </td>
-                                <td class="text-center">20</td>
-                                <td class="text-center">100.000đ</td>
-                                <td class="text-center d-none" data-description="importBill.description">description</td>
-                                <td class="text-center d-none" data-material="importBill.material">material</td>
-                                <td class="text-center d-none" data-preserve="importBill.preserve">preserve</td>
-                                <td class="text-center d-none" data-images="importBill.images">images</td>
-                            </tr>
+                        <tbody id="tableProducts">
+                            @* <tr>
+                            <td class="text-center">
+                            <i class="fa-regular fa-pen-to-square pe-3" style="color:blue"></i>
+                            <i class="fa-solid fa-trash" style="color:red"></i>
+                            </td>
+                            <td class="text-center d-none" data-id="importBill.id">id</td>
+                            <td class="text-center">SP0001</td>
+                            <td class="text-center">Áo thun</td>
+                            <td class="text-center">
+                            <img src="~/images/logo.webp" class="w-80" />
+                            </td>
+                            <td class="text-center">XL</td>
+                            <td class="text-center">20</td>
+                            <td class="text-center">100.000đ</td>
+                            <td class="text-center d-none" data-description="importBill.description">description</td>
+                            <td class="text-center d-none" data-material="importBill.material">material</td>
+                            <td class="text-center d-none" data-preserve="importBill.preserve">preserve</td>
+                            <td class="text-center d-none" data-images="importBill.images">images</td>
+                            </tr> *@
                         </tbody>
                     </table>
                 </div>
@@ -201,105 +216,90 @@
     <div class="card d-block position-absolute top-0 start-0 end-0">
         <h3 id="title" class="px-4 py-2"></h3>
         <i id="closePopupButton"
-            class="fa-solid fa-rectangle-xmark fa-2xl"
-            style="color: #d10000;"></i>
+           class="fa-solid fa-rectangle-xmark fa-2xl"
+           style="color: #d10000;"></i>
     </div>
 
     <div id="popupContent">
-            @using (@Html.BeginForm("Create", "Imployee"))
-            {
-                <div class="container" id="savePopup">
-                    <div class="card px-lg-5 py-2">
-                        <div class="col-12 d-flex flex-lg-wrap">
-                            <div class="col-12 d-none">
-                                <input type="text" name="id" />
-                            </div>
+        @using (@Html.BeginForm("Create", "Imployee"))
+        {
+            <div class="container" id="savePopup">
+                <div class="card px-lg-5 py-2">
+                    <div class="col-12 d-flex flex-lg-wrap">
+                        <div class="col-12 d-none">
+                            <input type="text" name="id" />
+                        </div>
 
-                            <div class="col-4 pe-3">
-                                <label class="p-1 fw-bolder label">Mã sản phẩm</label> <br />
-                                <input type="text" name="internalCode" />
-                            </div>
+                        <div class="col-4 pe-3">
+                            <label class="p-1 fw-bolder label">Mã sản phẩm</label> <br />
+                            <input type="text" name="internalCodeProduct" />
+                        </div>
 
-                            <div class="col-8">
-                                <label class="p-1 fw-bolder label">Tên sản phẩm</label> <br />
-                                <input type="text" name="name" step="1" />
-                            </div>
+                        <div class="col-8">
+                            <label class="p-1 fw-bolder label">Tên sản phẩm</label> <br />
+                            <input type="text" name="name" step="1" />
+                        </div>
 
-                            <div class="col-5 pe-3">
-                                <label class="p-1 fw-bolder label">Số lượng</label> <br />
-                                <input type="number" name="quantity" min="1" />
-                            </div>
+                        <div class="col-5 pe-3">
+                            <label class="p-1 fw-bolder label">Số lượng</label> <br />
+                            <input type="number" name="quantity" min="1" />
+                        </div>
 
-                            <div class="col-5 pe-3">
-                                <label class="p-1 fw-bolder label">Đơn giá</label> <br />
-                                <input type="number" name="price" min="1" step="1" />
-                            </div>
+                        <div class="col-5 pe-3">
+                            <label class="p-1 fw-bolder label">Đơn giá</label> <br />
+                            <input type="number" name="price" min="1" step="1" />
+                        </div>
 
-                            <div class="col-2">
-                                <label class="p-1 fw-bolder label">Kích thước</label> <br />
-                                <select name="size">
-                                    <option value="S">S</option>
-                                    <option value="X">X</option>
-                                    <option value="L">L</option>
-                                </select>
-                            </div>
+                        <div class="col-2">
+                            <label class="p-1 fw-bolder label">Kích thước</label> <br />
+                            <select name="size">
+                                <option value="S">S</option>
+                                <option value="X">X</option>
+                                <option value="L">L</option>
+                            </select>
+                        </div>
 
-                            <div class="col-12">
-                                <label class="p-1 fw-bolder label">Hình ảnh</label> <br />
-                                <input type="file" id="imageInput" accept="image/*">
-                                <div id="imageContainer"></div>
-                            </div>
+                        <div class="col-12">
+                            <label class="p-1 fw-bolder label">Hình ảnh</label> <br />
+                            <input type="file" id="imageInput" accept="image/*">
+                            <div id="imageContainer"></div>
+                        </div>
 
-                            <div class="col-12 h-100">
-                                <label class="p-1 fw-bolder label">Mô tả</label> <br />
-                                <div class="w-100" style="max-height:180px;min-height:180px;height:180px"
-                                     id="description"
-                                     name="description"></div>
+                        <div class="col-12 h-100">
+                            <label class="p-1 fw-bolder label">Mô tả</label> <br />
+                            <div id="description">
+                                <div class="w-100" style="max-height:180px;min-height:180px;height:180px" id="_description"></div>
                             </div>
+                        </div>
 
-                            <div class="col-12 h-100">
-                                <label class="p-1 fw-bolder label">Thông tin về chất liệu</label> <br />
-                                <div class="w-100" style="max-height:180px;min-height:180px;height:180px"
-                                    id="material"
-                                     name="material"></div>
+                        <div class="col-12 h-100">
+                            <label class="p-1 fw-bolder label">Thông tin về chất liệu</label> <br />
+                            <div id="material">
+                                <div class="w-100" style="max-height:180px;min-height:180px;height:180px" id="_material"></div>
                             </div>
+                        </div>
 
-                            <div class="col-12 h-100">
-                                <label class="p-1 fw-bolder label">Hướng dẫn bảo quản</label> <br />
-                                <div class="w-100" style="max-height:180px;min-height:180px;height:180px"
-                                    id="preserve"
-                                     name="preserve"></div>
+                        <div class="col-12 h-100">
+                            <label class="p-1 fw-bolder label">Hướng dẫn bảo quản</label> <br />
+                            <div id="preserve">
+                                <div class="w-100" style="max-height:180px;min-height:180px;height:180px" id="_preserve"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-            }
+            </div>
+        }
     </div>
 
     <div class="card text-end position-absolute bottom-0 start-0 end-0">
-       <div class="d-flex justify-content-end ">
+        <div class="d-flex justify-content-end ">
             <button id="saveProductButton"
                     class="bg-info border-0 py-2 px-4 me-2 fw-bold text-white my-3 rounded">
                 Lưu
             </button>
-       </div>
+        </div>
     </div>
 </div>
-
-<script>
-    $("#goBackButton").click(function () {
-        $.ajax({
-            url: "/ImportBill/Index",
-            type: "GET",
-            success: function (data) {
-                $("#content").html(data);
-            }
-        });
-    });
-
-    document.getElementById("importDate").value = (new Date()).toLocaleDateString();
-</script>
-
 
 <script>
     var createOpen = document.getElementById("openPopupCreate");
@@ -321,7 +321,7 @@
         };
 
         document.getElementById("title").innerText = "Thêm sản phẩm mới";
-       
+
 
         loadData(rowData);
     });
@@ -364,31 +364,101 @@
     }
 </script>
 
-
+@* Lưu đơn hàng nhập với trạng thái = false (Nháp) *@
 <script>
-    // Add sản phẩm từ popup vào table
+    $(document).ready(function () {
+        $("#saveChange").on("click", function (e) {
+            e.preventDefault();
+
+            var pImportBillVM = {
+                importBill: getImportBill(),
+                products: getProducts()
+            };
+
+            console.log(JSON.stringify(pImportBillVM));
+
+            $.ajax({
+                url: "/ImportBill/CreateOrUpdate",
+                method: "POST",
+                data: JSON.stringify(pImportBillVM),
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                },
+            });
+        });
+    });
+
+    function getImportBill() {
+        const dateParts = document.querySelector('input[name="importDate"]').value.split('/');
+
+        var importBill = {
+            id: document.querySelector('input[name="id"]').value,
+            internalCode: document.querySelector('input[name="internalCode"]').value,
+            dateImport: `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`,
+            distributor: document.querySelector('input[name="distributor"]').value,
+            contactPhone: document.querySelector('input[name="contact"]').value,
+            price: document.querySelector('input[name="money"]').value,
+            isActive: false
+        };
+        return importBill;
+    }
+
+
+    function getProducts() {
+        var products = [];
+
+        var rows = document.getElementById("tableProducts").querySelectorAll("tr");
+
+        rows.forEach(function (row) {
+            var cells = row.querySelectorAll("td");
+
+            if (cells.length >= 7) {
+                var product = {
+                    id: cells[1].getAttribute("data-id"),
+                    internalCode: cells[2].textContent,
+                    name: cells[3].textContent,
+                    size: cells[5].textContent,
+                    quantity: cells[6].textContent,
+                    price: cells[7].textContent,
+                    description: cells[8].getAttribute("data-description"),
+                    material: cells[9].getAttribute("data-material"),
+                    preserve: cells[10].getAttribute("data-preserve"),
+                    images: cells[11].getAttribute("data-images").split(","),
+                };
+                products.push(product);
+            }
+        });
+
+        return products;
+    }
+
+</script>
+
+
+@* Add sản phẩm từ popup vào table *@
+<script>
     var saveProductButton = document.getElementById("saveProductButton");
 
     saveProductButton.addEventListener("click", function () {
-        overlay.style.display = "block";
-        popup.style.display = "block";
-
         var data = getDataFromPopup();
 
-        addRowTable(data);        
+        addRowTable(data);
 
-        console.log(data);
+        // Tính lại thành tiền của hóa đơn
+
+        overlay.style.display = "none";
+        popup.style.display = "none";
     });
 
-    function addRowTable(data)
-    {
+    function addRowTable(data) {
         // Đưa dữ liệu lên table
         var newRow = document.createElement("tr");
 
         // Chức năng
         var cell = document.createElement("td");
         cell.className = "text-center";
-        
+
         var updateCell = document.createElement("i");
         updateCell.className = "fa-regular fa-pen-to-square pe-3";
         updateCell.style.color = "blue";
@@ -419,9 +489,16 @@
         var imageCell = document.createElement("td");
         imageCell.className = "text-center";
         var image = document.createElement("img");
-        image.src = data.images[0];
-        image.width = "80";
+        if (data.images.length > 0) {
+            image.src = data.images[0];
+        }
+        image.height = "80";
         imageCell.appendChild(image);
+
+        // Kích thước
+        var sizeCell = document.createElement("td");
+        sizeCell.className = "text-center";
+        sizeCell.textContent = data.size;
 
         // Số lượng
         var quantityCell = document.createElement("td");
@@ -456,6 +533,7 @@
         newRow.appendChild(internalCodeCell);
         newRow.appendChild(nameCell);
         newRow.appendChild(imageCell);
+        newRow.appendChild(sizeCell);
         newRow.appendChild(quantityCell);
         newRow.appendChild(priceCell);
         newRow.appendChild(descriptionCell);
@@ -468,16 +546,16 @@
         tableBody.appendChild(newRow);
     }
 
-    function getDataFromPopup() { 
+    function getDataFromPopup() {
         var data = {
-            internalCode: document.querySelector('input[name="internalCode"]').value,
+            internalCode: document.querySelector('input[name="internalCodeProduct"]').value,
             name: document.querySelector('input[name="name"]').value,
             quantity: document.querySelector('input[name="quantity"]').value,
             price: document.querySelector('input[name="price"]').value,
             size: document.querySelector('select[name="size"]').value,
-            description: document.getElementById('description').innerHTML,
-            material: document.getElementById('material').innerHTML,
-            preserve: document.getElementById('preserve').innerHTML,
+            description: _description.getData(),
+            material: _material.getData(),
+            preserve: _preserve.getData(),
             images: [],
         };
 
@@ -490,6 +568,8 @@
     }
 </script>
 
+
+@* Chọn nhiều hình ảnh *@
 <script>
     document.getElementById("imageInput").addEventListener("change", function (e) {
         var files = e.target.files;
@@ -505,4 +585,30 @@
             document.getElementById("imageContainer").appendChild(image);
         }
     });
+</script>
+
+
+@* Quay về trang trước đó *@
+<script>
+    $("#goBackButton").click(function () {
+        $.ajax({
+            url: "/ImportBill/Index",
+            type: "GET",
+            success: function (data) {
+                $("#content").html(data);
+            }
+        });
+    });
+
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    let mm = today.getMonth() + 1;
+    let dd = today.getDate();
+
+    if (dd < 10) dd = '0' + dd;
+    if (mm < 10) mm = '0' + mm;
+
+    const formattedToday = dd + '/' + mm + '/' + yyyy;
+
+    document.getElementById("importDate").value = formattedToday;
 </script>

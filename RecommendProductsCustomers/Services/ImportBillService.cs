@@ -1,4 +1,5 @@
 ﻿using RecommendProductsCustomers.Common;
+using RecommendProductsCustomers.Models;
 using RecommendProductsCustomers.Repositories;
 using RecommendProductsCustomers.Services.Interfaces;
 
@@ -25,9 +26,12 @@ namespace RecommendProductsCustomers.Services
             return "MDN0000001";
         }
 
-        public async Task CreateOrUpdate()
+        public async Task<bool> CreateOrUpdate(ImportBillModel pImportBill)
         {
-
+            // Nếu id != null thì tìm theo id
+            // Nếu tìm thấy thì update
+            // Ngược lại thêm mới
+            return true;
         }    
     }
 }

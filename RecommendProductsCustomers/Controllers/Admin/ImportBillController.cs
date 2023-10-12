@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RecommendProductsCustomers.Models;
+using RecommendProductsCustomers.Models.ViewModel;
 using RecommendProductsCustomers.Services.Interfaces;
 
 namespace RecommendProductsCustomers.Controllers.Admin
@@ -31,9 +33,10 @@ namespace RecommendProductsCustomers.Controllers.Admin
         }
 
         [HttpPost]
-        public IActionResult ImportCommodity([FromForm] object pInput)
+        public async Task<IActionResult> CreateOrUpdate([FromBody] ImportBillVM pImportBillVM)
         {
-            return View();
+            int a = 1;
+            return RedirectToAction("Detail", pImportBillVM?.importBill?.id);
         }
     }
 }

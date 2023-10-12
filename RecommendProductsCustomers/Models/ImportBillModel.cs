@@ -2,6 +2,7 @@
 {
     public class ImportBillModel
     {
+        public string? id { get; set; }
         public string? internalCode { get; set; }
 
         public DateTime? dateImport { get; set; }
