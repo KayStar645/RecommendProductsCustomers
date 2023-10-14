@@ -39,7 +39,7 @@ namespace RecommendProductsCustomers.Services
 
                     // Nhân viên sở hữu tài khoản
                     await Repo.CreateRelationShip(LabelCommon.Employee, pObject, LabelCommon.User, pUser,
-                        "own", null, true);
+                        RelaCommon.Employee_User, null, true);
                 }
                 return true;
             }
@@ -76,7 +76,7 @@ namespace RecommendProductsCustomers.Services
                     {"userName", pUserName }
                 };
 
-                List<JObject> employees = await Repo.Get(LabelCommon.Employee, null, "own", LabelCommon.User, user, 1);
+                List<JObject> employees = await Repo.Get(LabelCommon.Employee, null, RelaCommon.Employee_User, LabelCommon.User, user, 1);
 
                 var employee = employees.FirstOrDefault();
                 EmployeeModel finUser = new EmployeeModel()

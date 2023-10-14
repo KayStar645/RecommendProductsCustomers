@@ -375,15 +375,13 @@
                 products: getProducts()
             };
 
-            console.log(JSON.stringify(pImportBillVM));
-
             $.ajax({
                 url: "/ImportBill/CreateOrUpdate",
                 method: "POST",
                 data: JSON.stringify(pImportBillVM),
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-
+                    window.location.href = "/ImportBill/Index_Home";
                 },
             });
         });

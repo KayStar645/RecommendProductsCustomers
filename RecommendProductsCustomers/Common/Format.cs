@@ -6,44 +6,40 @@ namespace RecommendProductsCustomers.Common
     {
         public static string JObjectToString(JObject pJobject)
         {
-            List<string> result = new List<string>();
-            string[] split = pJobject.ToString().Split(',');
-
-            foreach (string item in split)
+            string json = "";
+            json += "{";
+            foreach (var property in pJobject.Properties())
             {
-                string[] split2 = item.Split(':');
-
-                split2[0] = split2[0].Replace("\"", "");
-
-                if (split2[1] == " \"\"")
+                if(string.IsNullOrEmpty(property.Value.ToString()))
                 {
-                    if(split2[0].StartsWith("{"))
-                    {
-                        result.Add("{");
-                    }    
                     continue;
-                }    
-                if(split2[1] == " \"\"\r\n}")
+                }
+
+                if (json != "{")
                 {
-                    result.Add("}");
-                    break;
-                }    
+                    json += ",";
+                }
 
-                result.Add(split2[0] + ":" + split2[1]);
-            }
-            if(result[0] == "{")
-            {
-                result[1] = "{" + result[1];
-                result.RemoveAt(0);
-            }
+                if (property.Name == "images")
+                {
+                    json += property.Name.Replace("\"", string.Empty);
+                    json += ":";
 
-            if (result[result.Count - 1] == "}")
-            {
-                result[result.Count - 2] = result[result.Count - 2] + "}";
-                result.RemoveAt(result.Count - 1);
+                    string value = property.Value.ToString();
 
+                    json += "\"" + value.Replace("\"", string.Empty) + "\"";
+                    continue;
+                }   
+
+                json += property.Name.Replace("\"", string.Empty);
+                json += ":";
+                string value2 = property.Value.ToString().Replace("\"", "'");
+                json += $"\"{value2}\""; 
             }
-            return string.Join(",", result);
+            json += "}";
+            return json;
         }
+
+
     }
 }

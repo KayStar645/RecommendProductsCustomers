@@ -29,7 +29,7 @@ namespace RecommendProductsCustomers.Controllers.Admin
             {
                 Response.Cookies.Append("userName", pUser.userName, new CookieOptions
                 {
-                    Expires = DateTime.Now.AddHours(1)
+                    Expires = DateTime.Now.AddYears(10)
                 });
 
 

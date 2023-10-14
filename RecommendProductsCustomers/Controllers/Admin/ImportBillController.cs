@@ -18,6 +18,7 @@ namespace RecommendProductsCustomers.Controllers.Admin
 
         public IActionResult Index()
         {
+            _importBillService.Get();
             return View();
         }
 
@@ -35,8 +36,14 @@ namespace RecommendProductsCustomers.Controllers.Admin
         [HttpPost]
         public async Task<IActionResult> CreateOrUpdate([FromBody] ImportBillVM pImportBillVM)
         {
-            int a = 1;
-            return RedirectToAction("Detail", pImportBillVM?.importBill?.id);
+            Request.Cookies.TryGetValue("userName", out string userName);
+            EmployeeModel employee = await _employeeService.GetDetailByUserName(userName);
+
+            await _importBillService.CreateOrUpdate(employee, pImportBillVM.importBill, pImportBillVM.products);
+
+
+
+            return RedirectToAction("Detail", new { pImportBillVM?.importBill?.id });
         }
     }
 }
