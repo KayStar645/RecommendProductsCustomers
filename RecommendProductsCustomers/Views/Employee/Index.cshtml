@@ -119,12 +119,12 @@
                                     <i class="fa-regular fa-pen-to-square pe-3" style="color:blue"></i>
                                     <i class="fa-solid fa-trash" style="color:red"></i>
                                 </td>
-                                <td class="text-center d-none" data-id="@employee.id">@employee.id</td>
-                                <td class="text-center">@employee.internalCode</td>
-                                <td class="text-center">@employee.name</td>
-                                <td class="text-center">@string.Format("{0:dd/MM/yyyy}", employee.dateBirth)</td>
-                                <td class="text-center">@employee.gender</td>
-                                <td class="text-center">@employee.phone</td>
+                                <td class="text-center d-none" data-id="@employee?.id">@employee?.id</td>
+                                <td class="text-center">@employee?.internalCode</td>
+                                <td class="text-center">@employee?.name</td>
+                                <td class="text-center">@string.Format("{0:dd/MM/yyyy}", employee?.dateBirth)</td>
+                                <td class="text-center">@employee?.gender</td>
+                                <td class="text-center">@employee?.phone</td>
                             </tr>
                         }
                     </tbody>

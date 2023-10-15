@@ -446,7 +446,7 @@ namespace RecommendProductsCustomers.Repositories
             string direction2 = type == false ? "-" : "->";
 
             // Thuộc tính của quan hệ
-            string properties = propertiesRela == null ? string.Empty : $"{{{Format.JObjectToString(propertiesRela)}}}";
+            string properties = propertiesRela == null ? string.Empty : $"{Format.JObjectToString(propertiesRela)}";
 
             // Lệnh
             string command = $"match (a:{pLabelA} {{{string.Join(",", whereA)}}}), " +
@@ -627,10 +627,11 @@ namespace RecommendProductsCustomers.Repositories
                 string direction1 = type == false ? "<-" : "-";
                 string direction2 = type == false ? "-" : "->";
 
-                string command = $"MATCH (a:{pLapelA}){direction1}[:{pRela}]{direction2}(b:{pLapelB}) " +
+                string command = $"MATCH (a:{pLapelA}){direction1}[r:{pRela}]{direction2}(b:{pLapelB}) " +
                                  $"WHERE id(a)={pIdentity} AND " +
                                  $"NOT b.{pProperties} IN [{string.Join(", ", pValue.Select(s => $"\"{s}\""))}] " +
-                                 $"DELETE r";
+                                 $"DELETE r " +
+                                 $"return count(r) as deletedCount";
 
                 var commandResult = await tx.RunAsync(command);
 

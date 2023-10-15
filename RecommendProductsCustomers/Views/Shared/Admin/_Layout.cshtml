@@ -9,11 +9,12 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="~/css/site.css" rel="stylesheet" />
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/ckeditor5-40.0.0-6l8voimkm18w/build/ckeditor.js"></script>
 </head>
-<body>
+<body style="overflow: hidden;">
     <div id="container" class="grid d-flex">
-        <div class="col-2">
-            <div class="vh-100 bg-info bg-gradient">
+        <div class="col-2 bg-info bg-gradient vh-100" style="overflow: auto;">
+            <div>
                 <div class="px-3 home">
                     <h4 class="text-center pt-4">PHỤ NỮ VIỆT</h4>
                     <a href="https://localhost:7127">
@@ -26,7 +27,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-10">
+        <div class="col-10 vh-100" style="overflow: auto;">
             <div>
                 @await Html.PartialAsync("./Partials/_Header.cshtml")
             </div>

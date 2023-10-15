@@ -25,7 +25,7 @@
                     <input type="text" name="search" />
                 </div>
                 <div class="col-7 text-end pt-2">
-                    <button id="openPopupCreate"
+                    <button id="openCreate"
                             class="bg-info border-0 py-2 px-4 fw-bold text-white rounded">
                         Nhập hàng
                     </button>
@@ -49,9 +49,9 @@
                         {
                             <tr>
                                 <td class="text-center">
-                                    <i class="fa-solid fa-eye pe-3" style="color:blue"></i>
+                                    <i class="fa-solid fa-eye pe-3 openDetail" style="color:blue"></i>
                                 </td>
-                                <td class="text-center d-none" data-id="@importBill[i].id"></td>
+                                <td class="text-center d-none" data-id="@importBill[i]?.id">@importBill[i]?.id</td>
                                 <td class="text-center">@importBill[i].internalCode</td>
                                 <td class="text-center">@string.Format("{0:dd/MM/yyyy}", @importBill[i].dateImport)</td>
                                 <td class="text-center">@employee[i].name</td>
@@ -68,9 +68,26 @@
 
 
 <script>
-    $("#openPopupCreate").click(function () {
+    $("#openCreate").click(function () {
+        
         $.ajax({
-            url: "/ImportBill/Detail?pIdentity=1",
+            url: "/ImportBill/Detail",
+            type: "GET",
+            success: function (data) {
+                $("#importBill").html(data);
+            },
+            error: function () {
+                console.log("Lỗi khi tải trang mới.");
+            }
+        });
+    });
+
+    $(".openDetail").click(function () {
+        var row = $(this).closest('tr');
+        var dataId = row.find('td[data-id]').data('id');
+
+        $.ajax({
+            url: "/ImportBill/Detail?pIdentity=" + dataId,
             type: "GET",
             success: function (data) {
                 $("#importBill").html(data);

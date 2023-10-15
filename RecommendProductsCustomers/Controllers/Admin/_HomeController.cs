@@ -26,6 +26,7 @@ namespace RecommendProductsCustomers.Controllers.Admin
                     return View();
                 }
             }
+            return View();
             return RedirectToAction("Login", "Login");
         }
     }

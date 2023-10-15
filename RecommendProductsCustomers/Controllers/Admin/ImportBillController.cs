@@ -41,11 +41,28 @@ namespace RecommendProductsCustomers.Controllers.Admin
         [HttpGet]
         public async Task<IActionResult> Detail([FromQuery] string pIdentity)
         {
-            if (Request.Cookies.TryGetValue("userName", out string userName))
-            { 
-                ViewData["employee"] = await _employeeService.GetDetailByUserName(userName);
+            if(pIdentity == null)
+            {
+                ViewData["internalCode"] = await _importBillService.CreateInternalCode();
+                ViewData["importDate"] = DateTime.Now.ToString("dd/MM/yyyy");
+
+                if (Request.Cookies.TryGetValue("userName", out string userName))
+                {
+                    ViewData["employee"] = await _employeeService.GetDetailByUserName(userName);
+                }
             }
-            ViewData["internalCode"] = await _importBillService.CreateInternalCode();
+            else
+            {
+                List<(ImportBillModel, EmployeeModel, List<ProductModel>)> results = await _importBillService.Get(pIdentity);
+
+                ImportBillModel importBill = new ImportBillModel();
+                EmployeeModel employee = new EmployeeModel();
+                List<ProductModel> products = new List<ProductModel>();
+
+                ViewData["importBill"] = results[0].Item1;
+                ViewData["employee"] = results[0].Item2;
+                ViewData["products"] = results[0].Item3;
+            }
             return View();
         }
 
@@ -54,12 +71,9 @@ namespace RecommendProductsCustomers.Controllers.Admin
         {
             Request.Cookies.TryGetValue("userName", out string userName);
             EmployeeModel employee = await _employeeService.GetDetailByUserName(userName);
-
             await _importBillService.CreateOrUpdate(employee, pImportBillVM.importBill, pImportBillVM.products);
 
-
-
-            return RedirectToAction("Detail", new { pImportBillVM?.importBill?.id });
+            return RedirectToAction("Index");
         }
     }
 }

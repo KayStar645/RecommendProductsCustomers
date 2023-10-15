@@ -19,7 +19,7 @@ namespace RecommendProductsCustomers.Services
             string max = await Repo.Max(LabelCommon.ImportBill, "internalCode");
             if(max != null)
             {
-                string value = (int.Parse(max.Substring(2, max.Length - 1)) + 1).ToString();
+                string value = (int.Parse(max.Substring(3, max.Length - 3)) + 1).ToString();
                 while(value.Length < 7)
                 {
                     value = "0" + value;
@@ -35,13 +35,13 @@ namespace RecommendProductsCustomers.Services
             if (id == null)
             {
                 query = $"match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) " +
-                        $"return *";
+                        $"return a, b, c";
             }
             else
             {
                 query = $"match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) " +
                         $"where id(a) = {id} " +
-                        $"return *";
+                        $"return a, b, c";
             }
             var result = await Repo.GetQuery(query);
             var list = result.Select(record =>
@@ -114,20 +114,18 @@ namespace RecommendProductsCustomers.Services
         }
 
 
+
         public async Task<bool> CreateOrUpdate(EmployeeModel pEmployee, ImportBillModel pImportBill, List<ProductModel> pProducts)
         {
             if (pProducts.Count == 0)
             {
-                // Đơn hàng bắt buộc phải có sản phẩm
                 return false;
             }
 
-            // Tìm hóa đơn có internalCode
             JObject whereBill = new JObject()
             {
                 {"internalCode", pImportBill.internalCode }
             };  
-
             JObject? billObject = (await Repo.Get(LabelCommon.ImportBill, whereBill)).FirstOrDefault();
 
             bool isCreate = true;
@@ -141,9 +139,17 @@ namespace RecommendProductsCustomers.Services
                     return false;
                 }
 
-                // Cập nhật lại bill này
-                bill = (await Repo.Update(LabelCommon.ImportBill, whereBill, billObject)).First();
-
+                // Cập nhật lại bill này nè: pImportBill
+                JObject jObjectBill = new JObject
+                {
+                    { "internalCode", pImportBill.internalCode },
+                    { "dateImport", DateTime.Parse(pImportBill.dateImport.ToString()).ToString("yyyy-MM-dd") },
+                    { "distributor", pImportBill.distributor },
+                    { "contactPhone", pImportBill.contactPhone },
+                    { "price", pImportBill.price?.ToString() },
+                    { "isActive", pImportBill.isActive?.ToString() }
+                };
+                bill = (await Repo.Update(LabelCommon.ImportBill, whereBill, jObjectBill)).First();
 
                 // Tìm nhân viên lập hóa đơn này trước đó
                 EmployeeModel employeeImport = (await Repo.Get(LabelCommon.Employee, null, RelaCommon.Employee_ImportBill,
@@ -173,8 +179,7 @@ namespace RecommendProductsCustomers.Services
                 };
                 bill = await Repo.Add(LabelCommon.ImportBill, jObjectBill);
 
-
-                // Tạo mối quan hệ xác định nhân viên lập đơn hàng - OK
+                // Tạo mối quan hệ xác định nhân viên lập đơn hàng
                 JObject jObjectRela = new JObject
                 {
                     { "internalCode", pEmployee.internalCode }
@@ -188,10 +193,10 @@ namespace RecommendProductsCustomers.Services
             }
 
             // Xóa những Rela của sản phẩm không có trong danh sách cập nhật mà lại có trong db
-            if(isCreate == false)
+            var x = pProducts.Select(product => product.internalCode).ToList();
+            if (isCreate == false)
             {
-                // - Chưa vô
-                await Repo.DeleteRelationShipNotExists(LabelCommon.ImportBill, bill["id"].ToString(),
+                await Repo.DeleteRelationShipNotExists(LabelCommon.ImportBill, pImportBill.id.ToString(),
                                                         LabelCommon.Product, RelaCommon.ImportBill_Product,
                                                         "internalCode", pProducts.Select(product => product.internalCode).ToList());
             }    
@@ -212,17 +217,36 @@ namespace RecommendProductsCustomers.Services
                     { "material", product?.material },
                     { "preserve", product?.preserve },
                     { "images", new JArray(product?.images) },
-                    { "quantity", product?.quantity?.ToString() },
-                    { "price", product?.price?.ToString() }
                 };
 
                 if (findProduct == null)
                 {
+                    if(pImportBill.isActive == true)
+                    {
+                        jObjectProduct.Add("quantity", product?.quantity?.ToString());
+                        jObjectProduct.Add("price", (product?.price + product?.price * 0.1).ToString());
+                    }
+                    else
+                    {
+                        jObjectProduct.Add("quantity", "0");
+                        jObjectProduct.Add("price", (product?.price + product?.price * 0.1).ToString());
+                    }    
                     // Tạo mới product
                     await Repo.Add(LabelCommon.Product, jObjectProduct);
                 }
                 else
                 {
+                    if (pImportBill.isActive == true)
+                    {
+                        int? quantity = int.Parse(findProduct["quantity"].ToString()) + product?.quantity;
+                        jObjectProduct.Add("quantity", quantity);
+                        jObjectProduct.Add("price", (product?.price + product?.price * 0.1).ToString());
+                    }
+                    else
+                    {
+                        jObjectProduct.Add("quantity", "0");
+                        jObjectProduct.Add("price", (product?.price + product?.price * 0.1).ToString());
+                    }    
                     await Repo.Update(LabelCommon.Product, whereProduct, jObjectProduct);
                 }
 
@@ -230,24 +254,61 @@ namespace RecommendProductsCustomers.Services
                 JObject findRela = await Repo.GetRelationShip(LabelCommon.ImportBill, bill["id"].ToString(),
                                                               RelaCommon.ImportBill_Product, LabelCommon.Product, whereProduct);
 
-                if(findRela == null)
-                {
-                    JObject findwhereBill = new JObject()
+                JObject findwhereBill = new JObject()
                     {
-                        {"internalCode", bill["internalCode"] }
+                        {"internalCode", bill["internalCode"] },
                     };
-
-                    JObject findwhereProduct = new JObject()
+                JObject findwhereProduct = new JObject()
                     {
                         {"internalCode", product.internalCode }
                     };
-
+                JObject proRela = new JObject
+                    {
+                        {"quantity", product?.quantity?.ToString() },
+                        {"price", product?.price?.ToString() }
+                    };
+                if (findRela == null)
+                {
                     await Repo.CreateRelationShip(LabelCommon.ImportBill, findwhereBill, LabelCommon.Product,
-                                                  findwhereProduct, RelaCommon.ImportBill_Product);
-
+                                                  findwhereProduct, RelaCommon.ImportBill_Product, proRela);
+                }
+                else
+                {
+                    await Repo.UpdateRelationShip(LabelCommon.ImportBill, findwhereBill, RelaCommon.ImportBill_Product,
+                                                  LabelCommon.Product, findwhereProduct, proRela);
                 }
             }
+
+            if (pImportBill.isActive == true)
+            {
+                JObject _new = new JObject
+                {
+                    {"isActive", "True" }
+                };
+                await Repo.Update(LabelCommon.ImportBill, whereBill, _new);
+            }
             return true;
-        }    
+        }
+
+        public async Task<bool> ImportBill(string pInternalCode)
+        {
+            try
+            {
+                JObject where = new JObject
+                {
+                    {"internalCode", pInternalCode }
+                };
+                JObject _new = new JObject
+                {
+                    {"isActive", "True" }
+                };
+                await Repo.Update(LabelCommon.ImportBill, where, _new);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

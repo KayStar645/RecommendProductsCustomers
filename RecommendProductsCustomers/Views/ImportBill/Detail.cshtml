@@ -2,16 +2,20 @@
 @{
     var employee = ViewData["employee"] as EmployeeModel;
     var internalCode = ViewData["internalCode"] as string;
+    var importDate = ViewData["importDate"] as string;
+
+    var importBill = ViewData["importBill"] as ImportBillModel;
+    var products = ViewData["products"] as List<ProductModel>;
 }
-<script src="~/js/ckeditor5-40.0.0-6l8voimkm18w/build/ckeditor.js"></script>
+
 
 
 <script>
-    let _description, _material, _preserve;
+    var _description, _material, _preserve;
 
 
     ClassicEditor
-        .create(document.querySelector('#_description'))
+        .create(document.querySelector('._description'))
         .then(newEditor => {
             _description = newEditor;
         })
@@ -20,7 +24,7 @@
 
 
     ClassicEditor
-        .create(document.querySelector('#_material'))
+        .create(document.querySelector('._material'))
         .then(newEditor => {
             _material = newEditor;
         })
@@ -28,7 +32,7 @@
         });
 
     ClassicEditor
-        .create(document.querySelector('#_preserve'))
+        .create(document.querySelector('._preserve'))
         .then(newEditor => {
             _preserve = newEditor;
         })
@@ -111,14 +115,18 @@
         <div class="container">
             <div class="card my-3 py-3">
                 <div class="container col-12 d-flex flex-lg-wrap">
+                    <div class="col-4 pe-5 d-none">
+                        <input type="text" name="id" value="@importBill?.id" readonly />
+                    </div>
+                    
                     <div class="col-4 pe-5">
                         <label class="p-1 fw-bolder label">Mã đơn nhập</label> <br />
-                        <input type="text" name="internalCode" value="@internalCode" readonly />
+                        <input type="text" name="internalCode" value="@(internalCode == null ? @importBill?.internalCode : internalCode)" readonly />
                     </div>
 
                     <div class="col-4 pe-5">
                         <label class="p-1 fw-bolder label">Ngày nhập</label> <br />
-                        <input type="text" id="importDate" name="importDate" readonly />
+                        <input type="text" name="importDate" value="@(importDate == null ? string.Format("{0:dd/MM/yyyy}", importBill?.dateImport) : importDate)" readonly />
                     </div>
 
                     <div class="col-4 pe-5">
@@ -128,17 +136,17 @@
 
                     <div class="col-4 pe-5">
                         <label class="p-1 fw-bolder label">Nhà phân phối</label> <br />
-                        <input type="text" name="distributor" />
+                        <input type="text" name="distributor" value="@importBill?.distributor" />
                     </div>
 
                     <div class="col-4 pe-5">
                         <label class="p-1 fw-bolder label">Liên hệ</label> <br />
-                        <input type="text" name="contact" />
+                        <input type="text" name="contact" value="@importBill?.contactPhone" />
                     </div>
 
                     <div class="col-4 pe-5">
                         <label class="p-1 fw-bolder label">Thành tiền</label> <br />
-                        <input type="text" name="money" value="0" readonly />
+                        <input type="text" name="money" value="@(importBill?.price != null ? importBill.price.ToString() : "0")" readonly />
                     </div>
                 </div>
             </div>
@@ -150,7 +158,7 @@
                                 <h3>Danh sách sản phẩm</h3>
                             </div>
                             <div class="col-2 text-end pt-2 d-inline-block">
-                                <button id="importBill"
+                                <button id="importBill1"
                                         class="bg-success border-0 py-2 px-4 fw-bold text-white rounded">
                                     Nhập hàng
                                 </button>
@@ -183,25 +191,31 @@
                             </tr>
                         </thead>
                         <tbody id="tableProducts">
-                            @* <tr>
-                            <td class="text-center">
-                            <i class="fa-regular fa-pen-to-square pe-3" style="color:blue"></i>
-                            <i class="fa-solid fa-trash" style="color:red"></i>
-                            </td>
-                            <td class="text-center d-none" data-id="importBill.id">id</td>
-                            <td class="text-center">SP0001</td>
-                            <td class="text-center">Áo thun</td>
-                            <td class="text-center">
-                            <img src="~/images/logo.webp" class="w-80" />
-                            </td>
-                            <td class="text-center">XL</td>
-                            <td class="text-center">20</td>
-                            <td class="text-center">100.000đ</td>
-                            <td class="text-center d-none" data-description="importBill.description">description</td>
-                            <td class="text-center d-none" data-material="importBill.material">material</td>
-                            <td class="text-center d-none" data-preserve="importBill.preserve">preserve</td>
-                            <td class="text-center d-none" data-images="importBill.images">images</td>
-                            </tr> *@
+                            @if (products != null)
+                            {
+                                @foreach (var item in products)
+                                {
+                                    <tr>
+                                        <td class="text-center">
+                                            <i class="fa-regular fa-pen-to-square pe-3" style="color:blue"></i>
+                                            <i class="fa-solid fa-trash" style="color:red"></i>
+                                        </td>
+                                        <td class="text-center d-none" data-id="@item?.id">@item?.id</td>
+                                        <td class="text-center">@item?.internalCode</td>
+                                        <td class="text-center">@item?.name</td>
+                                        <td class="text-center">
+                                            <img src="@item?.images?.FirstOrDefault()" class="w-80" style="height: 80px;" />
+                                        </td>
+                                        <td class="text-center">@item?.size</td>
+                                        <td class="text-center">@item?.quantity</td>
+                                        <td class="text-center">@String.Format("{0:N0}", item?.price)</td>
+                                        <td class="text-center d-none" data-description="@item?.description">@item?.description</td>
+                                        <td class="text-center d-none" data-material="@item?.material">@item?.material</td>
+                                        <td class="text-center d-none" data-preserve="@item?.preserve">@item?.preserve</td>
+                                        <td class="text-center d-none" data-images="@string.Join(",", item?.images)">@(string.Join(",", item?.images))</td>
+                                    </tr>
+                                }
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -268,21 +282,21 @@
                         <div class="col-12 h-100">
                             <label class="p-1 fw-bolder label">Mô tả</label> <br />
                             <div id="description">
-                                <div class="w-100" style="max-height:180px;min-height:180px;height:180px" id="_description"></div>
+                                <div class="w-100 _description" style="max-height:180px;min-height:180px;height:180px"></div>
                             </div>
                         </div>
 
                         <div class="col-12 h-100">
                             <label class="p-1 fw-bolder label">Thông tin về chất liệu</label> <br />
                             <div id="material">
-                                <div class="w-100" style="max-height:180px;min-height:180px;height:180px" id="_material"></div>
+                                <div class="w-100 _material" style="max-height:180px;min-height:180px;height:180px"></div>
                             </div>
                         </div>
 
                         <div class="col-12 h-100">
                             <label class="p-1 fw-bolder label">Hướng dẫn bảo quản</label> <br />
                             <div id="preserve">
-                                <div class="w-100" style="max-height:180px;min-height:180px;height:180px" id="_preserve"></div>
+                                <div class="w-100 _preserve" style="max-height:180px;min-height:180px;height:180px"></div>
                             </div>
                         </div>
                     </div>
@@ -381,12 +395,50 @@
                 data: JSON.stringify(pImportBillVM),
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                    window.location.href = "/ImportBill/Index_Home";
+                    window.location.href = "/ImportBill/Index";
                 },
+                error: function () {
+                    $.ajax({
+                        url: "/ImportBill/Index",
+                        method: "GET",
+                        success: function (data) {
+                            $('#importBill').html(data);
+                        }
+                    });
+                }
+            });
+        });
+
+        $("#importBill1").on("click", function (e) {
+            e.preventDefault();
+
+            var pImportBillVM = {
+                importBill: getImportBill2(),
+                products: getProducts()
+            };
+
+            console.log(pImportBillVM);
+
+            $.ajax({
+                url: "/ImportBill/CreateOrUpdate",
+                method: "POST",
+                data: JSON.stringify(pImportBillVM),
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    window.location.href = "/ImportBill/Index";
+                },
+                error: function () {
+                    $.ajax({
+                        url: "/ImportBill/Index",
+                        method: "GET",
+                        success: function (data) {
+                            $('#importBill').html(data);
+                        }
+                    });
+                }
             });
         });
     });
-
     function getImportBill() {
         const dateParts = document.querySelector('input[name="importDate"]').value.split('/');
 
@@ -398,6 +450,21 @@
             contactPhone: document.querySelector('input[name="contact"]').value,
             price: document.querySelector('input[name="money"]').value,
             isActive: false
+        };
+        return importBill;
+    }
+
+    function getImportBill2() {
+        const dateParts = document.querySelector('input[name="importDate"]').value.split('/');
+
+        var importBill = {
+            id: document.querySelector('input[name="id"]').value,
+            internalCode: document.querySelector('input[name="internalCode"]').value,
+            dateImport: `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`,
+            distributor: document.querySelector('input[name="distributor"]').value,
+            contactPhone: document.querySelector('input[name="contact"]').value,
+            price: document.querySelector('input[name="money"]').value,
+            isActive: true
         };
         return importBill;
     }
@@ -418,7 +485,7 @@
                     name: cells[3].textContent,
                     size: cells[5].textContent,
                     quantity: cells[6].textContent,
-                    price: cells[7].textContent,
+                    price: cells[7].textContent.replace(/,/g, ""),
                     description: cells[8].getAttribute("data-description"),
                     material: cells[9].getAttribute("data-material"),
                     preserve: cells[10].getAttribute("data-preserve"),
@@ -597,16 +664,4 @@
             }
         });
     });
-
-    const today = new Date();
-    const yyyy = today.getFullYear();
-    let mm = today.getMonth() + 1;
-    let dd = today.getDate();
-
-    if (dd < 10) dd = '0' + dd;
-    if (mm < 10) mm = '0' + mm;
-
-    const formattedToday = dd + '/' + mm + '/' + yyyy;
-
-    document.getElementById("importDate").value = formattedToday;
 </script>
