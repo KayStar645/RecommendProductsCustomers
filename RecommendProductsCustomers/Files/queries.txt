@@ -314,3 +314,205 @@ match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have
 
 match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
 
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:ImportBill) with a return max(a.internalCode) as max
+
+match (a:Employee ) return a limit 100
+
+match (a:ImportBill) with a return max(a.internalCode) as max
+
+match (a:ImportBill) with a return max(a.internalCode) as max
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:ImportBill) with a return max(a.internalCode) as max
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
+match (a:Customer ) return a limit 100
+
+match (a:Employee ) return a limit 100
+
