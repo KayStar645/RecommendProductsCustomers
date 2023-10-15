@@ -1,0 +1,667 @@
+﻿@using RecommendProductsCustomers.Models;
+@{
+    var employee = ViewData["employee"] as EmployeeModel;
+    var internalCode = ViewData["internalCode"] as string;
+    var importDate = ViewData["importDate"] as string;
+
+    var importBill = ViewData["importBill"] as ImportBillModel;
+    var products = ViewData["products"] as List<ProductModel>;
+}
+
+
+
+<script>
+    var _description, _material, _preserve;
+
+
+    ClassicEditor
+        .create(document.querySelector('._description'))
+        .then(newEditor => {
+            _description = newEditor;
+        })
+        .catch(error => {
+        });
+
+
+    ClassicEditor
+        .create(document.querySelector('._material'))
+        .then(newEditor => {
+            _material = newEditor;
+        })
+        .catch(error => {
+        });
+
+    ClassicEditor
+        .create(document.querySelector('._preserve'))
+        .then(newEditor => {
+            _preserve = newEditor;
+        })
+        .catch(error => {
+        });
+</script>
+
+<style>
+    .label {
+        font-size: 19px !important;
+    }
+
+    select, input {
+        width: 100%;
+        padding: 4px 8px;
+        font-size: 18px;
+    }
+
+    #overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+
+    #popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60%;
+        background-color: rgba(255, 255, 255, 1);
+        z-index: 5000;
+        border-radius: 6px;
+    }
+
+    #popupContent {
+        margin-top: 60px;
+    }
+
+    #closePopupButton {
+        position: absolute;
+        top: 30px;
+        right: 0px;
+        transform: translate(-25%, -50%);
+        cursor: pointer;
+        color: #d10000;
+    }
+
+    #savePopup {
+        height: calc(100vh - 150px);
+        overflow: auto;
+        padding-bottom: 80px;
+    }
+
+    .ck-blurred.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
+        height: 200px;
+    }
+
+    #imageContainer {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+        #imageContainer img {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            object-fit: cover;
+        }
+</style>
+
+<div class="container">
+    <div class="card my-3 py-3">
+        <div class="container">
+            <div class="card my-3 py-3">
+                <div class="container col-12 d-flex flex-lg-wrap">
+                    <div class="col-4 pe-5 d-none">
+                        <input type="text" name="id" value="@importBill?.id" readonly />
+                    </div>
+                    
+                    <div class="col-4 pe-5">
+                        <label class="p-1 fw-bolder label">Mã đơn nhập</label> <br />
+                        <input type="text" name="internalCode" value="@(internalCode == null ? @importBill?.internalCode : internalCode)" readonly />
+                    </div>
+
+                    <div class="col-4 pe-5">
+                        <label class="p-1 fw-bolder label">Ngày nhập</label> <br />
+                        <input type="text" name="importDate" value="@(importDate == null ? string.Format("{0:dd/MM/yyyy}", importBill?.dateImport) : importDate)" readonly />
+                    </div>
+
+                    <div class="col-4 pe-5">
+                        <label class="p-1 fw-bolder label">Nhân viên</label> <br />
+                        <input type="text" name="employee" value="@employee?.name" readonly />
+                    </div>
+
+                    <div class="col-4 pe-5">
+                        <label class="p-1 fw-bolder label">Nhà phân phối</label> <br />
+                        <input type="text" name="distributor" value="@importBill?.distributor" />
+                    </div>
+
+                    <div class="col-4 pe-5">
+                        <label class="p-1 fw-bolder label">Liên hệ</label> <br />
+                        <input type="text" name="contact" value="@importBill?.contactPhone" />
+                    </div>
+
+                    <div class="col-4 pe-5">
+                        <label class="p-1 fw-bolder label">Thành tiền</label> <br />
+                        <input type="text" name="money" value="@(importBill?.price != null ? importBill.price.ToString() : "0")" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="card my-3 py-3">
+                <div class="container">
+                    <div class="card p-2">
+                        <div class="col-12 d-flex align-items-center">
+                            <div class="col-6 pt-2 d-inline-block">
+                                <h3>Danh sách sản phẩm</h3>
+                            </div>
+                            <div class="col-2 text-end pt-2 d-inline-block">
+                                <button id="importBill1"
+                                        class="bg-success border-0 py-2 px-4 fw-bold text-white rounded">
+                                    Nhập hàng
+                                </button>
+                            </div>
+                            <div class="col-2 text-start ps-3 pt-2 d-inline-block">
+                                <button id="saveChange"
+                                        class="bg-warning border-0 py-2 px-4 fw-bold text-white rounded">
+                                    Lưu thay đổi
+                                </button>
+                            </div>
+                            <div class="col-2 text-end pt-2 d-inline-block">
+                                <button id="openPopupCreate"
+                                        class="bg-info border-0 py-2 px-4 fw-bold text-white rounded">
+                                    Thêm sản phẩm
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table-info w-100 mt-4" border="2">
+                        <thead>
+                            <tr>
+                                <th class="min-vw-10"></th>
+                                <th class="text-center">Mã sản phẩm</th>
+                                <th class="text-center">Tên sản phẩm</th>
+                                <th class="text-center">Hình ảnh</th>
+                                <th class="text-center">Kích thước</th>
+                                <th class="text-center">Số lượng </th>
+                                <th class="text-center">Đơn giá</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableProducts">
+                            @if (products != null)
+                            {
+                                @foreach (var item in products)
+                                {
+                                    <tr>
+                                        <td class="text-center">
+                                            <i class="fa-regular fa-pen-to-square pe-3" style="color:blue"></i>
+                                            <i class="fa-solid fa-trash" style="color:red"></i>
+                                        </td>
+                                        <td class="text-center d-none" data-id="@item?.id">@item?.id</td>
+                                        <td class="text-center">@item?.internalCode</td>
+                                        <td class="text-center">@item?.name</td>
+                                        <td class="text-center">
+                                            <img src="@item?.images?.FirstOrDefault()" class="w-80" style="height: 80px;" />
+                                        </td>
+                                        <td class="text-center">@item?.size</td>
+                                        <td class="text-center">@item?.quantity</td>
+                                        <td class="text-center">@String.Format("{0:N0}", item?.price)</td>
+                                        <td class="text-center d-none" data-description="@item?.description">@item?.description</td>
+                                        <td class="text-center d-none" data-material="@item?.material">@item?.material</td>
+                                        <td class="text-center d-none" data-preserve="@item?.preserve">@item?.preserve</td>
+                                        <td class="text-center d-none" data-images="@string.Join(",", item?.images)">@(string.Join(",", item?.images))</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="overlay"></div>
+<div id="popup">
+    <div class="card d-block position-absolute top-0 start-0 end-0">
+        <h3 id="title" class="px-4 py-2"></h3>
+        <i id="closePopupButton"
+           class="fa-solid fa-rectangle-xmark fa-2xl"
+           style="color: #d10000;"></i>
+    </div>
+
+    <div id="popupContent">
+        @using (@Html.BeginForm("Create", "Imployee"))
+        {
+            <div class="container" id="savePopup">
+                <div class="card px-lg-5 py-2">
+                    <div class="col-12 d-flex flex-lg-wrap">
+                        <div class="col-12 d-none">
+                            <input type="text" name="id" />
+                        </div>
+
+                        <div class="col-4 pe-3">
+                            <label class="p-1 fw-bolder label">Mã sản phẩm</label> <br />
+                            <input type="text" name="internalCodeProduct" />
+                        </div>
+
+                        <div class="col-8">
+                            <label class="p-1 fw-bolder label">Tên sản phẩm</label> <br />
+                            <input type="text" name="name" step="1" />
+                        </div>
+
+                        <div class="col-5 pe-3">
+                            <label class="p-1 fw-bolder label">Số lượng</label> <br />
+                            <input type="number" name="quantity" min="1" />
+                        </div>
+
+                        <div class="col-5 pe-3">
+                            <label class="p-1 fw-bolder label">Đơn giá</label> <br />
+                            <input type="number" name="price" min="1" step="1" />
+                        </div>
+
+                        <div class="col-2">
+                            <label class="p-1 fw-bolder label">Kích thước</label> <br />
+                            <select name="size">
+                                <option value="S">S</option>
+                                <option value="X">X</option>
+                                <option value="L">L</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="p-1 fw-bolder label">Hình ảnh</label> <br />
+                            <input type="file" id="imageInput" accept="image/*">
+                            <div id="imageContainer"></div>
+                        </div>
+
+                        <div class="col-12 h-100">
+                            <label class="p-1 fw-bolder label">Mô tả</label> <br />
+                            <div id="description">
+                                <div class="w-100 _description" style="max-height:180px;min-height:180px;height:180px"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 h-100">
+                            <label class="p-1 fw-bolder label">Thông tin về chất liệu</label> <br />
+                            <div id="material">
+                                <div class="w-100 _material" style="max-height:180px;min-height:180px;height:180px"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 h-100">
+                            <label class="p-1 fw-bolder label">Hướng dẫn bảo quản</label> <br />
+                            <div id="preserve">
+                                <div class="w-100 _preserve" style="max-height:180px;min-height:180px;height:180px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="card text-end position-absolute bottom-0 start-0 end-0">
+        <div class="d-flex justify-content-end ">
+            <button id="saveProductButton"
+                    class="bg-info border-0 py-2 px-4 me-2 fw-bold text-white my-3 rounded">
+                Lưu
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    var createOpen = document.getElementById("openPopupCreate");
+    var updateOpens = document.querySelectorAll(".fa-regular.fa-pen-to-square"); // Load dữ liệu lên popup
+    var closeButton = document.getElementById("closePopupButton");
+    var overlay = document.getElementById("overlay");
+    var popup = document.getElementById("popup");
+
+    createOpen.addEventListener("click", function () {
+        overlay.style.display = "block";
+        popup.style.display = "block";
+
+        var rowData = {
+            internalCode: "",
+            name: "",
+            dateBirth: "",
+            gender: "",
+            phone: "",
+        };
+
+        document.getElementById("title").innerText = "Thêm sản phẩm mới";
+
+
+        loadData(rowData);
+    });
+
+    updateOpens.forEach(function (button) {
+        button.addEventListener("click", function () {
+            overlay.style.display = "block";
+            popup.style.display = "block";
+
+            var parentRow = button.closest("tr");
+            var rowData = {
+                id: parentRow.querySelector("td:nth-child(2)").textContent,
+                internalCode: parentRow.querySelector("td:nth-child(3)").textContent,
+                name: parentRow.querySelector("td:nth-child(4)").textContent,
+                dateBirth: parentRow.querySelector("td:nth-child(5)").textContent,
+                gender: parentRow.querySelector("td:nth-child(6)").textContent,
+                phone: parentRow.querySelector("td:nth-child(7)").textContent,
+            };
+
+            document.getElementById("title").innerText = "Cập nhật thông tin sản phẩm";
+
+            loadData(rowData);
+        });
+    });
+
+    closeButton.addEventListener("click", function () {
+        overlay.style.display = "none";
+        popup.style.display = "none";
+    });
+
+    function loadData(data) {
+        const dateParts = data.dateBirth.split('/');
+
+        // document.querySelector('input[name="id"]').value = data.id;
+        // document.querySelector('input[name="internalCode"]').value = data.internalCode;
+        // document.querySelector('input[name="name"]').value = data.name;
+        // document.querySelector('input[name="dateBirth"]').value = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+        // document.querySelector('select[name="gender"]').value = data.gender;
+        // document.querySelector('input[name="phone"]').value = data.phone;
+    }
+</script>
+
+@* Lưu đơn hàng nhập với trạng thái = false (Nháp) *@
+<script>
+    $(document).ready(function () {
+        $("#saveChange").on("click", function (e) {
+            e.preventDefault();
+
+            var pImportBillVM = {
+                importBill: getImportBill(),
+                products: getProducts()
+            };
+
+            $.ajax({
+                url: "/ImportBill/CreateOrUpdate",
+                method: "POST",
+                data: JSON.stringify(pImportBillVM),
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    window.location.href = "/ImportBill/Index";
+                },
+                error: function () {
+                    $.ajax({
+                        url: "/ImportBill/Index",
+                        method: "GET",
+                        success: function (data) {
+                            $('#importBill').html(data);
+                        }
+                    });
+                }
+            });
+        });
+
+        $("#importBill1").on("click", function (e) {
+            e.preventDefault();
+
+            var pImportBillVM = {
+                importBill: getImportBill2(),
+                products: getProducts()
+            };
+
+            console.log(pImportBillVM);
+
+            $.ajax({
+                url: "/ImportBill/CreateOrUpdate",
+                method: "POST",
+                data: JSON.stringify(pImportBillVM),
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    window.location.href = "/ImportBill/Index";
+                },
+                error: function () {
+                    $.ajax({
+                        url: "/ImportBill/Index",
+                        method: "GET",
+                        success: function (data) {
+                            $('#importBill').html(data);
+                        }
+                    });
+                }
+            });
+        });
+    });
+    function getImportBill() {
+        const dateParts = document.querySelector('input[name="importDate"]').value.split('/');
+
+        var importBill = {
+            id: document.querySelector('input[name="id"]').value,
+            internalCode: document.querySelector('input[name="internalCode"]').value,
+            dateImport: `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`,
+            distributor: document.querySelector('input[name="distributor"]').value,
+            contactPhone: document.querySelector('input[name="contact"]').value,
+            price: document.querySelector('input[name="money"]').value,
+            isActive: false
+        };
+        return importBill;
+    }
+
+    function getImportBill2() {
+        const dateParts = document.querySelector('input[name="importDate"]').value.split('/');
+
+        var importBill = {
+            id: document.querySelector('input[name="id"]').value,
+            internalCode: document.querySelector('input[name="internalCode"]').value,
+            dateImport: `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`,
+            distributor: document.querySelector('input[name="distributor"]').value,
+            contactPhone: document.querySelector('input[name="contact"]').value,
+            price: document.querySelector('input[name="money"]').value,
+            isActive: true
+        };
+        return importBill;
+    }
+
+
+    function getProducts() {
+        var products = [];
+
+        var rows = document.getElementById("tableProducts").querySelectorAll("tr");
+
+        rows.forEach(function (row) {
+            var cells = row.querySelectorAll("td");
+
+            if (cells.length >= 7) {
+                var product = {
+                    id: cells[1].getAttribute("data-id"),
+                    internalCode: cells[2].textContent,
+                    name: cells[3].textContent,
+                    size: cells[5].textContent,
+                    quantity: cells[6].textContent,
+                    price: cells[7].textContent.replace(/,/g, ""),
+                    description: cells[8].getAttribute("data-description"),
+                    material: cells[9].getAttribute("data-material"),
+                    preserve: cells[10].getAttribute("data-preserve"),
+                    images: cells[11].getAttribute("data-images").split(","),
+                };
+                products.push(product);
+            }
+        });
+
+        return products;
+    }
+
+</script>
+
+
+@* Add sản phẩm từ popup vào table *@
+<script>
+    var saveProductButton = document.getElementById("saveProductButton");
+
+    saveProductButton.addEventListener("click", function () {
+        var data = getDataFromPopup();
+
+        addRowTable(data);
+
+        // Tính lại thành tiền của hóa đơn
+
+        overlay.style.display = "none";
+        popup.style.display = "none";
+    });
+
+    function addRowTable(data) {
+        // Đưa dữ liệu lên table
+        var newRow = document.createElement("tr");
+
+        // Chức năng
+        var cell = document.createElement("td");
+        cell.className = "text-center";
+
+        var updateCell = document.createElement("i");
+        updateCell.className = "fa-regular fa-pen-to-square pe-3";
+        updateCell.style.color = "blue";
+
+        var createCell = document.createElement("i");
+        createCell.className = "fa-solid fa-trash";
+        createCell.style.color = "red";
+
+        cell.appendChild(updateCell);
+        cell.appendChild(createCell);
+
+        // id - Ẩn
+        var idCell = document.createElement("td");
+        idCell.className = "text-center d-none";
+        idCell.setAttribute("data-id", "");
+
+        // Mã sản phẩm
+        var internalCodeCell = document.createElement("td");
+        internalCodeCell.className = "text-center";
+        internalCodeCell.textContent = data.internalCode;
+
+        // Tên sản phẩm
+        var nameCell = document.createElement("td");
+        nameCell.className = "text-center";
+        nameCell.textContent = data.name;
+
+        // Hình ảnh
+        var imageCell = document.createElement("td");
+        imageCell.className = "text-center";
+        var image = document.createElement("img");
+        if (data.images.length > 0) {
+            image.src = data.images[0];
+        }
+        image.height = "80";
+        imageCell.appendChild(image);
+
+        // Kích thước
+        var sizeCell = document.createElement("td");
+        sizeCell.className = "text-center";
+        sizeCell.textContent = data.size;
+
+        // Số lượng
+        var quantityCell = document.createElement("td");
+        quantityCell.className = "text-center";
+        quantityCell.textContent = data.quantity;
+
+        // Đơn giá
+        var priceCell = document.createElement("td");
+        priceCell.className = "text-center";
+        priceCell.textContent = data.price;
+
+        // Thông tin thêm để lưu
+        var descriptionCell = document.createElement("td");
+        descriptionCell.className = "text-center d-none";
+        descriptionCell.setAttribute("data-description", data.description);
+
+        var materialCell = document.createElement("td");
+        materialCell.className = "text-center d-none";
+        materialCell.setAttribute("data-material", data.material);
+
+        var preserveCell = document.createElement("td");
+        preserveCell.className = "text-center d-none";
+        preserveCell.setAttribute("data-preserve", data.preserve);
+
+        var imagesCell = document.createElement("td");
+        imagesCell.className = "text-center d-none";
+        imagesCell.setAttribute("data-images", data.images);
+
+        // Thêm cột vào hàng
+        newRow.appendChild(cell);
+        newRow.appendChild(idCell);
+        newRow.appendChild(internalCodeCell);
+        newRow.appendChild(nameCell);
+        newRow.appendChild(imageCell);
+        newRow.appendChild(sizeCell);
+        newRow.appendChild(quantityCell);
+        newRow.appendChild(priceCell);
+        newRow.appendChild(descriptionCell);
+        newRow.appendChild(materialCell);
+        newRow.appendChild(preserveCell);
+        newRow.appendChild(imagesCell);
+
+        // Tìm tbody của bảng và thêm hàng mới vào đó
+        var tableBody = document.querySelector("tbody");
+        tableBody.appendChild(newRow);
+    }
+
+    function getDataFromPopup() {
+        var data = {
+            internalCode: document.querySelector('input[name="internalCodeProduct"]').value,
+            name: document.querySelector('input[name="name"]').value,
+            quantity: document.querySelector('input[name="quantity"]').value,
+            price: document.querySelector('input[name="price"]').value,
+            size: document.querySelector('select[name="size"]').value,
+            description: _description.getData(),
+            material: _material.getData(),
+            preserve: _preserve.getData(),
+            images: [],
+        };
+
+        var images = document.getElementById('imageContainer').querySelectorAll('img');
+        images.forEach(function (image) {
+            data.images.push(image.src);
+        });
+
+        return data;
+    }
+</script>
+
+
+@* Chọn nhiều hình ảnh *@
+<script>
+    document.getElementById("imageInput").addEventListener("change", function (e) {
+        var files = e.target.files;
+
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+
+            var imageUrl = URL.createObjectURL(file);
+
+            var image = document.createElement("img");
+            image.src = imageUrl;
+
+            document.getElementById("imageContainer").appendChild(image);
+        }
+    });
+</script>
+
+
+@* Quay về trang trước đó *@
+<script>
+    $("#goBackButton").click(function () {
+        $.ajax({
+            url: "/ImportBill/Index",
+            type: "GET",
+            success: function (data) {
+                $("#content").html(data);
+            }
+        });
+    });
+</script>

@@ -6,18 +6,39 @@ namespace RecommendProductsCustomers.Common
     {
         public static string JObjectToString(JObject pJobject)
         {
-            List<string> result = new List<string>();
-            string[] split = pJobject.ToString().Split(',');
-            foreach (string item in split)
+            string json = "";
+            json += "{";
+            foreach (var property in pJobject.Properties())
             {
-                string[] split2 = item.Split(':');
+                if(string.IsNullOrEmpty(property.Value.ToString()))
+                {
+                    continue;
+                }
 
-                split2[0] = split2[0].Replace("\"", "");
+                if (json != "{")
+                {
+                    json += ",";
+                }
 
-                result.Add(split2[0] + ":" + split2[1]);
+                if (property.Name == "images")
+                {
+                    json += property.Name.Replace("\"", string.Empty);
+                    json += ":";
+
+                    string value = property.Value.ToString();
+
+                    json += "\"" + value.Replace("\"", string.Empty) + "\"";
+                    continue;
+                }   
+
+                json += property.Name.Replace("\"", string.Empty);
+                json += ":";
+                string value2 = property.Value.ToString().Replace("\"", "'");
+                json += $"\"{value2}\""; 
             }
-
-            return string.Join(",", result);
+            json += "}";
+            return json;
         }
+
     }
 }

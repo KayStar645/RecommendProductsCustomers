@@ -1,0 +1,101 @@
+﻿@using RecommendProductsCustomers.Models;
+@{
+    var importBill = ViewData["importBill"] as List<ImportBillModel>;
+    var employee = ViewData["employee"] as List<EmployeeModel>;
+}
+
+<style>
+    .label {
+        font-size: 19px !important;
+    }
+
+    input {
+        width: 100%;
+        padding: 4px 8px;
+        font-size: 18px;
+    }
+</style>
+
+<div id="importBill">
+    <div class="container">
+        <div class="card my-3 py-3">
+            <div class="container d-flex align-items-center">
+                <div class="mb-4 col-5">
+                    <label class="p-1 fw-bolder label">Tìm kiếm</label> <br />
+                    <input type="text" name="search" />
+                </div>
+                <div class="col-7 text-end pt-2">
+                    <button id="openCreate"
+                            class="bg-info border-0 py-2 px-4 fw-bold text-white rounded">
+                        Nhập hàng
+                    </button>
+                </div>
+            </div>
+
+            <div class="container">
+                <table class="table-info w-100" border="2">
+                    <thead>
+                        <tr>
+                            <th class="min-vw-10"></th>
+                            <th class="text-center">Mã đơn nhập</th>
+                            <th class="text-center">Ngày nhập</th>
+                            <th class="text-center">Nhân viên</th>
+                            <th class="text-center">Nhà phân phối</th>
+                            <th class="text-center">Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < importBill.Count; i++)
+                        {
+                            <tr>
+                                <td class="text-center">
+                                    <i class="fa-solid fa-eye pe-3 openDetail" style="color:blue"></i>
+                                </td>
+                                <td class="text-center d-none" data-id="@importBill[i]?.id">@importBill[i]?.id</td>
+                                <td class="text-center">@importBill[i].internalCode</td>
+                                <td class="text-center">@string.Format("{0:dd/MM/yyyy}", @importBill[i].dateImport)</td>
+                                <td class="text-center">@employee[i].name</td>
+                                <td class="text-center">@importBill[i].contactPhone - @importBill[i].distributor</td>
+                                <td class="text-center">@importBill[i].price</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $("#openCreate").click(function () {
+        
+        $.ajax({
+            url: "/ImportBill/Detail",
+            type: "GET",
+            success: function (data) {
+                $("#importBill").html(data);
+            },
+            error: function () {
+                console.log("Lỗi khi tải trang mới.");
+            }
+        });
+    });
+
+    $(".openDetail").click(function () {
+        var row = $(this).closest('tr');
+        var dataId = row.find('td[data-id]').data('id');
+
+        $.ajax({
+            url: "/ImportBill/Detail?pIdentity=" + dataId,
+            type: "GET",
+            success: function (data) {
+                $("#importBill").html(data);
+            },
+            error: function () {
+                console.log("Lỗi khi tải trang mới.");
+            }
+        });
+    });
+
+</script>

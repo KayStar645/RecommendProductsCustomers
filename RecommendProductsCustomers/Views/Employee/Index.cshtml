@@ -1,0 +1,377 @@
+﻿@using RecommendProductsCustomers.Models;
+@{
+    var employeeList = ViewData["listEmployee"] as List<EmployeeModel>;
+}
+
+<style>
+    .label {
+        font-size: 19px !important;
+    }
+
+    select, input {
+        width: 100%;
+        padding: 4px 8px;
+        font-size: 18px;
+    }
+
+    #overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+
+    #popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40%;
+        height: auto;
+        background-color: rgba(255, 255, 255, 1);
+        z-index: 1000;
+        border-radius: 6px;
+    }
+
+    #closePopupButton {
+        position: absolute;
+        top: 13px;
+        right: -1px;
+        cursor: pointer;
+        color: #d10000;
+    }
+</style>
+
+<div id="employee">
+    <div class="container">
+        @* @using (@Html.BeginForm("Create", "Imployee"))
+        {
+        <div class="card my-3 py-3">
+        <div class="container col-12 d-flex flex-lg-wrap">
+        <div class="col-4 pe-5">
+        <label class="p-1 fw-bolder label">Mã nhân viên</label> <br />
+        <input type="text" name="internalCode" />
+        </div>
+
+        <div class="col-4 pe-5">
+        <label class="p-1 fw-bolder label">Họ và tên</label> <br />
+        <input type="text" name="name" />
+        </div>
+
+        <div class="col-4 pe-5">
+        <label class="p-1 fw-bolder label">Ngày sinh</label> <br />
+        <input type="date" name="dateBirth" />
+        </div>
+
+        <div class="col-4 pe-5">
+        <label class="p-1 fw-bolder label">Giới tính</label> <br />
+        <select name="gender">
+        <option value="Name">Nam</option>
+        <option value="Nữ">Nữ</option>
+        <option value="Khác">Khác</option>
+        </select>
+        </div>
+
+        <div class="col-4 pe-5">
+        <label class="p-1 fw-bolder label">Số điện thoại</label> <br />
+        <input type="text" name="phone" />
+        </div>
+        </div>
+        </div>
+        } *@
+
+        <div class="card my-3 py-3">
+            <div class="container d-flex align-items-center">
+                <div class="mb-4 col-5">
+                    <label class="p-1 fw-bolder label">Tìm kiếm</label> <br />
+                    <input type="text" name="search" />
+                </div>
+                <div class="col-7 text-end pt-2">
+                    <button id="openPopupCreate"
+                            class="bg-info border-0 py-2 px-4 fw-bold text-white rounded">
+                        Tạo mới
+                    </button>
+                </div>
+            </div>
+
+            <div class="container">
+                <table class="table-info w-100" border="2">
+                    <thead>
+                        <tr>
+                            <th class="min-vw-10"></th>
+                            <th class="text-center">Mã nhân viên</th>
+                            <th class="text-center">Họ tên</th>
+                            <th class="text-center">Ngày sinh</th>
+                            <th class="text-center">Giới tính</th>
+                            <th class="text-center">Số điện thoại</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var employee in employeeList)
+                        {
+                            <tr>
+                                <td class="text-center">
+                                    <i class="fa-regular fa-pen-to-square pe-3" style="color:blue"></i>
+                                    <i class="fa-solid fa-trash" style="color:red"></i>
+                                </td>
+                                <td class="text-center d-none" data-id="@employee?.id">@employee?.id</td>
+                                <td class="text-center">@employee?.internalCode</td>
+                                <td class="text-center">@employee?.name</td>
+                                <td class="text-center">@string.Format("{0:dd/MM/yyyy}", employee?.dateBirth)</td>
+                                <td class="text-center">@employee?.gender</td>
+                                <td class="text-center">@employee?.phone</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="overlay"></div>
+<div id="popup">
+    <div id="popupContent">
+        <div class="card d-block">
+            <h3 id="title" class="px-4 py-2"></h3>
+            <i id="closePopupButton"
+               class="fa-solid fa-rectangle-xmark fa-2xl"
+               style="color: #d10000;"></i>
+        </div>
+        @using (@Html.BeginForm("Create", "Imployee"))
+        {
+            <div class="container">
+                <div class="card px-lg-5 py-2">
+                    <div class="col-12 d-none">
+                        <input type="text" name="id" value="" />
+                    </div>
+
+                    <div class="col-12">
+                        <label class="p-1 fw-bolder label">Mã nhân viên</label> <br />
+                        <input type="text" name="internalCode" value="" />
+                    </div>
+
+                    <div class="col-12">
+                        <label class="p-1 fw-bolder label">Họ và tên</label> <br />
+                        <input type="text" name="name" value="" />
+                    </div>
+
+                    <div class="col-12">
+                        <label class="p-1 fw-bolder label">Ngày sinh</label> <br />
+                        <input type="date" name="dateBirth" value="" />
+                    </div>
+
+                    <div class="col-12">
+                        <label class="p-1 fw-bolder label">Giới tính</label> <br />
+                        <select name="gender">
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="p-1 fw-bolder label">Số điện thoại</label> <br />
+                        <input type="text" name="phone" value="" />
+                    </div>
+                </div>
+                <div class="text-end">
+                    <button id="createButton"
+                            class="bg-info border-0 py-2 px-4 fw-bold text-white my-3 rounded">
+                        Tạo mới
+                    </button>
+                    <button id="updateButton"
+                            class="bg-info border-0 py-2 px-4 fw-bold text-white my-3 rounded">
+                        Cập nhật
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+<script>
+    var createOpen = document.getElementById("openPopupCreate");
+    var updateOpens = document.querySelectorAll(".fa-regular.fa-pen-to-square");
+    var closeButton = document.getElementById("closePopupButton");
+    var overlay = document.getElementById("overlay");
+    var popup = document.getElementById("popup");
+
+    createOpen.addEventListener("click", function () {
+        overlay.style.display = "block";
+        popup.style.display = "block";
+
+        var rowData = {
+            internalCode: "",
+            name: "",
+            dateBirth: "",
+            gender: "",
+            phone: "",
+        };
+
+        document.getElementById("title").innerText = "Thêm nhân viên mới";
+        document.getElementById("createButton").style.display = "inline-block";
+        document.getElementById("updateButton").style.display = "none";
+
+        loadData(rowData);
+    });
+
+    updateOpens.forEach(function (button) {
+        button.addEventListener("click", function () {
+            overlay.style.display = "block";
+            popup.style.display = "block";
+
+            var parentRow = button.closest("tr");
+            var rowData = {
+                id: parentRow.querySelector("td:nth-child(2)").textContent,
+                internalCode: parentRow.querySelector("td:nth-child(3)").textContent,
+                name: parentRow.querySelector("td:nth-child(4)").textContent,
+                dateBirth: parentRow.querySelector("td:nth-child(5)").textContent,
+                gender: parentRow.querySelector("td:nth-child(6)").textContent,
+                phone: parentRow.querySelector("td:nth-child(7)").textContent,
+            };
+
+            document.getElementById("title").innerText = "Cập nhật thông tin nhân viên";
+            document.getElementById("createButton").style.display = "none";
+            document.getElementById("updateButton").style.display = "inline-block";
+
+            loadData(rowData);
+        });
+    });
+
+    closeButton.addEventListener("click", function () {
+        overlay.style.display = "none";
+        popup.style.display = "none";
+    });
+
+    function loadData(data) {
+        const dateParts = data.dateBirth.split('/');
+
+        document.querySelector('input[name="id"]').value = data.id;
+        document.querySelector('input[name="internalCode"]').value = data.internalCode;
+        document.querySelector('input[name="name"]').value = data.name;
+        document.querySelector('input[name="dateBirth"]').value = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+        document.querySelector('select[name="gender"]').value = data.gender;
+        document.querySelector('input[name="phone"]').value = data.phone;
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#createButton").on("click", function (e) {
+            e.preventDefault();
+
+            var formData = getData();
+
+            $.ajax({
+                url: "/Employee/Create",
+                method: "POST",
+                data: customStringify(formData),
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    // Tắt popup và load lại table
+                    overlay.style.display = "none";
+                    popup.style.display = "none";
+
+                    $.ajax({
+                        url: "/Employee/Index",
+                        method: "GET",
+                        success: function (data) {
+                            $('#employee').html(data);
+                        }
+                    });
+                },
+            });
+        });
+
+
+        $("#updateButton").on("click", function (e) {
+            e.preventDefault();
+            
+            var formData = getData();
+
+            $.ajax({
+                url: "/Employee/Update",
+                method: "PUT",
+                data: customStringify(formData),
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    // Tắt popup và load lại table
+                    overlay.style.display = "none";
+                    popup.style.display = "none";
+                },
+                error: function () {
+
+                    overlay.style.display = "none";
+                    popup.style.display = "none";
+
+                    $.ajax({
+                        url: "/Employee/Index",
+                        method: "GET",
+                        success: function (data) {
+                            $('#employee').html(data);
+                        }
+                    });
+                }
+            });
+        });
+    });
+
+    function getData() {
+        var formData = {
+            id: $("input[name='id']").val(),
+            internalCode: $("input[name='internalCode']").val(),
+            name: $("input[name='name']").val(),
+            dateBirth: $("input[name='dateBirth']").val(),
+            gender: $("select[name='gender']").val(),
+            phone: $("input[name='phone']").val(),
+        };
+        return formData;
+    }
+
+    function customStringify(obj) {
+        for (var prop in obj) {
+            if (obj[prop] == "" || obj[prop] == null) {
+                if (prop == "dateBirth") {
+                    obj[prop] = "1870-01-01";
+                }
+                else if (prop == "gender") {
+                    obj[prop] = "Khác";
+                }
+            }
+        }
+        return JSON.stringify(obj);
+    }
+
+    $(document).ready(function () {
+        $(".fa-solid.fa-trash").on("click", function () {
+            var itemId = $(this).closest("tr").find("td[data-id]").data("id");
+            
+            $.ajax({
+                url: "/Employee/Delete?pId=" + itemId,
+                method: "DELETE",
+                success: function (data) {
+                    $(this).closest("tr").remove();
+                },
+                error: function () {
+                    $.ajax({
+                        url: "/Employee/Index",
+                        method: "GET",
+                        success: function (data) {
+                            $('#employee').html(data);
+                        }
+                    });
+                }
+            });
+        });
+    });
+
+</script>

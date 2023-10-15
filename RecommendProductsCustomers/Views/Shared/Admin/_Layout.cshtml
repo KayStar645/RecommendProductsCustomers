@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/fonts/fontawesome-free-6.0.0-web/css/all.css" rel="stylesheet" />
+    <link href="~/fonts/fontawesome-free-6.0.0-web/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/ckeditor5-40.0.0-6l8voimkm18w/build/ckeditor.js"></script>
+</head>
+<body style="overflow: hidden;">
+    <div id="container" class="grid d-flex">
+        <div class="col-2 bg-info bg-gradient vh-100" style="overflow: auto;">
+            <div>
+                <div class="px-3 home">
+                    <h4 class="text-center pt-4">PHỤ NỮ VIỆT</h4>
+                    <a href="https://localhost:7127">
+                        <img src="~/images/logo.webp" width="100%" />
+                   </a>
+                    <hr />
+                </div>
+                <div>
+                    @await Html.PartialAsync("./Partials/_Navigational.cshtml")
+                </div>
+            </div>
+        </div>
+        <div class="col-10 vh-100" style="overflow: auto;">
+            <div>
+                @await Html.PartialAsync("./Partials/_Header.cshtml")
+            </div>
+            <div id="content">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        function updateCurrentMenu(menuText) {
+            currentMenu = menuText;
+
+            var titleHeader = document.getElementById("headerContent");
+            titleHeader.innerText = currentMenu;
+        }
+
+        $(document).ready(function () {
+            $(".nav-item").on("click", function (e) {
+                e.preventDefault();
+
+                var controller = $(this).find("a").attr("asp-controller");
+                var action = $(this).find("a").attr("asp-action");
+
+                var menuText = $(this).find("a").text();
+
+                if (action === "Create") {
+                    currentMenu += "/Tạo mới";
+                } else if (action === "Update") {
+                    currentMenu += "/Cập nhật";
+                }
+                else {
+                    updateCurrentMenu(menuText);
+                }
+
+                $.ajax({
+                    url: "/" + controller + "/" + action,
+                    method: "GET",
+                    success: function (data) {
+                        $("#content").html(data);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
