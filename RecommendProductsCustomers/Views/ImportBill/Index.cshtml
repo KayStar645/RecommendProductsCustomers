@@ -1,4 +1,10 @@
-﻿<style>
+﻿@using RecommendProductsCustomers.Models;
+@{
+    var importBill = ViewData["importBill"] as List<ImportBillModel>;
+    var employee = ViewData["employee"] as List<EmployeeModel>;
+}
+
+<style>
     .label {
         font-size: 19px !important;
     }
@@ -39,18 +45,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="text-center">
-                                <i class="fa-solid fa-eye pe-3" style="color:blue"></i>
-                                @* <i class="fa-solid fa-trash" style="color:red"></i> *@
-                            </td>
-                            <td class="text-center d-none" data-id="importBill.id">id</td>
-                            <td class="text-center">DH0001</td>
-                            <td class="text-center">15-10-2023</td>
-                            <td class="text-center">Phạm Tấn Thuận</td>
-                            <td class="text-center">abc</td>
-                            <td class="text-center">10 chịu đồng</td>
-                        </tr>
+                        @for (int i = 0; i < importBill.Count; i++)
+                        {
+                            <tr>
+                                <td class="text-center">
+                                    <i class="fa-solid fa-eye pe-3" style="color:blue"></i>
+                                </td>
+                                <td class="text-center d-none" data-id="@importBill[i].id"></td>
+                                <td class="text-center">@importBill[i].internalCode</td>
+                                <td class="text-center">@string.Format("{0:dd/MM/yyyy}", @importBill[i].dateImport)</td>
+                                <td class="text-center">@employee[i].name</td>
+                                <td class="text-center">@importBill[i].contactPhone - @importBill[i].distributor</td>
+                                <td class="text-center">@importBill[i].price</td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>

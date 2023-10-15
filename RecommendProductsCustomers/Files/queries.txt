@@ -1,1125 +1,316 @@
-match (n:Employee) return n limit 100
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
 
-match (n:Employee) return n limit 100
-
-match (n:Employee ) return n limit 100
-
-match (n:Employee ) return n limit 100
-
-match (n:Employee ) return n limit 100
-
-match (n:Employee ) return n limit 100
-
-match (n:User {
-  userName: "1",
-  passWord: null
-}) return n limit 100
-
-match (n:User {
-  passWord: null
-}) return n limit 100
-
-match (n:User {
-  userName: "1",
-  passWord: null
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  passWord: null
-}) return n limit 100
-
-match (n:User {
-  userName: "1",
-  passWord: "1"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  passWord: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {}) return n limit 100
-
-match (n:User {}) return n limit 100
-
-match (n:User {}) return n limit 100
-
-match (n:User {
-  userName: null,
-  password: null
-}) return n limit 100
-
-match (n:User {
-  userName: null,
-  password: null
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: null,
-  password: null
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "1"
-}) return n limit 100
-
-match (n:User {
-  userName: null,
-  password: null
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: null,
-  password: null
-}) return n limit 100
-
-match (n:User {
-  userName: null,
-  password: null
-}) return n limit 100
-
-match (n:User {
-  userName: null,
-  password: null
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: null,
-  password: null
-}) return n limit 100
-
-match (n:User {
-  userName: null,
-  password: null
-}) return n limit 100
-
-match (n:User {
-  userName: null
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: null
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: null
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: null
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553"
-}) return n limit 100
-
-match (n:User {
-  userName: "2001200553"
-}) return n limit 100
-
-match (a:User {
-  userName: null
-}) -()-(b:) return a limit 100
-
-match (a:User {
-  userName: null
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: null
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: null
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553"
-}) return a limit 100
-
-match (a:Employee ) return a limit 100
-
-match (a:User {
-  userName: null
-}) return a limit 100
-
-match (a:User {
-  userName: null
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: null
-}) return a limit 100
-
-match (a:User {
-  userName: null
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: null
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553"
-}) return a limit 100
-
-match (a:Employee ) return a limit 1
-
-match (a:User {
-  userName: null
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553"
-}) return a limit 100
-
-match (a:Employee ) return a limit 1
-
-match (a:User {
-  userName: "2001200553"
-}) return a limit 100
-
-match (a:Employee ) return a limit 1
-
-match (a:Employee ) return a limit 1
-
-match (a:Employee ) return a limit 1
-
-match (a:User {
-  userName: null
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553"
-}) return a limit 100
-
-match (a:Employee ) return a limit 100
-
-match (a:Employee ) return a limit 100
-
-match (a:Employee ) return a limit 100
-
-match (a:Employee ) return a limit 100
-
-match (a:User {
-  userName: null
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553"
-}) return a limit 100
-
-match (a:Employee ) return a limit 1
-
-match (a:User {
-  userName: null
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: null
-}) return a limit 100
-
-match (a:User {
-  userName: null
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: null
-}) return a limit 100
-
-match (a:User {
-  userName: null
-}) return a limit 100
-
-match (a:User {
-  userName: "userName",
-  password: "userName"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "userName",
-  password: "userName"
-}) return a limit 100
-
-match (a:User {
-  userName: "userName",
-  password: "userName"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:Employee ) return a limit 1
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:Employee ) return a limit 1
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:Employee ) return a limit 1
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:Employee ) -(own)-(b:User {
-  userName: "2001200553"
-}) return a limit 1
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
-
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
-
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
 
 match (a:ImportBill) with a return max(a.internalCode) as max
 
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
 
 match (a:ImportBill) with a return max(a.internalCode) as max
 
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:ImportBill {internalCode:"MDN0000001"}) return a limit 100
 
-match (a:ImportBill) with a return max(a.internalCode) as max
+match (a:Product {internalCode:"1"}) return a limit 100
 
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
 
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
 
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
 
 match (a:ImportBill) with a return max(a.internalCode) as max
 
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
 
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
+match (a:ImportBill {internalCode:"MDN0000001"}) return a limit 100
 
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
+match (a:Product {internalCode:"1"}) return a limit 100
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
 
 match (a:ImportBill) with a return max(a.internalCode) as max
 
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:ImportBill {internalCode:"MDN0000001"}) return a limit 100
 
-match (a:ImportBill) with a return max(a.internalCode) as max
+match (a:Product {internalCode:"1"}) return a limit 100
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
 
-match (a:ImportBill) with a return max(a.internalCode) as max
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
 
-match (a:Employee ) return a limit 100
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
 
-match (a:Employee ) return a limit 100
-
-match (a:Employee ) return a limit 100
-
-match (a:Employee ) return a limit 100
-
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
 
 match (a:ImportBill) with a return max(a.internalCode) as max
 
-match (a:Employee ) return a limit 100
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
 
-match (a:Employee ) return a limit 100
+match (a:ImportBill {internalCode:"MDN0000001"}) return a limit 100
 
-match (a:Employee ) return a limit 100
+match (a:Product {internalCode:"bodycon"}) return a limit 100
 
-match (a:Employee ) return a limit 100
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
 
-match (a:Employee ) return a limit 100
+match (a:ImportBill {internalCode:"MDN0000001"}) return a limit 100
 
-match (a:Employee ) return a limit 100
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
 
-match (a:Employee ) return a limit 100
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
 
-match (a:Employee ) return a limit 100
-
-match (a:Employee ) return a limit 100
-
-match (a:Employee ) return a limit 100
-
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
 
 match (a:ImportBill) with a return max(a.internalCode) as max
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
+
+match (a:ImportBill {internalCode:"MDN0000001"}) return a limit 100
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
 
 match (a:ImportBill) with a return max(a.internalCode) as max
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
+
+match (a:ImportBill {internalCode:"MDN0000001"}) return a limit 100
+
+match (a:Product {internalCode:"bodycon"}) return a limit 100
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
 
 match (a:ImportBill) with a return max(a.internalCode) as max
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
+
+match (a:ImportBill {internalCode:"MDN0000001"}) return a limit 100
+
+match (a:Product {internalCode:"1"}) return a limit 100
+
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
 
 match (a:ImportBill) with a return max(a.internalCode) as max
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
 
 match (a:ImportBill) with a return max(a.internalCode) as max
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
 
 match (a:ImportBill) with a return max(a.internalCode) as max
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
+
+match (a:ImportBill {internalCode:"MDN0000001"}) return a limit 100
+
+match (a:Product {internalCode:"bodycon"}) return a limit 100
+
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
+
+match (a:ImportBill {internalCode:"MDN0000001"}) return a limit 100
+
+match (a:Product {internalCode:"bodycon"}) return a limit 100
+
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
+
+match (a:ImportBill {internalCode:"MDN0000001"}) return a limit 100
+
+match (a:Product {internalCode:"bodycon"}) return a limit 100
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
 
 match (a:ImportBill) with a return max(a.internalCode) as max
 
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
 
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
+match (a:ImportBill {internalCode:"MDN0000001"}) return a limit 100
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:Product {internalCode:"bodycon"}) return a limit 100
 
-match (a:ImportBill) with a return max(a.internalCode) as max
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
 
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
 
 match (a:ImportBill) with a return max(a.internalCode) as max
 
-match (a:User {
-  userName: "2001200553",
-  password: "2001200553"
-}) return a limit 100
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:ImportBill {internalCode:"MDN0000001"}) return a limit 100
 
-match (a:ImportBill) with a return max(a.internalCode) as max
+match (a:Product {internalCode:"1"}) return a limit 100
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
 
 match (a:ImportBill) with a return max(a.internalCode) as max
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
+
+match (a:ImportBill {internalCode:"MDN0000001"}) return a limit 100
+
+match (a:Product {internalCode:"1"}) return a limit 100
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
 
 match (a:ImportBill) with a return max(a.internalCode) as max
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
+
+match (a:ImportBill {internalCode:"MDN0000001"}) return a limit 100
+
+match (a:Product {internalCode:"1"}) return a limit 100
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
 
 match (a:ImportBill) with a return max(a.internalCode) as max
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
+
+match (a:ImportBill {internalCode:"MDN0000001"}) return a limit 100
+
+match (a:Product {internalCode:"bodycon"}) return a limit 100
+
+match (a:Employee ) -[:own]-(b:User {userName:"2001200553"}) return a limit 1
 
 match (a:ImportBill) with a return max(a.internalCode) as max
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
 
-match (a:ImportBill) with a return max(a.internalCode) as max
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
 
-match (a:ImportBill) with a return max(a.internalCode) as max
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
 
-match (a:ImportBill) with a return max(a.internalCode) as max
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
 
-match (a:ImportBill) with a return max(a.internalCode) as max
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
 
-match (a:ImportBill) with a return max(a.internalCode) as max
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
 
-match (a:ImportBill) with a return max(a.internalCode) as max
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
 
-match (a:ImportBill) with a return max(a.internalCode) as max
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
 
-match (a:ImportBill) with a return max(a.internalCode) as max
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
 
-match (a:ImportBill) with a return max(a.internalCode) as max
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
 
-match (a:ImportBill) with a return max(a.internalCode) as max
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
 
-match (a:ImportBill) with a return max(a.internalCode) as max
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
 
-match (a:Employee ) -[:own]-(b:User {
-  userName: "2001200553"
-}) return a limit 1
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
 
-match (a:ImportBill) with a return max(a.internalCode) as max
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
+
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
+
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a limit 100
+
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
+
+match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) return *
 

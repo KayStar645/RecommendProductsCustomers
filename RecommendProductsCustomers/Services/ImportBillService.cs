@@ -2,10 +2,9 @@
 using Newtonsoft.Json.Linq;
 using RecommendProductsCustomers.Common;
 using RecommendProductsCustomers.Models;
-using RecommendProductsCustomers.Models.ViewModel;
 using RecommendProductsCustomers.Repositories;
 using RecommendProductsCustomers.Services.Interfaces;
-using System.Reflection.Emit;
+using System.Text.RegularExpressions;
 
 namespace RecommendProductsCustomers.Services
 {
@@ -30,17 +29,7 @@ namespace RecommendProductsCustomers.Services
             return "MDN0000001";
         }
 
-        public T ExtractModel<T>(JToken token) where T : class, new()
-        {
-            if (token != null)
-            {
-                return token.ToObject<T>();
-            }
-
-            return new T();
-        }
-
-        public async Task Get(string? id = null)
+        public async Task<List<(ImportBillModel, EmployeeModel, List<ProductModel>)>> Get(string? id = null)
         {
             string query = "";
             if (id == null)
@@ -55,19 +44,75 @@ namespace RecommendProductsCustomers.Services
                         $"return *";
             }
             var result = await Repo.GetQuery(query);
-            if (result.Any())
+            var list = result.Select(record =>
             {
-                var list = result.Select(record =>
-                {
-                    ImportBillModel importBill = ExtractModel<ImportBillModel>(record["a"]);
-                    EmployeeModel employee = ExtractModel<EmployeeModel>(record["b"]);
-                    ProductModel product = ExtractModel<ProductModel>(record["c"]);
+                var a = record["a"].As<INode>();
+                var b = record["b"].As<INode>();
+                var c = record["c"].As<INode>();
 
-                    return (importBill, employee, product);
+                var importBill = new JObject();
+                importBill.Add("id", JToken.FromObject(a.Id.ToString()));
+                foreach (var pair in a.Properties)
+                {
+                    importBill.Add(pair.Key, JToken.FromObject(pair.Value));
+                }
+
+                var employee = new JObject();
+                employee.Add("id", JToken.FromObject(b.Id.ToString()));
+                foreach (var pair in b.Properties)
+                {
+                    employee.Add(pair.Key, JToken.FromObject(pair.Value));
+                }
+
+                var product = new List<JObject>();
+                var productObject = new JObject();
+                productObject.Add("id", JToken.FromObject(c.Id.ToString()));
+                foreach (var pair in c.Properties)
+                {
+                    productObject.Add(pair.Key, JToken.FromObject(pair.Value));
+                }
+                product.Add(productObject);
+
+
+                return (importBill, employee, product);
+            })
+            .Select(tuple =>
+            {
+                var importBillModel = tuple.importBill.ToObject<ImportBillModel>();
+                var employeeModel = tuple.employee.ToObject<EmployeeModel>();
+                var productModels = tuple.product.Select(p =>
+                {
+                    var productModel = new ProductModel()
+                    {
+                        id = p["id"]?.Value<string>(),
+                        internalCode = p["internalCode"]?.Value<string>(),
+                        name = p["name"]?.Value<string>(),
+                        description = p["description"]?.Value<string>(),
+                        size = p["size"]?.Value<string>(),
+                        material = p["material"]?.Value<string>(),
+                        preserve = p["preserve"]?.Value<string>(),
+                        quantity = p["quantity"]?.Value<int>(),
+                        price = p["price"]?.Value<long>()
+                    };
+
+                    string? str = p["images"]?.Value<string>();
+                    string cleanedInput = Regex.Replace(str, @"\s+", "").Trim('[', ']');
+
+                    productModel.images = cleanedInput.Split(',')
+                                                      .Select(url => url.Trim('\''))
+                                                      .ToList();
+
+
+                    return productModel;
                 }).ToList();
 
-            }
+                return (importBillModel, employeeModel, productModels);
+            })
+            .ToList();
+
+            return list;
         }
+
 
         public async Task<bool> CreateOrUpdate(EmployeeModel pEmployee, ImportBillModel pImportBill, List<ProductModel> pProducts)
         {

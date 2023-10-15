@@ -40,6 +40,5 @@ namespace RecommendProductsCustomers.Common
             return json;
         }
 
-
     }
 }

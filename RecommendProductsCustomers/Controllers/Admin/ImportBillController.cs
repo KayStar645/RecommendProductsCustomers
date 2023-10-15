@@ -16,9 +16,25 @@ namespace RecommendProductsCustomers.Controllers.Admin
             _employeeService = employeeService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            _importBillService.Get();
+            List<(ImportBillModel, EmployeeModel, List<ProductModel>)> results = await _importBillService.Get();
+
+            List<ImportBillModel> importBills = new List<ImportBillModel>();
+            List<EmployeeModel> employees = new List<EmployeeModel>();
+            List<List<ProductModel>> products = new List<List<ProductModel>>();
+
+            foreach (var result in results)
+            {
+                importBills.Add(result.Item1);
+                employees.Add(result.Item2);
+                products.Add(result.Item3);
+            }
+
+            ViewData["importBill"] = importBills;
+            ViewData["employee"] = employees;
+            ViewData["products"] = products;
+
             return View();
         }
 
