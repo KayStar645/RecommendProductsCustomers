@@ -42,11 +42,25 @@
                     data: JSON.stringify(formData),
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
-                        window.location.href = "https://localhost:7127";
+                        var role = getCookie("role");
+                        if (role === "Employee") {
+                            window.location.href = "https://localhost:7127";
+                        } else {
+                            window.location.href = "/Home/Index";
+                        }
                     },
                 });
             });
         });
+
+        // Định nghĩa hàm getCookie để lấy giá trị của cookie theo tên
+        function getCookie(name) {
+            var value = "; " + document.cookie;
+            var parts = value.split("; " + name + "=");
+            if (parts.length == 2) return parts.pop().split(";").shift();
+        }
+
+
 
         function getData() {
             var formData = {

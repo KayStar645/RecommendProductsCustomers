@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
+using RecommendProductsCustomers.Common;
 using RecommendProductsCustomers.Models;
 using RecommendProductsCustomers.Services.Interfaces;
 
@@ -32,8 +33,19 @@ namespace RecommendProductsCustomers.Controllers.Admin
                     Expires = DateTime.Now.AddYears(10)
                 });
 
-
-                return RedirectToAction("Index_Home", "_Home");
+                string label = await _authService.GetRole(pUser.userName);
+                Response.Cookies.Append("role", label, new CookieOptions
+                {
+                    Expires = DateTime.Now.AddYears(10)
+                });
+                if (label == LabelCommon.Employee)
+                {
+                    return RedirectToAction("Index_Home", "_Home");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }    
             }
             else
             {
