@@ -32,23 +32,25 @@ namespace RecommendProductsCustomers.Services
         public async Task<List<(ImportBillModel, EmployeeModel, List<ProductModel>)>> Get(string? id = null)
         {
             string query = "";
+
             if (id == null)
             {
-                query = $"match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) " +
-                        $"return a, b, c";
+                query = $"MATCH (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) " +
+                        $"RETURN DISTINCT a, b, collect(c) as products";
             }
             else
             {
-                query = $"match (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) " +
-                        $"where id(a) = {id} " +
-                        $"return a, b, c";
+                query = $"MATCH (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) " +
+                        $"WHERE id(a) = {id} " +
+                        $"RETURN DISTINCT a, b, collect(c) as products";
             }
+
             var result = await Repo.GetQuery(query);
             var list = result.Select(record =>
             {
                 var a = record["a"].As<INode>();
                 var b = record["b"].As<INode>();
-                var c = record["c"].As<INode>();
+                var products = record["products"].As<IEnumerable<INode>>();
 
                 var importBill = new JObject();
                 importBill.Add("id", JToken.FromObject(a.Id.ToString()));
@@ -65,14 +67,16 @@ namespace RecommendProductsCustomers.Services
                 }
 
                 var product = new List<JObject>();
-                var productObject = new JObject();
-                productObject.Add("id", JToken.FromObject(c.Id.ToString()));
-                foreach (var pair in c.Properties)
+                foreach (var productNode in products)
                 {
-                    productObject.Add(pair.Key, JToken.FromObject(pair.Value));
+                    var productObject = new JObject();
+                    productObject.Add("id", JToken.FromObject(productNode.Id.ToString()));
+                    foreach (var pair in productNode.Properties)
+                    {
+                        productObject.Add(pair.Key, JToken.FromObject(pair.Value));
+                    }
+                    product.Add(productObject);
                 }
-                product.Add(productObject);
-
 
                 return (importBill, employee, product);
             })
@@ -96,12 +100,17 @@ namespace RecommendProductsCustomers.Services
                     };
 
                     string? str = p["images"]?.Value<string>();
-                    string cleanedInput = Regex.Replace(str, @"\s+", "").Trim('[', ']');
-
-                    productModel.images = cleanedInput.Split(',')
-                                                      .Select(url => url.Trim('\''))
-                                                      .ToList();
-
+                    if (str != null)
+                    {
+                        string cleanedInput = Regex.Replace(str, @"\s+", "").Trim('[', ']');
+                        productModel.images = cleanedInput.Split(',')
+                                                          .Select(url => url.Trim('\''))
+                                                          .ToList();
+                    }
+                    else
+                    {
+                        productModel.images = new List<string>();
+                    }
 
                     return productModel;
                 }).ToList();
@@ -112,7 +121,6 @@ namespace RecommendProductsCustomers.Services
 
             return list;
         }
-
 
 
         public async Task<bool> CreateOrUpdate(EmployeeModel pEmployee, ImportBillModel pImportBill, List<ProductModel> pProducts)

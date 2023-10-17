@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RecommendProductsCustomers.Models;
 using RecommendProductsCustomers.Services.Interfaces;
-using RecommendProductsProducts.Services;
 
 
 namespace RecommendProductsProducts.Controllers.Admin
@@ -16,9 +15,9 @@ namespace RecommendProductsProducts.Controllers.Admin
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index([FromQuery] string? pKeyword)
         {
-            ViewData["listProduct"] = await _ProductService.GetList();
+            ViewData["listProduct"] = await _ProductService.GetList(pKeyword);
             return View();
         }
 

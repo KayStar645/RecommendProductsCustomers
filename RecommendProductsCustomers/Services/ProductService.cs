@@ -3,12 +3,6 @@ using RecommendProductsCustomers.Common;
 using RecommendProductsCustomers.Models;
 using RecommendProductsCustomers.Repositories;
 using RecommendProductsCustomers.Services.Interfaces;
-
-
-using System.Text.RegularExpressions;
-
-namespace RecommendProductsProducts.Services
-
 using System.Text.RegularExpressions;
 
 namespace RecommendProductsCustomers.Services
@@ -19,37 +13,6 @@ namespace RecommendProductsCustomers.Services
         BaseRepository Repo = new BaseRepository(SettingCommon.Connect("Uri"),
                                                            SettingCommon.Connect("UserName"),
                                                            SettingCommon.Connect("Password"));
-
-        public async Task<List<ProductModel>> GetList()
-        {
-            var listJObject = await Repo.Get(LabelCommon.Product);
-
-            var Products = listJObject.Select((JObject jObject) =>
-            {
-                var Product = new ProductModel()
-                {
-                    internalCode = jObject.Value<string>("internalCode"),
-                    name = jObject.Value<string>("name"),
-                    description = jObject["description"]?.Value<string>(),
-                    size = jObject["size"]?.Value<string>(),
-                    material = jObject["material"]?.Value<string>(),
-                    preserve = jObject["preserve"]?.Value<string>(),
-                    quantity = jObject["quantity"]?.Value<int>(),
-                    price = jObject["price"]?.Value<long>()
-                };
-                string? str = jObject["images"]?.Value<string>();
-                string cleanedInput = Regex.Replace(str, @"\s+", "").Trim('[', ']');
-
-                Product.images = cleanedInput.Split(',')
-                                                  .Select(url => url.Trim('\''))
-                                                  .ToList();
-                return Product;
-            }).ToList();
-
-            return Products;
-        }
-
-
         public async Task<ProductModel> GetDetailByUserName(string pUserName)
         {
             try
