@@ -1,0 +1,116 @@
+﻿@using RecommendProductsCustomers.Models;
+@{
+    Layout = "~/Views/Shared/Customer/_Layout.cshtml";
+    ViewData["Title"] = "Format - Sản phẩm";
+    var productList = ViewData["listProduct"] as List<ProductModel>;
+}
+
+<style>
+    .height {
+        height: 100vh;
+    }
+
+    .form {
+        position: relative;
+    }
+
+    .form .fa-search {
+        position: absolute;
+        top: 16px;
+        left: 20px;
+        color: #9ca3af;
+    }
+
+    .form span {
+        position: absolute;
+        right: 17px;
+        top: 13px;
+        padding: 2px;
+        border-left: 1px solid #d1d5db;
+    }
+
+    .left-pan {
+        padding-left: 7px;
+    }
+
+    .left-pan i {
+        padding-left: 10px;
+    }
+
+    .form-input {
+        margin-top: 4px;
+        height: 46px;
+        text-indent: 33px;
+        border-radius: 10px;
+    }
+
+    .form-input:focus {
+        box-shadow: #d1d5db;
+    }
+</style>
+
+<!-- Page Content -->
+<!-- Items Starts Here -->
+<div class="featured-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-12">
+                <div class="section-heading">
+                    <div class="line-dec"></div>
+                    <h1>Danh sách sản phẩm</h1>
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-12">
+                <div class="form">
+                    <i class="fa fa-search"></i>
+                    <input id="search" type="text" class="form-control form-input" placeholder="Tìm kiếm...">
+                    <span class="left-pan"><i class="fa fa-microphone"></i></span>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div id="filters" class="button-group">
+                    <button class="btn btn-primary" data-filter="*">Tất cả</button>
+                    <button class="btn btn-primary" data-filter=".new">Mới về</button>
+                    <button class="btn btn-primary" data-filter=".low">Đề xuất</button>
+                    <button class="btn btn-primary" data-filter=".low">Giá giảm</button>
+                    <button class="btn btn-primary" data-filter=".high">Giá tăng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="featured container no-gutter">
+    <div class="row posts">
+        @if(productList != null)
+        {
+            foreach(var item in productList)
+            {
+                <div id="@item?.id" class="item new col-md-4">
+                    <a href="single-product.html">
+                        <div class="featured-item">
+                            <img src="~/assets/images/product-01.jpg" alt="">
+                            <h4>@item?.name</h4>
+                            <h6>@String.Format("{0:N0}", item?.price) đ</h6>
+                        </div>
+                    </a>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+<div class="page-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul>
+                    <li class="current-page"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

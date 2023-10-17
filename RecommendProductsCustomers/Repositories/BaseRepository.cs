@@ -13,8 +13,14 @@ namespace RecommendProductsCustomers.Repositories
             _driver = GraphDatabase.Driver(pUri, AuthTokens.Basic(pUserName, pPassword));
         }
 
+        public int CalculateTotalPages(int totalItems, int itemsPerPage)
+        {
+            int totalPages = (totalItems + itemsPerPage - 1) / itemsPerPage;
+            return totalPages;
+        }
 
-        public async Task<List<JObject>> Get(string? pLabel = "", JObject? pWhere = null, string? pRelationShip = "", string? pLabelB = "", JObject? pWhereB = null, int? pLimit = 100)
+
+        public async Task<List<JObject>> Get(string? pLabel = "", JObject? pWhere = null, string? pRelationShip = "", string? pLabelB = "", JObject? pWhereB = null, int? pLimit = 100, string? pKeyword = "", int? pPage = 1)
         {
             using var session = _driver.AsyncSession();
 
@@ -23,21 +29,30 @@ namespace RecommendProductsCustomers.Repositories
                 string where = pWhere == null ? "" : Format.JObjectToString(pWhere);
                 string whereB = pWhereB == null ? "" : Format.JObjectToString(pWhereB);
 
+                // Tính toán offset từ trang và giới hạn
+                int offset = ((pPage - 1) * pLimit) ?? 0;
+
                 string query = "";
+                string search = "";
+                if(search != "")
+                {
+                    search = $"where any(prop in keys(a) where a[prop] CONTAINS {pKeyword}) ";
+                }    
+
                 if (string.IsNullOrEmpty(pRelationShip) == false)
                 {
                     query = $"match (a:{pLabel} {where}) " +
-                               $"-[:{pRelationShip}]-" +
-                               $"(b:{pLabelB} {whereB}) " +
-                               $"return a limit {pLimit}";
+                            $"-[:{pRelationShip}]-" +
+                            $"(b:{pLabelB} {whereB}) " + search +
+                            $"return a skip {offset} limit {pLimit}";
                 }
                 else
                 {
-                    query = $"match (a:{pLabel} {where}) " +
-                               $"return a limit {pLimit}";
+                    query = $"match (a:{pLabel} {where}) " + search +
+                            $"return a skip {offset} limit {pLimit}";
                 }
 
-                var queryResult = await tx.RunAsync(query);
+                var queryResult = await tx.RunAsync(query, new { keyword = pKeyword });
 
                 File.AppendAllText(SettingCommon.Connect(FileCommon.FileQueries), query + "\n\n");
 
@@ -58,6 +73,52 @@ namespace RecommendProductsCustomers.Repositories
 
             return result;
         }
+
+
+        //public async Task<List<JObject>> Get(string? pLabel = "", JObject? pWhere = null, string? pRelationShip = "", string? pLabelB = "", JObject? pWhereB = null, int? pLimit = 100)
+        //{
+        //    using var session = _driver.AsyncSession();
+
+        //    var result = await session.ExecuteWriteAsync(async tx =>
+        //    {
+        //        string where = pWhere == null ? "" : Format.JObjectToString(pWhere);
+        //        string whereB = pWhereB == null ? "" : Format.JObjectToString(pWhereB);
+
+        //        string query = "";
+        //        if (string.IsNullOrEmpty(pRelationShip) == false)
+        //        {
+        //            query = $"match (a:{pLabel} {where}) " +
+        //                       $"-[:{pRelationShip}]-" +
+        //                       $"(b:{pLabelB} {whereB}) " +
+        //                       $"return a limit {pLimit}";
+        //        }
+        //        else
+        //        {
+        //            query = $"match (a:{pLabel} {where}) " +
+        //                       $"return a limit {pLimit}";
+        //        }
+
+        //        var queryResult = await tx.RunAsync(query);
+
+        //        File.AppendAllText(SettingCommon.Connect(FileCommon.FileQueries), query + "\n\n");
+
+        //        var records = await queryResult.ToListAsync();
+
+        //        return records.Select(record =>
+        //        {
+        //            // Chuyển đổi mỗi bản ghi thành một đối tượng JObject
+        //            var jobject = new JObject();
+        //            jobject.Add("id", JToken.FromObject(record["a"].As<INode>().Id.ToString()));
+        //            foreach (var pair in record["a"].As<INode>().Properties)
+        //            {
+        //                jobject.Add(pair.Key, JToken.FromObject(pair.Value));
+        //            }
+        //            return jobject;
+        //        }).ToList();
+        //    });
+
+        //    return result;
+        //}
 
         public async Task<List<IRecord>> GetQuery(string query)
         {

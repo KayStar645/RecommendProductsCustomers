@@ -224,12 +224,12 @@ namespace RecommendProductsCustomers.Services
                     if(pImportBill.isActive == true)
                     {
                         jObjectProduct.Add("quantity", product?.quantity?.ToString());
-                        jObjectProduct.Add("price", (product?.price + product?.price * 0.1).ToString());
+                        jObjectProduct.Add("price", ((int)(product?.price + product?.price * 0.1)).ToString());
                     }
                     else
                     {
                         jObjectProduct.Add("quantity", "0");
-                        jObjectProduct.Add("price", (product?.price + product?.price * 0.1).ToString());
+                        jObjectProduct.Add("price", ((int)(product?.price + product?.price * 0.1)).ToString());
                     }    
                     // Tạo mới product
                     await Repo.Add(LabelCommon.Product, jObjectProduct);
