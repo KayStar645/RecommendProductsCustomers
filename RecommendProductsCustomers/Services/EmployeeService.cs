@@ -96,9 +96,9 @@ namespace RecommendProductsCustomers.Services
             }
         }
 
-        public async Task<List<EmployeeModel>> GetList()
+        public async Task<List<EmployeeModel>> GetList(string? pKeyword = "", int? pPage = 1)
         {
-            var listJObject = await Repo.Get(LabelCommon.Employee);
+            var listJObject = await Repo.Get(LabelCommon.Employee, null, "", "", null, 100, pKeyword, pPage); ;
 
             var employees = listJObject.Select((JObject jObject) =>
             {

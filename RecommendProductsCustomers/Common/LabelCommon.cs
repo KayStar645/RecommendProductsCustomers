@@ -9,6 +9,7 @@
         public static string User = "User";
         public static string ImportBill = "ImportBill";
         public static string Product = "Product";
+        public static string Hobby = "Hobby";
 
     }
 }

@@ -90,9 +90,9 @@ namespace RecommendProductsCustomers.Services
             throw new NotImplementedException();
         }
 
-        public async Task<List<ProductModel>> GetList(string? keyword = "")
+        public async Task<List<ProductModel>> GetList(string? pKeyword = "", int? pPage = 1)
         {
-            var listJObject = await Repo.Get(LabelCommon.Product);
+            var listJObject = await Repo.Get(LabelCommon.Product, null, "", "", null, 100, pKeyword, pPage); ;
 
             var products = listJObject.Select(p =>
             {

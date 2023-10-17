@@ -34,9 +34,9 @@ namespace RecommendProductsCustomers.Repositories
 
                 string query = "";
                 string search = "";
-                if(search != "")
+                if(pKeyword != "")
                 {
-                    search = $"where any(prop in keys(a) where a[prop] CONTAINS {pKeyword}) ";
+                    search = $"where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower(\"{pKeyword}\")) ";
                 }    
 
                 if (string.IsNullOrEmpty(pRelationShip) == false)

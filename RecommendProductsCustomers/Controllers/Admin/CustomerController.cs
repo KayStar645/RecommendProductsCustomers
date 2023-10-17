@@ -14,9 +14,9 @@ namespace RecommendProductsCustomers.Controllers.Admin
 			_customerService = customerService;
 		}
 		[HttpGet]
-		public async Task<IActionResult> Index()
-		{
-			ViewData["listCustomer"] = await _customerService.GetList();
+		public async Task<IActionResult> Index([FromQuery] string? pSearch = "")
+        {
+			ViewData["listCustomer"] = await _customerService.GetList(pSearch);
 			return View();
 		}
         [HttpPost]

@@ -56,11 +56,11 @@
             <div class="container d-flex align-items-center">
                 <div class="mb-4 col-5">
                     <label class="p-1 fw-bolder label">Tìm kiếm</label> <br />
-                    <input type="text" name="search" />
+                    <input id="search" type="text" name="search" />
                 </div>
             </div>
 
-            <div class="container">
+            <div id="customerTable" class="container">
                 <table class="table-info w-100" border="2">
                     <thead>
                         <tr>
@@ -94,7 +94,31 @@
     </div>
 </div>
 
+<script>
+    var timer;
 
+    $(document).ready(function () {
+        $("#search").on("input", function (e) {
+            clearTimeout(timer);
 
+            timer = setTimeout(function () {
+                var searchText = $("#search").val();
 
+                $.ajax({
+                    url: "/Customer/Index?pSearch=" + searchText,
+                    method: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        var $hiddenContainer = $("<div style='display:none'></div>");
+                        $hiddenContainer.html(data);
 
+                        var $newHobbyTable = $hiddenContainer.find("#customerTable");
+                        $("#customerTable").html($newHobbyTable.html());
+
+                        $hiddenContainer.remove();
+                    }
+                });
+            }, 800);
+        });
+    });
+</script>

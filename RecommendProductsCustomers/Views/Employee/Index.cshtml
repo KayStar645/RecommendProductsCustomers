@@ -49,47 +49,11 @@
 
 <div id="employee">
     <div class="container">
-        @* @using (@Html.BeginForm("Create", "Imployee"))
-        {
-        <div class="card my-3 py-3">
-        <div class="container col-12 d-flex flex-lg-wrap">
-        <div class="col-4 pe-5">
-        <label class="p-1 fw-bolder label">Mã nhân viên</label> <br />
-        <input type="text" name="internalCode" />
-        </div>
-
-        <div class="col-4 pe-5">
-        <label class="p-1 fw-bolder label">Họ và tên</label> <br />
-        <input type="text" name="name" />
-        </div>
-
-        <div class="col-4 pe-5">
-        <label class="p-1 fw-bolder label">Ngày sinh</label> <br />
-        <input type="date" name="dateBirth" />
-        </div>
-
-        <div class="col-4 pe-5">
-        <label class="p-1 fw-bolder label">Giới tính</label> <br />
-        <select name="gender">
-        <option value="Name">Nam</option>
-        <option value="Nữ">Nữ</option>
-        <option value="Khác">Khác</option>
-        </select>
-        </div>
-
-        <div class="col-4 pe-5">
-        <label class="p-1 fw-bolder label">Số điện thoại</label> <br />
-        <input type="text" name="phone" />
-        </div>
-        </div>
-        </div>
-        } *@
-
         <div class="card my-3 py-3">
             <div class="container d-flex align-items-center">
                 <div class="mb-4 col-5">
                     <label class="p-1 fw-bolder label">Tìm kiếm</label> <br />
-                    <input type="text" name="search" />
+                    <input id="search" type="text" name="search" />
                 </div>
                 <div class="col-7 text-end pt-2">
                     <button id="openPopupCreate"
@@ -99,7 +63,7 @@
                 </div>
             </div>
 
-            <div class="container">
+            <div id="employeeTable" class="container">
                 <table class="table-info w-100" border="2">
                     <thead>
                         <tr>
@@ -144,55 +108,52 @@
                class="fa-solid fa-rectangle-xmark fa-2xl"
                style="color: #d10000;"></i>
         </div>
-        @using (@Html.BeginForm("Create", "Employee"))
-        {
-            <div class="container">
-                <div class="card px-lg-5 py-2">
-                    <div class="col-12 d-none">
-                        <input type="text" name="id" value="" />
-                    </div>
-
-                    <div class="col-12">
-                        <label class="p-1 fw-bolder label">Mã nhân viên</label> <br />
-                        <input type="text" name="internalCode" value="" />
-                    </div>
-
-                    <div class="col-12">
-                        <label class="p-1 fw-bolder label">Họ và tên</label> <br />
-                        <input type="text" name="name" value="" />
-                    </div>
-
-                    <div class="col-12">
-                        <label class="p-1 fw-bolder label">Ngày sinh</label> <br />
-                        <input type="date" name="dateBirth" value="" />
-                    </div>
-
-                    <div class="col-12">
-                        <label class="p-1 fw-bolder label">Giới tính</label> <br />
-                        <select name="gender">
-                            <option value="Nam">Nam</option>
-                            <option value="Nữ">Nữ</option>
-                            <option value="Khác">Khác</option>
-                        </select>
-                    </div>
-
-                    <div class="col-12">
-                        <label class="p-1 fw-bolder label">Số điện thoại</label> <br />
-                        <input type="text" name="phone" value="" />
-                    </div>
+        <div class="container">
+            <div class="card px-lg-5 py-2">
+                <div class="col-12 d-none">
+                    <input type="text" name="id" value="" />
                 </div>
-                <div class="text-end">
-                    <button id="createButton"
-                            class="bg-info border-0 py-2 px-4 fw-bold text-white my-3 rounded">
-                        Tạo mới
-                    </button>
-                    <button id="updateButton"
-                            class="bg-info border-0 py-2 px-4 fw-bold text-white my-3 rounded">
-                        Cập nhật
-                    </button>
+
+                <div class="col-12">
+                    <label class="p-1 fw-bolder label">Mã nhân viên</label> <br />
+                    <input type="text" name="internalCode" value="" />
+                </div>
+
+                <div class="col-12">
+                    <label class="p-1 fw-bolder label">Họ và tên</label> <br />
+                    <input type="text" name="name" value="" />
+                </div>
+
+                <div class="col-12">
+                    <label class="p-1 fw-bolder label">Ngày sinh</label> <br />
+                    <input type="date" name="dateBirth" value="" />
+                </div>
+
+                <div class="col-12">
+                    <label class="p-1 fw-bolder label">Giới tính</label> <br />
+                    <select name="gender">
+                        <option value="Nam">Nam</option>
+                        <option value="Nữ">Nữ</option>
+                        <option value="Khác">Khác</option>
+                    </select>
+                </div>
+
+                <div class="col-12">
+                    <label class="p-1 fw-bolder label">Số điện thoại</label> <br />
+                    <input type="text" name="phone" value="" />
                 </div>
             </div>
-        }
+            <div class="text-end">
+                <button id="createButton"
+                        class="bg-info border-0 py-2 px-4 fw-bold text-white my-3 rounded">
+                    Tạo mới
+                </button>
+                <button id="updateButton"
+                        class="bg-info border-0 py-2 px-4 fw-bold text-white my-3 rounded">
+                    Cập nhật
+                </button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -373,5 +334,34 @@
             });
         });
     });
-
 </script>
+
+<script>
+    var timer;
+
+    $(document).ready(function () {
+        $("#search").on("input", function (e) {
+            clearTimeout(timer);
+
+            timer = setTimeout(function () {
+                var searchText = $("#search").val();
+
+                $.ajax({
+                    url: "/Employee/Index?pSearch=" + searchText,
+                    method: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        var $hiddenContainer = $("<div style='display:none'></div>");
+                        $hiddenContainer.html(data);
+
+                        var $newHobbyTable = $hiddenContainer.find("#employeeTable");
+                        $("#employeeTable").html($newHobbyTable.html());
+
+                        $hiddenContainer.remove();
+                    }
+                });
+            }, 800);
+        });
+    });
+</script>
+
