@@ -3,8 +3,6 @@
     var productList = ViewData["listProduct"] as List<ProductModel>;
 }
 
-
-
 <div class="card my-3 py-3">
     <div class="container">
         <div class="card p-2">
@@ -12,24 +10,6 @@
                 <div class="col-6 pt-2 d-inline-block text-center">
                     <h3 >Danh sách sản phẩm</h3>
                 </div>
-                @*<div class="col-2 text-end pt-2 d-inline-block">
-                    <button id="importBill1"
-                            class="bg-success border-0 py-2 px-4 fw-bold text-white rounded">
-                        Nhập hàng
-                    </button>
-                </div>
-                <div class="col-2 text-start ps-3 pt-2 d-inline-block">
-                    <button id="saveChange"
-                            class="bg-warning border-0 py-2 px-4 fw-bold text-white rounded">
-                        Lưu thay đổi
-                    </button>
-                </div>
-                <div class="col-2 text-end pt-2 d-inline-block">
-                    <button id="openPopupCreate"
-                            class="bg-info border-0 py-2 px-4 fw-bold text-white rounded">
-                        Thêm sản phẩm
-                    </button>
-                </div>*@
             </div>
         </div>
 
@@ -51,9 +31,12 @@
                     @foreach (var item in productList)
                     {
                         <tr>
-                            <td class="text-center">
+                            @*<td class="text-center">
                                 <i class="fa-regular fa-pen-to-square pe-3" style="color:blue"></i>
                                 <i class="fa-solid fa-trash" style="color:red"></i>
+                            </td>*@
+                            <td class="text-center">
+                                <i class="fa-solid fa-eye pe-3 openDetail" style="color:blue"></i>
                             </td>
                             <td class="text-center d-none" data-id="@item?.id">@item?.id</td>
                             <td class="text-center">@item?.internalCode</td>

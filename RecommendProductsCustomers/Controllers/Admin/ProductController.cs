@@ -14,6 +14,7 @@ namespace RecommendProductsProducts.Controllers.Admin
         {
             _ProductService = ProductService;
         }
+
         [HttpGet]
         public async Task<IActionResult> Index()
         {
