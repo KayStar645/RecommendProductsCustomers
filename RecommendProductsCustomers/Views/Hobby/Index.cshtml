@@ -1,0 +1,275 @@
+﻿@using RecommendProductsCustomers.Models;
+@{
+    var hobbies = ViewData["listHobbies"] as List<HobbyModel>;
+}
+
+<style>
+    .label {
+        font-size: 19px !important;
+    }
+
+    select, input {
+        width: 100%;
+        padding: 4px 8px;
+        font-size: 18px;
+    }
+
+    #overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+
+    #popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40%;
+        height: auto;
+        background-color: rgba(255, 255, 255, 1);
+        z-index: 1000;
+        border-radius: 6px;
+    }
+
+    #closePopupButton {
+        position: absolute;
+        top: 13px;
+        right: -1px;
+        cursor: pointer;
+        color: #d10000;
+    }
+
+    #imageContainer {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #imageContainer img {
+        width: 100px;
+        height: 100px;
+        margin: 5px;
+        object-fit: cover;
+    }
+</style>
+
+<div id="hobby">
+    <div class="container">
+        <div class="card my-3 py-3">
+            <div class="container d-flex align-items-center">
+                <div class="mb-4 col-5">
+                    <label class="p-1 fw-bolder label">Tìm kiếm</label> <br />
+                    <input id="search" type="text" name="search" />
+                </div>
+                <div class="col-7 text-end pt-2">
+                    <button id="openPopupCreate"
+                            class="bg-info border-0 py-2 px-4 fw-bold text-white rounded">
+                        Tạo mới
+                    </button>
+                </div>
+            </div>
+
+            <div id="hobbyTable" class="container">
+                <table class="table-info w-100" border="2">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Icon</th>
+                            <th class="text-center">Tên sở thích</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (hobbies != null)
+                        {
+                            foreach (var item in hobbies)
+                            {
+                                <tr>
+                                    <td class="text-center d-none" data-id="@item?.id">@item?.id</td>
+                                    <td class="text-center">
+                                        <img src="@item?.image" class="w-80" style="height: 80px;" />
+                                    
+                                    </td>
+                                    <td class="text-center">@item?.name</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="overlay"></div>
+<div id="popup">
+    <div id="popupContent">
+        <div class="card d-block">
+            <h3 id="title" class="px-4 py-2"></h3>
+            <i id="closePopupButton"
+               class="fa-solid fa-rectangle-xmark fa-2xl"
+               style="color: #d10000;"></i>
+        </div>
+        <div class="container">
+            <div class="card px-lg-5 py-2">
+                <div class="col-12 d-none">
+                    <input type="text" name="id" value="" />
+                </div>
+
+                <div class="col-12">
+                    <label class="p-1 fw-bolder label">Icon đại diện</label> <br />
+                    <input type="file" id="imageInput" accept="image/*">
+                    <div id="imageContainer"></div>
+                </div>
+
+                <div class="col-12">
+                    <label class="p-1 fw-bolder label">Tên sở thích</label> <br />
+                    <input type="text" name="name" value="" />
+                </div>
+            </div>
+            <div class="text-end">
+                <button id="createButton"
+                        class="bg-info border-0 py-2 px-4 fw-bold text-white my-3 rounded">
+                    Tạo mới
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    var createOpen = document.getElementById("openPopupCreate");
+    var closeButton = document.getElementById("closePopupButton");
+    var overlay = document.getElementById("overlay");
+    var popup = document.getElementById("popup");
+
+    createOpen.addEventListener("click", function () {
+        overlay.style.display = "block";
+        popup.style.display = "block";
+
+        var rowData = {
+            image: "",
+            name: "",
+        };
+
+        document.getElementById("title").innerText = "Thêm Sở thích mới";
+        document.getElementById("createButton").style.display = "inline-block";
+    });
+
+
+    closeButton.addEventListener("click", function () {
+        overlay.style.display = "none";
+        popup.style.display = "none";
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#createButton").on("click", function (e) {
+            e.preventDefault();
+
+            var formData = getData();
+
+            $.ajax({
+                url: "/Hobby/Create",
+                method: "POST",
+                data: JSON.stringify(formData),
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    // Tắt popup và load lại table
+                    overlay.style.display = "none";
+                    popup.style.display = "none";
+
+                    $.ajax({
+                        url: "/Hobby/Index",
+                        method: "GET",
+                        success: function (data) {
+                            $('#hobby').html(data);
+                        }
+                    });
+                },
+            });
+        });
+    });
+
+    function getData() {
+        var image = document.getElementById('imageContainer').querySelectorAll('img');
+
+        var formData = {
+            id: $("input[name='id']").val(),
+            image: image[0].src,
+            name: $("input[name='name']").val(),
+        };
+
+        return formData;
+    }
+</script>
+
+<script>
+    var timer;
+
+    $(document).ready(function () {
+        $("#search").on("input", function (e) {
+            clearTimeout(timer);
+
+            timer = setTimeout(function () {
+                var searchText = $("#search").val();
+                
+                $.ajax({
+                    url: "/Hobby/Index?pSearch=" + searchText,
+                    method: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        var $hiddenContainer = $("<div style='display:none'></div>");
+                        $hiddenContainer.html(data);
+
+                        var $newHobbyTable = $hiddenContainer.find("#hobbyTable");
+                        $("#hobbyTable").html($newHobbyTable.html());
+
+                        $hiddenContainer.remove();
+                    }
+                });
+            }, 800);
+        });
+    });
+</script>
+
+<script>
+    document.getElementById("imageInput").addEventListener("change", function (e) {
+        var files = e.target.files;
+
+        // Xóa tất cả hình ảnh hiện có trong #imageContainer
+        document.getElementById("imageContainer").innerHTML = "";
+
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+
+            var formData = new FormData();
+            formData.append("file", file);
+
+            $.ajax({
+                url: "/Upload/UploadImage",
+                method: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    var imageUrl = data.imageUrl;
+
+                    var image = document.createElement("img");
+                    image.src = imageUrl;
+
+                    document.getElementById("imageContainer").appendChild(image);
+                }
+            });
+        }
+    });
+
+</script>
