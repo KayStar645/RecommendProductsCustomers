@@ -729,6 +729,59 @@ namespace RecommendProductsCustomers.Repositories
 
         #endregion
 
+        [Obsolete]
+        public async Task BackupDatabase(string backupPath)
+        {
+            try
+            {
+                using (var session = _driver.AsyncSession())
+                {
+                    var query = "CALL apoc.export.graphml.all(null, {stream:true}) YIELD data RETURN data";
+
+                    await session.WriteTransactionAsync(async tx =>
+                    {
+                        var result = await tx.RunAsync(query);
+
+                        if (await result.FetchAsync())
+                        {
+                            var data = result.Current["data"].As<string>();
+
+                            File.WriteAllText(backupPath, data);
+                        }
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                int a = 1;
+            }
+        }
+
+        //string backupPath = "~/db/" + Guid.NewGuid().ToString() + "backup.graphml";
+
+        [Obsolete]
+        public async Task RestoreDatabase(string backupPath)
+        {
+            try
+            {
+                using (var session = _driver.AsyncSession())
+                {
+                    await session.WriteTransactionAsync(async tx =>
+                    {
+                        var query = $"CALL apoc.import.graphml({{file: '{backupPath}', readLabels: true, readRelationships: true}})";
+
+                        var result = await tx.RunAsync(query);
+                        await result.ConsumeAsync();
+
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                int a = 1;
+            }
+        }
+
         public void Dispose()
         {
             _driver?.Dispose();
