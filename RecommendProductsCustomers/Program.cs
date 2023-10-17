@@ -3,6 +3,7 @@ using JavaScriptEngineSwitcher.V8;
 using React.AspNet;
 using RecommendProductsCustomers.Services;
 using RecommendProductsCustomers.Services.Interfaces;
+using RecommendProductsProducts.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,7 @@ builder.Services.AddControllersWithViews()
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IImportBillService, ImportBillService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IUploadService, UploadService>();

@@ -1,0 +1,60 @@
+﻿@using RecommendProductsCustomers.Models;
+@{
+    var productList = ViewData["listProduct"] as List<ProductModel>;
+}
+
+<div class="card my-3 py-3">
+    <div class="container">
+        <div class="card p-2">
+            <div class="col-12 d-flex align-items-center">
+                <div class="col-6 pt-2 d-inline-block text-center">
+                    <h3 >Danh sách sản phẩm</h3>
+                </div>
+            </div>
+        </div>
+
+        <table class="table-info w-100 mt-4" border="2">
+            <thead>
+                <tr>
+                    <th class="min-vw-10"></th>
+                    <th class="text-center">Mã sản phẩm</th>
+                    <th class="text-center">Tên sản phẩm</th>
+                    <th class="text-center">Hình ảnh</th>
+                    <th class="text-center">Kích thước</th>
+                    <th class="text-center">Số lượng </th>
+                    <th class="text-center">Đơn giá</th>
+                </tr>
+            </thead>
+            <tbody id="tableProducts">
+                @if (productList != null)
+                {
+                    @foreach (var item in productList)
+                    {
+                        <tr>
+                            @*<td class="text-center">
+                                <i class="fa-regular fa-pen-to-square pe-3" style="color:blue"></i>
+                                <i class="fa-solid fa-trash" style="color:red"></i>
+                            </td>*@
+                            <td class="text-center">
+                                <i class="fa-solid fa-eye pe-3 openDetail" style="color:blue"></i>
+                            </td>
+                            <td class="text-center d-none" data-id="@item?.id">@item?.id</td>
+                            <td class="text-center">@item?.internalCode</td>
+                            <td class="text-center">@item?.name</td>
+                            <td class="text-center">
+                                <img src="@item?.images?.FirstOrDefault()" class="w-80" style="height: 80px;" />
+                            </td>
+                            <td class="text-center">@item?.size</td>
+                            <td class="text-center">@item?.quantity</td>
+                            <td class="text-center">@String.Format("{0:N0}", item?.price)</td>
+                            <td class="text-center d-none" data-description="@item?.description">@item?.description</td>
+                            <td class="text-center d-none" data-material="@item?.material">@item?.material</td>
+                            <td class="text-center d-none" data-preserve="@item?.preserve">@item?.preserve</td>
+                            <td class="text-center d-none" data-images="@string.Join(",", item?.images)">@(string.Join(",", item?.images))</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -148,6 +148,9 @@
                         <label class="p-1 fw-bolder label">Thành tiền</label> <br />
                         <input type="text" name="money" value="@(importBill?.price != null ? importBill.price.ToString() : "0")" readonly />
                     </div>
+
+
+
                 </div>
             </div>
             <div class="card my-3 py-3">
@@ -507,11 +510,18 @@
 
     saveProductButton.addEventListener("click", function () {
         var data = getDataFromPopup();
+        
+    addRowTable(data);
 
-        addRowTable(data);
 
-        // Tính lại thành tiền của hóa đơn
+        // Cập nhật giá trị tổng giá trị trên giao diện, xử lý giá
+        var quantity = parseFloat(data.quantity); 
+        var price = parseFloat(data.price); 
+        var totalPrice = quantity * price;  
 
+        document.querySelector('input[name="money"]').value = totalPrice;
+
+    
         overlay.style.display = "none";
         popup.style.display = "none";
     });
