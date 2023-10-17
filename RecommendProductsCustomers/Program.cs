@@ -13,23 +13,16 @@ builder.Services.AddReact();
 builder.Services.AddJsEngineSwitcher(options => options.DefaultEngineName = V8JsEngine.EngineName)
     .AddV8();
 
+
 builder.Services.AddControllersWithViews()
         .AddRazorRuntimeCompilation();
-
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("MyCorsPolicy", builder =>
-    {
-        builder.WithOrigins("http://localhost:YOUR_PORT")
-               .AllowAnyHeader()
-               .AllowAnyMethod();
-    });
-});
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IImportBillService, ImportBillService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IUploadService, UploadService>();
 
 
 builder.Services.AddSession();
@@ -50,7 +43,6 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors("MyCorsPolicy");
 
 app.UseReact(config =>
 {
@@ -67,6 +59,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=_Home}/{action=Index_Home}");
+    pattern: "{controller=Home}/{action=Index}");
 
 app.Run();

@@ -1,13 +1,207 @@
 ﻿<!DOCTYPE html>
+<html lang="en">
 
-<html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+    <link rel="shortcut icon" href="~/images/logo.webp" type="image/x-icon" />
+
     <title>@ViewBag.Title</title>
+
+    <!-- Bootstrap core CSS -->
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="~/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="~/assets/css/tooplate-main.css">
+    <link rel="stylesheet" href="~/assets/css/owl.css">
 </head>
+
 <body>
-    <div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container">
+            <a class="navbar-brand p-0" href="#"><img src="~/images/logo.webp" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item" style="cursor: pointer;">
+                        <a class="nav-link active" asp-controller="Home" asp-action="Index">Trang chủ</a>
+                    </li>
+                    <li class="nav-item" style="cursor: pointer;">
+                        <a class="nav-link" asp-controller="Home" asp-action="Products">Sản phẩm</a>
+                    </li>
+                    <li class="nav-item" style="cursor: pointer;">
+                        <a class="nav-link" href="about.html">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item" style="cursor: pointer;">
+                        <a class="nav-link" href="contact.html">Liên hệ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="content">
         @RenderBody()
     </div>
+
+    <!-- Featred Ends Here -->
+    <!-- Subscribe Form Starts Here -->
+    <div class="subscribe-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <div class="line-dec"></div>
+                        <h1>Đăng ký trên FORMAT ngay bây giờ!</h1>
+                    </div>
+                </div>
+                <div class="col-md-8 offset-md-2">
+                    <div class="main-content">
+                        <div class="container">
+                            <form id="subscribe" action="" method="get">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <fieldset>
+                                            <input name="email" type="text" class="form-control" id="email"
+                                                   onfocus="if(this.value == 'Email của bạn...') { this.value = ''; }"
+                                                   onBlur="if(this.value == '') { this.value = 'Email của bạn...';}"
+                                                   value="Email của bạn..." required="">
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <fieldset>
+                                            <button type="submit" id="form-submit" class="button">Đăng ký ngay!</button>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Subscribe Form Ends Here -->
+    <!-- Footer Starts Here -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="logo">
+                        <img src="~/images/logo.webp" class="m-2" />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="footer-menu mb-3">
+                        <ul>
+                            <li><a href="#">Trang chủ</a></li>
+                            <li><a href="#">Trợ giúp</a></li>
+                            <li><a href="#">Quyền riêng tư</a></li>
+                            <li><a href="#">Liên hệ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="social-icons mb-3">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Ends Here -->
+    <!-- Sub Footer Starts Here -->
+    <div class="sub-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="copyright-text">
+                        <p>
+                            Copyright &copy; 2019 Company Name
+
+                            - Design: <a rel="nofollow" href="https://www.facebook.com/tooplate">Tooplate</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sub Footer Ends Here -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Additional Scripts -->
+    <script src="~/assets/js/custom.js"></script>
+    <script src="~/assets/js/owl.js"></script>
+
+
+    <script language="text/Javascript">
+        cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+        function clearField(t) {                   //declaring the array outside of the
+            if (!cleared[t.id]) {                      // function makes it static and global
+                cleared[t.id] = 1;  // you could use true and false, but that's more typing
+                t.value = '';         // with more chance of typos
+                t.style.color = '#fff';
+            }
+        }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $(".nav-item").on("click", function (e) {
+                e.preventDefault();
+
+                var controller = $(this).find("a").attr("asp-controller");
+                var action = $(this).find("a").attr("asp-action");
+
+                $.ajax({
+                    url: "/" + controller + "/" + action,
+                    method: "GET",
+                    success: function (data) {
+                        // Tìm phần tử có id là "content" trong data
+                        var contentElement = $(data).filter("#content");
+
+                        // Lấy nội dung HTML từ phần tử "content" trong data
+                        var contentHtml = contentElement.html();
+
+                        // Load nội dung vào phần tử có id "content" trên view
+                        $("#content").html(contentHtml);
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $(".nav-link").click(function () {
+                // Loại bỏ lớp 'active' khỏi tất cả các liên kết
+                $(".nav-link").removeClass("active");
+                // Thêm lớp 'active' cho liên kết được nhấp
+                $(this).addClass("active");
+            });
+        });
+
+    </script>
+
 </body>
+
 </html>
+

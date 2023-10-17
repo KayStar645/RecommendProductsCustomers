@@ -43,8 +43,10 @@
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
                         var role = getCookie("role");
+                        console.log(role)
                         if (role === "Employee") {
-                            window.location.href = "https://localhost:7127";
+                            //window.location.href = "https://localhost:7127";
+                            window.location.href = "/_Home/Index_Home";
                         } else {
                             window.location.href = "/Home/Index";
                         }
