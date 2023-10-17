@@ -102,12 +102,12 @@
         flex-wrap: wrap;
     }
 
-        #imageContainer img {
-            width: 100px;
-            height: 100px;
-            margin: 5px;
-            object-fit: cover;
-        }
+    #imageContainer img {
+        width: 100px;
+        height: 100px;
+        margin: 5px;
+        object-fit: cover;
+    }
 </style>
 
 <div class="container">
@@ -600,7 +600,12 @@
 
         var imagesCell = document.createElement("td");
         imagesCell.className = "text-center d-none";
-        imagesCell.setAttribute("data-images", data.images);
+        var relativeImageUrls = [];
+        data.images.forEach(function (fullImageUrl) {
+            var relativeImageUrl = fullImageUrl.replace(/^https:\/\/localhost:7127/, "");
+            relativeImageUrls.push(relativeImageUrl);
+        });
+        imagesCell.setAttribute("data-images", relativeImageUrls);
 
         // Thêm cột vào hàng
         newRow.appendChild(cell);
@@ -652,14 +657,27 @@
         for (var i = 0; i < files.length; i++) {
             var file = files[i];
 
-            var imageUrl = URL.createObjectURL(file);
+            var formData = new FormData();
+            formData.append("file", file);
 
-            var image = document.createElement("img");
-            image.src = imageUrl;
+            $.ajax({
+                url: "/Upload/UploadImage",
+                method: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    var imageUrl = data.imageUrl;
 
-            document.getElementById("imageContainer").appendChild(image);
+                    var image = document.createElement("img");
+                    image.src = imageUrl;
+
+                    document.getElementById("imageContainer").appendChild(image);
+                }
+            });
         }
     });
+
 </script>
 
 

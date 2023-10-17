@@ -7,5 +7,7 @@ namespace RecommendProductsCustomers.Services.Interfaces
         Task<List<ProductModel>> GetList();
         Task<ProductModel> GetDetailByUserName(string pUserName);
         Task<bool> Update(ProductModel pProduct);
+        Task<List<ProductModel>> GetList(string? pKeyword = "");
+        Task<ProductModel> GetDetail(string pIdentity);
     }
 }

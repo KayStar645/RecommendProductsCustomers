@@ -1,3 +1,4 @@
+
 create (n:ImportBill {internalCode:"MDN0000002",dateImport:"2023-10-16",distributor:"Cao cấp",contactPhone:"0215478963",price:"0",isActive:"True"}) return n
 
 match (a:Employee {internalCode:"2001200584"}), (b:ImportBill {internalCode:"MDN0000002"}) create (a)-[r:import]->(b) return a, b, r
@@ -70,4 +71,34 @@ MATCH (a:ImportBill)-[r:have]->(b:Product) WHERE id(a) = 12 AND b.internalCode="
 match (a:ImportBill {internalCode:"MDN0000007"}), (b:Product {internalCode:"1091235011"}) create (a)-[r:have{quantity:"4",price:"250000"}]->(b) return a, b, r
 
 match (n:ImportBill {internalCode:"MDN0000007"}) set n.isActive="True" return n
+=======
+create (n:ImportBill {internalCode:"MDN0000004",dateImport:"2023-10-17",price:"0",isActive:"True"}) return n
+
+match (a:Employee {internalCode:"2001200553"}), (b:ImportBill {internalCode:"MDN0000004"}) create (a)-[r:import]->(b) return a, b, r
+
+create (n:Product {internalCode:"2",name:"2",description:"<p>1</p>",size:"S",material:"<p>1</p>",preserve:"<p>1</p>",images:"[
+  
+]",quantity:"2",price:"2.2"}) return n
+
+MATCH (a:ImportBill)-[r:have]->(b:Product) WHERE id(a) = 2 AND b.internalCode="2" RETURN r
+
+match (a:ImportBill {internalCode:"MDN0000004"}), (b:Product {internalCode:"2"}) create (a)-[r:have{quantity:"2",price:"2"}]->(b) return a, b, r
+
+match (n:ImportBill {internalCode:"MDN0000004"}) set n.isActive="True" return n
+
+create (n:ImportBill {internalCode:"MDN0000005",dateImport:"2023-10-17",price:"0",isActive:"True"}) return n
+
+match (a:Employee {internalCode:"2001200553"}), (b:ImportBill {internalCode:"MDN0000005"}) create (a)-[r:import]->(b) return a, b, r
+
+create (n:Product {internalCode:"4",name:"4",description:"<p>4</p>",size:"S",material:"<p>4</p>",preserve:"<p>4</p>",images:"[
+  /images/products/f00e5467-5c39-4318-8ce9-728ea94772cc_hmgoepprod%20(2).webp,
+  /images/products/a315f0aa-6185-4714-8c51-9a9b97db7307_hmgoepprod.jpg
+]",quantity:"4",price:"4.4"}) return n
+
+MATCH (a:ImportBill)-[r:have]->(b:Product) WHERE id(a) = 4 AND b.internalCode="4" RETURN r
+
+match (a:ImportBill {internalCode:"MDN0000005"}), (b:Product {internalCode:"4"}) create (a)-[r:have{quantity:"4",price:"4"}]->(b) return a, b, r
+
+match (n:ImportBill {internalCode:"MDN0000005"}) set n.isActive="True" return n
+
 

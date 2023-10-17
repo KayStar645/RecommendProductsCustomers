@@ -1,5 +1,80 @@
-﻿@{
-
+﻿@using RecommendProductsCustomers.Models;
+@{
+    Layout = "~/Views/Shared/Customer/_Layout.cshtml";
+    ViewData["Title"] = "Hệ thống cửa hàng thời trang Phụ Nữ Việt Format";
+    var reProducts = ViewData["recommendedProducts"] as List<ProductModel>;
 }
 
-<h1>Giao diện người dùng</h1>
+<style>
+    .featured-products {
+        overflow: auto;
+    }
+
+    #product-list .item {
+        display: inline-block;
+        width: 288px;
+        margin-right: 12px;
+    }
+
+    .featured-page {
+        margin-top: 30px;
+    }
+
+    .banner {
+        padding: 170px 0;
+    }
+
+</style>
+
+<!-- Page Content -->
+<!-- Banner Starts Here -->
+<div class="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="caption bg-transparent">
+                    <p style="height: 160px"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page Content -->
+<!-- Items Starts Here -->
+<div class="container d-flex flex-lg-wrap">
+    <div class="col-12 px-4">
+        <div class="featured-page">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-12">
+                        <div class="section-heading">
+                            <div class="line-dec"></div>
+                            <h1>Sản phẩm đề xuất</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="featured container no-gutter">
+            <div id="product-list" class="row posts">
+                @if (reProducts != null)
+                {
+                    foreach (var item in reProducts)
+                    {
+                        <div id="@item?.id" class="item new col-md-4">
+                            <a href="single-product.html">
+                                <div class="featured-item">
+                                    <img src="@item?.images?.FirstOrDefault()" alt="">
+                                    <h4>@item?.name</h4>
+                                    <h6>@String.Format("{0:N0}", item?.price) đ</h6>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

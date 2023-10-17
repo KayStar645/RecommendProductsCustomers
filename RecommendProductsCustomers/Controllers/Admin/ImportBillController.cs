@@ -71,6 +71,7 @@ namespace RecommendProductsCustomers.Controllers.Admin
         {
             Request.Cookies.TryGetValue("userName", out string userName);
             EmployeeModel employee = await _employeeService.GetDetailByUserName(userName);
+
             await _importBillService.CreateOrUpdate(employee, pImportBillVM.importBill, pImportBillVM.products);
 
             return RedirectToAction("Index");
