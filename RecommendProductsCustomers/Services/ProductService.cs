@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using RecommendProductsCustomers.Common;
 using RecommendProductsCustomers.Models;
+using RecommendProductsCustomers.Models.ViewModel;
 using RecommendProductsCustomers.Repositories;
 using RecommendProductsCustomers.Services.Interfaces;
 using System.Text.RegularExpressions;
@@ -51,7 +52,7 @@ namespace RecommendProductsCustomers.Services
             }
         }
 
-        public async Task<bool> Update(ProductModel pProduct)
+        public async Task<bool> Update(UpdateProductVM pProduct)
         {
             try
             {
@@ -62,12 +63,6 @@ namespace RecommendProductsCustomers.Services
                     if (pProduct.price.HasValue)
                     {
                         updatedFields.Add("price", pProduct.price);
-                    }
-
-                    if (pProduct.images != null && pProduct.images.Any())
-                    {
-                        string imageList = string.Join(",", pProduct.images);
-                        updatedFields.Add("images", imageList);
                     }
 
                     // Kiểm tra xem có bất kỳ trường nào cần cập nhật không
