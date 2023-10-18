@@ -11,5 +11,7 @@
         public static string ImportBill_Product = "have";
 
         public static string Product_Hobbies = "fit";
+
+        public static string Customer_Hobby = "have";
     }
 }

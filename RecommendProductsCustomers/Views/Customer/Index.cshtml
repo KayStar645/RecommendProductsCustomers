@@ -65,10 +65,10 @@
                     <thead>
                         <tr>
                             <th class="min-vw-10"></th>
-                            <th class="text-center">Mã khách hàng</th>
+                            <th class="text-center">Họ tên</th>
                             <th class="text-center">Số điện thoại</th>
-                            <th class="text-center">Tên khách hàng</th>
                             <th class="text-center">Ngày sinh</th>
+                            <th class="text-center">Sở thích</th>
                             <th class="text-center">Địa chỉ</th>
                         </tr>
                     </thead>
@@ -80,11 +80,12 @@
                                     <i class="fa-regular fa-pen-to-square pe-3" style="color:blue"></i>
                                     <i class="fa-solid fa-trash" style="color:red"></i>
                                 </td>
-                                <td class="text-center">@customer.internalCode</td>
-                                <td class="text-center">@customer.phone</td>
-                                <td class="text-center">@customer.name</td>
+                                <td class="text-center">@customer?.name</td>
+                                <td class="text-center">@customer?.gender</td>
+                                <td class="text-center">@customer?.phone</td>
                                 <td class="text-center">@string.Format("{0:dd/MM/yyyy}", customer.dateBirth)</td>
-                                <td class="text-center">@customer.address</td>
+                                <td class="text-center">@customer?.address</td>
+                                <td class="text-center">@customer?.address</td>
                             </tr>
                         }
                     </tbody>

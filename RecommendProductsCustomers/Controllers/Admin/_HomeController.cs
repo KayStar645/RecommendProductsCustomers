@@ -23,10 +23,22 @@ namespace RecommendProductsCustomers.Controllers.Admin
 
                 if (flag)
                 {
-                    return View();
+                    Response.Cookies.Append("userName", userName, new CookieOptions
+                    {
+                        Expires = DateTime.Now.AddYears(10)
+                    });
+
+                    string label = await _authService.GetRole(userName);
+                    Response.Cookies.Append("role", label, new CookieOptions
+                    {
+                        Expires = DateTime.Now.AddYears(10)
+                    });
+                    if (label == LabelCommon.Employee)
+                    {
+                        return View();
+                    }
                 }
             }
-            return View();
             return RedirectToAction("Login", "Login");
         }
     }
