@@ -12,9 +12,9 @@ namespace RecommendProductsCustomers.Services
                                                            SettingCommon.Connect("UserName"),
                                                            SettingCommon.Connect("Password"));
 
-        public async Task<List<HobbyModel>> GetList(string? pKeyword = "", int? pPage = 1)
+        public async Task<List<HobbyModel>> GetList(string? pRela = "", string? pLabelB = "", JObject? pWhereB = null, string? pKeyword = "", int? pPage = 1)
         {
-            var listJObject = await Repo.Get(LabelCommon.Hobby, null, "", "", null, 10, pKeyword, pPage);
+            var listJObject = await Repo.Get(LabelCommon.Hobby, null, pRela, pLabelB, pWhereB, 100, pKeyword, pPage);
 
             var interests = listJObject.Select(p =>
             {

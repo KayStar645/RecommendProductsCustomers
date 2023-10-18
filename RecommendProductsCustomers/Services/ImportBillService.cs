@@ -201,7 +201,6 @@ namespace RecommendProductsCustomers.Services
             }
 
             // Xóa những Rela của sản phẩm không có trong danh sách cập nhật mà lại có trong db
-            var x = pProducts.Select(product => product.internalCode).ToList();
             if (isCreate == false)
             {
                 await Repo.DeleteRelationShipNotExists(LabelCommon.ImportBill, pImportBill.id.ToString(),
@@ -241,6 +240,21 @@ namespace RecommendProductsCustomers.Services
                     }    
                     // Tạo mới product
                     await Repo.Add(LabelCommon.Product, jObjectProduct);
+
+                    // Tạo mối quan hệ xác định sản phẩm phù hợp với sở thích nào
+                    JObject jObjectRela1 = new JObject
+                    {
+                        { "internalCode", product?.internalCode }
+                    };
+                    foreach(string hobby in product.hobbies)
+                    {
+                        JObject jObjectRela2 = new JObject
+                        {
+                            { "name", hobby }
+                        };
+                        await Repo.CreateRelationShip(LabelCommon.Product, jObjectRela1,
+                                                  LabelCommon.Hobby, jObjectRela2, RelaCommon.Product_Hobbies);
+                    }
                 }
                 else
                 {

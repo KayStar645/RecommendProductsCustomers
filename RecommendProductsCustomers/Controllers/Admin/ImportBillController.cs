@@ -1,7 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using RecommendProductsCustomers.Models;
 using RecommendProductsCustomers.Models.ViewModel;
 using RecommendProductsCustomers.Services.Interfaces;
+using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
+using System.Reflection.Emit;
+using RecommendProductsCustomers.Common;
 
 namespace RecommendProductsCustomers.Controllers.Admin
 {
@@ -9,11 +13,13 @@ namespace RecommendProductsCustomers.Controllers.Admin
     {
         private readonly IImportBillService _importBillService;
         private readonly IEmployeeService _employeeService;
+        private readonly IHobbyService _hobbyService;
 
-        public ImportBillController(IImportBillService importBillService, IEmployeeService employeeService)
+        public ImportBillController(IImportBillService importBillService, IEmployeeService employeeService, IHobbyService hobbyService)
         {
             _importBillService = importBillService;
             _employeeService = employeeService;
+            _hobbyService = hobbyService;
         }
 
         public async Task<IActionResult> Index()
@@ -41,7 +47,8 @@ namespace RecommendProductsCustomers.Controllers.Admin
         [HttpGet]
         public async Task<IActionResult> Detail([FromQuery] string pIdentity)
         {
-            if(pIdentity == null)
+            ViewData["listHobbies"] = await _hobbyService.GetList();
+            if (pIdentity == null)
             {
                 ViewData["internalCode"] = await _importBillService.CreateInternalCode();
                 ViewData["importDate"] = DateTime.Now.ToString("dd/MM/yyyy");
@@ -54,14 +61,23 @@ namespace RecommendProductsCustomers.Controllers.Admin
             else
             {
                 List<(ImportBillModel, EmployeeModel, List<ProductModel>)> results = await _importBillService.Get(pIdentity);
-
-                ImportBillModel importBill = new ImportBillModel();
-                EmployeeModel employee = new EmployeeModel();
                 List<ProductModel> products = new List<ProductModel>();
 
                 ViewData["importBill"] = results[0].Item1;
                 ViewData["employee"] = results[0].Item2;
-                ViewData["products"] = results[0].Item3;
+                products = results[0].Item3;
+                foreach(ProductModel model in products)
+                {
+                    List<HobbyModel> hobbies = new List<HobbyModel>();
+                    JObject where = new JObject
+                    {
+                        {"internalCode", model.internalCode }
+                    };
+                    hobbies = await _hobbyService.GetList(RelaCommon.Product_Hobbies, LabelCommon.Product, where);
+                    model.hobbies = hobbies.Select(x => x.name).ToList();
+                }
+
+                ViewData["products"] = products;
             }
             return View();
         }

@@ -24,5 +24,7 @@
         public int? quantity { get; set; }
 
         public long? price { get; set; }
+
+        public List<string>? hobbies { get; set;}
     }
 }

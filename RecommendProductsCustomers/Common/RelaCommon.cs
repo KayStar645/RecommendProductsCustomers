@@ -9,5 +9,7 @@
         public static string Employee_ImportBill = "import";
 
         public static string ImportBill_Product = "have";
+
+        public static string Product_Hobbies = "fit";
     }
 }
