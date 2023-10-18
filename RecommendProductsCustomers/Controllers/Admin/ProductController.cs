@@ -16,9 +16,9 @@ namespace RecommendProductsProducts.Controllers.Admin
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index([FromQuery] string? pKeyword)
+        public async Task<IActionResult> Index([FromQuery] string? pSearch)
         {
-            ViewData["listProduct"] = await _ProductService.GetList(pKeyword);
+            ViewData["listProduct"] = await _ProductService.GetList(pSearch);
             return View();
         }
 
