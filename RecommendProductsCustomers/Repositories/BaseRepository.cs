@@ -730,7 +730,7 @@ namespace RecommendProductsCustomers.Repositories
         #endregion
 
         [Obsolete]
-        public async Task BackupDatabase(string backupPath)
+        public async Task BackupDatabase(string pBackupPath)
         {
             try
             {
@@ -746,7 +746,7 @@ namespace RecommendProductsCustomers.Repositories
                         {
                             var data = result.Current["data"].As<string>();
 
-                            File.WriteAllText(backupPath, data);
+                            File.WriteAllText(pBackupPath, data);
                         }
                     });
                 }
@@ -760,23 +760,55 @@ namespace RecommendProductsCustomers.Repositories
         //string backupPath = "~/db/" + Guid.NewGuid().ToString() + "backup.graphml";
 
         [Obsolete]
-        public async Task RestoreDatabase(string backupPath)
+        public async Task RestoreDatabase(string pBackupPath)
         {
             try
             {
+                //using (var session = _driver.AsyncSession())
+                //{
+                //    await session.WriteTransactionAsync(async tx =>
+                //    {
+                //        var query = $"CALL apoc.import.graphml(\"{pBackupPath}\", {{"
+                //                        + "source: 'graphml', "
+                //                        + "format: 'XML', "
+                //                        + "nodes: 1, "
+                //                        + "relationships: 2, "
+                //                        + "properties: 3"
+                //                    + "})";
+
+                //        File.AppendAllText(SettingCommon.Connect(FileCommon.FileRestores), query + "\n\n");
+
+                //        var result = await tx.RunAsync(query);
+                //        await result.ConsumeAsync();
+                //    });
+                //}
+
                 using (var session = _driver.AsyncSession())
                 {
                     await session.WriteTransactionAsync(async tx =>
                     {
-                        var query = $"CALL apoc.import.graphml({{file: '{backupPath}', readLabels: true, readRelationships: true}})";
+                        var query = "CALL apoc.import.graphml($config)";
+                        File.AppendAllText(SettingCommon.Connect(FileCommon.FileRestores), query + "\n\n");
 
-                        var result = await tx.RunAsync(query);
+                        var parameters = new
+                        {
+                            config = new
+                            {
+                                file = "wwwroot/db/20231018101611_backup.graphml",
+                                source = "graphml",
+                                format = "XML",
+                                nodes = 1,
+                                relationships = 2,
+                                properties = 3
+                            }
+                        };
+
+                        var result = await tx.RunAsync(query, parameters);
                         await result.ConsumeAsync();
-
                     });
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
                 int a = 1;
             }

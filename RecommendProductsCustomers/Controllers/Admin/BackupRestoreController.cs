@@ -19,7 +19,7 @@ namespace RecommendProductsCustomers.Controllers.Admin
         [Obsolete]
         public async Task<IActionResult> Backup()
         {
-            string backupPath = "wwwroot/db/" + Guid.NewGuid().ToString() + "backup.graphml";
+            string backupPath = "wwwroot/db/" + DateTime.Now.ToString("yyyyMMddHHmmss") + "_backup.graphtml";
             await Repo.BackupDatabase(backupPath);
             return RedirectToAction("Index_Home", "_Home");
         }
@@ -28,7 +28,7 @@ namespace RecommendProductsCustomers.Controllers.Admin
         [Obsolete]
         public async Task<IActionResult> Restore()
         {
-            string backupPath = "wwwroot/db/24554800-d47a-44c1-bf2e-f306eb6a31d0backup.graphml";
+            string backupPath = "wwwroot/db/20231018101611_backup.graphtml";
             await Repo.RestoreDatabase(backupPath);
             return RedirectToAction("Index_Home", "_Home");
         }
