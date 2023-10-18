@@ -6,14 +6,14 @@ using RecommendProductsCustomers.Services.Interfaces;
 
 namespace RecommendProductsCustomers.Services
 {
-	public class CustomerService : ICustomerService
+    public class CustomerService : ICustomerService
 	{
 		BaseRepository Repo = new BaseRepository(SettingCommon.Connect("Uri"),
 														   SettingCommon.Connect("UserName"),
 														   SettingCommon.Connect("Password"));
-		public async Task<List<CustomerModel>> GetList()
-		{
-			var listJObject = await Repo.Get(LabelCommon.Customer);
+        public async Task<List<CustomerModel>> GetList(string? pKeyword = "", int? pPage = 1)
+        {
+			var listJObject = await Repo.Get(LabelCommon.Customer, null, "", "", null, 100, pKeyword, pPage);
 
 			var customers = listJObject.Select((JObject jObject) =>
 			{

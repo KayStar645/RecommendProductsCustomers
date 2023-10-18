@@ -60,20 +60,22 @@
                 </div>
             </div>
 
-            <table class="table-info w-100 mt-4" border="2">
-                <thead>
-                    <tr>
-                        <th class="min-vw-10"></th>
-                        <th class="text-center">Mã sản phẩm</th>
-                        <th class="text-center">Tên sản phẩm</th>
-                        <th class="text-center">Hình ảnh</th>
-                        <th class="text-center">Kích thước</th>
-                        <th class="text-center">Số lượng </th>
-                        <th class="text-center">Đơn giá</th>
-                    </tr>
-                </thead>
-                <tbody id="tableProducts">
-                    @if (productList != null)
+
+
+        <table id="productTable" class="table-info w-100 mt-4" border="2">
+            <thead>
+                <tr>
+                    <th class="min-vw-10"></th>
+                    <th class="text-center">Mã sản phẩm</th>
+                    <th class="text-center">Tên sản phẩm</th>
+                    <th class="text-center">Hình ảnh</th>
+                    <th class="text-center">Kích thước</th>
+                    <th class="text-center">Số lượng </th>
+                    <th class="text-center">Đơn giá</th>
+                </tr>
+            </thead>
+            <tbody id="tableProducts">
+                @if (productList != null)
                     {
                         @foreach (var item in productList)
                         {

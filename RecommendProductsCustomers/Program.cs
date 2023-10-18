@@ -23,6 +23,7 @@ builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IImportBillService, ImportBillService>();
 builder.Services.AddScoped<IUploadService, UploadService>();
+builder.Services.AddScoped<IHobbyService, HobbyService>();
 
 
 builder.Services.AddSession();
