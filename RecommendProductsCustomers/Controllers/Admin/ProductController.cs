@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RecommendProductsCustomers.Models;
+using RecommendProductsCustomers.Models.ViewModel;
 using RecommendProductsCustomers.Services.Interfaces;
 
 
@@ -22,7 +23,7 @@ namespace RecommendProductsProducts.Controllers.Admin
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] ProductModel pProduct)
+        public async Task<IActionResult> Update([FromBody] UpdateProductVM pProduct)
         {
             bool fag = await _ProductService.Update(pProduct);
             if (fag)
