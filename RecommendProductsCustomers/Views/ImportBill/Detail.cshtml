@@ -241,90 +241,87 @@
     </div>
 
     <div id="popupContent">
-        @using (@Html.BeginForm("Create", "Imployee"))
-        {
-            <div class="container" id="savePopup">
-                <div class="card px-lg-5 py-2">
-                    <div class="col-12 d-flex flex-lg-wrap">
-                        <div class="col-12 d-none">
-                            <input type="text" name="id" />
-                        </div>
+        <div class="container" id="savePopup">
+            <div class="card px-lg-5 py-2">
+                <div class="col-12 d-flex flex-lg-wrap">
+                    <div class="col-12 d-none">
+                        <input type="text" name="id" />
+                    </div>
 
-                        <div class="col-4 pe-3">
-                            <label class="p-1 fw-bolder label">Mã sản phẩm</label> <br />
-                            <input type="text" name="internalCodeProduct" />
-                        </div>
+                    <div class="col-4 pe-3">
+                        <label class="p-1 fw-bolder label">Mã sản phẩm</label> <br />
+                        <input type="text" name="internalCodeProduct" />
+                    </div>
 
-                        <div class="col-8">
-                            <label class="p-1 fw-bolder label">Tên sản phẩm</label> <br />
-                            <input type="text" name="name" step="1" />
-                        </div>
+                    <div class="col-8">
+                        <label class="p-1 fw-bolder label">Tên sản phẩm</label> <br />
+                        <input type="text" name="name" step="1" />
+                    </div>
 
-                        <div class="col-5 pe-3">
-                            <label class="p-1 fw-bolder label">Số lượng</label> <br />
-                            <input type="number" name="quantity" min="1" />
-                        </div>
+                    <div class="col-5 pe-3">
+                        <label class="p-1 fw-bolder label">Số lượng</label> <br />
+                        <input type="number" name="quantity" min="1" />
+                    </div>
 
-                        <div class="col-5 pe-3">
-                            <label class="p-1 fw-bolder label">Đơn giá</label> <br />
-                            <input type="number" name="price" min="1" step="1" />
-                        </div>
+                    <div class="col-5 pe-3">
+                        <label class="p-1 fw-bolder label">Đơn giá</label> <br />
+                        <input type="number" name="price" min="1" step="1" />
+                    </div>
 
-                        <div class="col-2">
-                            <label class="p-1 fw-bolder label">Kích thước</label> <br />
-                            <select name="size">
-                                <option value="S">S</option>
-                                <option value="X">X</option>
-                                <option value="L">L</option>
-                            </select>
-                        </div>
+                    <div class="col-2">
+                        <label class="p-1 fw-bolder label">Kích thước</label> <br />
+                        <select name="size">
+                            <option value="S">S</option>
+                            <option value="X">X</option>
+                            <option value="L">L</option>
+                        </select>
+                    </div>
 
-                        <div class="col-6">
-                            <label class="p-1 fw-bolder label">Hình ảnh</label> <br />
-                            <input type="file" id="imageInput" accept="image/*">
-                            <div id="imageContainer"></div>
-                        </div>
-                        <div class="col-6">
-                            <label class="p-1 fw-bolder label">Sở thích phù hợp</label> <br />
-                            <span id="combo3-remove" style="display: none">remove</span>
-                            <div class="combo js-inline-buttons">
-                                <div role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-owns="listbox3" class="input-wrapper multiselect-inline">
-                                    <ul class="selected-options" aria-live="assertive" aria-atomic="false" aria-relevant="additions removals" id="combo3-selected"></ul>
-                                    <input aria-activedescendant=""
-                                           aria-autocomplete="list"
-                                           aria-labelledby="combo3-label combo3-selected"
-                                           id="combo3"
-                                           class="combo-input"
-                                           type="text">
-                                </div>
-                                <div class="combo-menu" role="listbox" aria-multiselectable="true" id="listbox3"></div>
+                    <div class="col-6">
+                        <label class="p-1 fw-bolder label">Hình ảnh</label> <br />
+                        <input type="file" id="imageInput" accept="image/*">
+                        <div id="imageContainer"></div>
+                    </div>
+                    <div class="col-6">
+                        <label class="p-1 fw-bolder label">Sở thích phù hợp</label> <br />
+                        <span id="combo3-remove" style="display: none">remove</span>
+                        <div class="combo js-inline-buttons">
+                            <div role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-owns="listbox3" class="input-wrapper multiselect-inline">
+                                <ul class="selected-options" aria-live="assertive" aria-atomic="false" aria-relevant="additions removals" id="combo3-selected"></ul>
+                                <input aria-activedescendant=""
+                                       aria-autocomplete="list"
+                                       aria-labelledby="combo3-label combo3-selected"
+                                       id="combo3"
+                                       class="combo-input"
+                                       type="text">
                             </div>
+                            <div class="combo-menu" role="listbox" aria-multiselectable="true" id="listbox3"></div>
                         </div>
+                    </div>
 
-                        <div class="col-12 h-100">
-                            <label class="p-1 fw-bolder label">Mô tả</label> <br />
-                            <div id="description">
-                                <div class="w-100 _description" style="max-height:180px;min-height:180px;height:180px"></div>
-                            </div>
+                    <div class="col-12 h-100">
+                        <label class="p-1 fw-bolder label">Mô tả</label> <br />
+                        <div id="description">
+                            <div class="w-100 _description" style="max-height:180px;min-height:180px;height:180px"></div>
                         </div>
+                    </div>
 
-                        <div class="col-12 h-100">
-                            <label class="p-1 fw-bolder label">Thông tin về chất liệu</label> <br />
-                            <div id="material">
-                                <div class="w-100 _material" style="max-height:180px;min-height:180px;height:180px"></div>
-                            </div>
+                    <div class="col-12 h-100">
+                        <label class="p-1 fw-bolder label">Thông tin về chất liệu</label> <br />
+                        <div id="material">
+                            <div class="w-100 _material" style="max-height:180px;min-height:180px;height:180px"></div>
                         </div>
+                    </div>
 
-                        <div class="col-12 h-100">
-                            <label class="p-1 fw-bolder label">Hướng dẫn bảo quản</label> <br />
-                            <div id="preserve">
-                                <div class="w-100 _preserve" style="max-height:180px;min-height:180px;height:180px"></div>
-                            </div>
+                    <div class="col-12 h-100">
+                        <label class="p-1 fw-bolder label">Hướng dẫn bảo quản</label> <br />
+                        <div id="preserve">
+                            <div class="w-100 _preserve" style="max-height:180px;min-height:180px;height:180px"></div>
                         </div>
                     </div>
                 </div>
             </div>
-        }
+        </div>
     </div>
 
     <div class="card text-end position-absolute bottom-0 start-0 end-0">
@@ -390,6 +387,7 @@
 
     function loadData(data) {
         const dateParts = data.dateBirth.split('/');
+        document.querySelector("#imageContainer").innerHTML = "";
 
         // document.querySelector('input[name="id"]').value = data.id;
         // document.querySelector('input[name="internalCode"]').value = data.internalCode;
