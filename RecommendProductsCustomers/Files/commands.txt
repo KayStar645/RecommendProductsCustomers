@@ -1,0 +1,342 @@
+create (n:Employee {internalCode:"2001200584",name:"Nguyễn Trần Hoàng Phát",gender:"Nam",dateBirth:"2002-03-03",phone:"0971970061"}) return n
+
+create (n:User {userName:"2001200584",password:"2001200584"}) return n
+
+match (a:Employee {internalCode:"2001200584",name:"Nguyễn Trần Hoàng Phát",gender:"Nam",dateBirth:"2002-03-03",phone:"0971970061"}), (b:User {userName:"2001200584",password:"2001200584"}) create (a)-[r:own]->(b) return a, b, r
+
+create (n:Hobby {name:"Bơi lội",image:"https://localhost:7127/images/products/99406823-81f1-4d4f-8e25-166bd4e3f6f4_boi-loi.png"}) return n
+
+create (n:Hobby {name:"Dễ thương",image:"https://localhost:7127/images/products/1383455b-cb69-431d-a14b-b54ba1b6e291_de-thuong.webp"}) return n
+
+create (n:Hobby {name:"Cá tính",image:"https://localhost:7127/images/products/0df37bce-bc80-4b97-b73b-4481defdd595_ca-tinh.webp"}) return n
+
+create (n:Hobby {name:"Kín đáo",image:"https://localhost:7127/images/products/ce863346-67c4-4f66-9ed5-d6a0b8451065_kin-dao.jpg"}) return n
+
+create (n:Hobby {name:"Nóng bỏng",image:"https://localhost:7127/images/products/e3868458-29b2-499d-97fb-3bf2503d781a_nong-bong.jpg"}) return n
+
+create (n:ImportBill {internalCode:"MDN0000001",dateImport:"2023-10-19",distributor:"Cao cấp",contactPhone:"0215478956",price:"5980000",isActive:"True"}) return n
+
+match (a:Employee {internalCode:"2001200584"}), (b:ImportBill {internalCode:"MDN0000001"}) create (a)-[r:import]->(b) return a, b, r
+
+create (n:Product {internalCode:"1192807001",name:"Áo jumper dệt kim hoa văn",description:"<p>Áo jumper dệt kim hoa văn mềm, gân nổi. Dáng rộng với cổ tròn, vai ráp trễ và tay dài, côn dần về phía cổ tay. Viền gân nổi quanh cổ.</p><p>Mã số sản phẩm:1192807001</p><p>Chiều cao:</p><p>Chiều dài bình thường</p><p>Chiều dài tay áo:</p><p>Tay dài</p><p>Độ vừa vặn:</p><p>Cỡ rộng</p><p>Đường viền cổ áo:</p><p>Cổ tròn</p><p>Mô tả:</p><p>Màu be nhạt/Đen, Mẫu họa tiết</p><p>Nhóm khách hàng:</p><p>EVERYDAY FASHION</p>",size:"S",material:"<p>Vật liệu &amp; nhà cung cấp</p><h3>Thành phần</h3><p>Pôlyexte 52%, Acrylic 41%, Len 4%, Vải thun Elastan 3%</p><h3>Thông tin bổ sung về chất liệu</h3><p>Tổng trọng lượng của sản phẩm này bao gồm:</p><ul><li>52% Polyester tái chế</li></ul><p>Chúng tôi loại trừ trọng lượng của các thành phần phụ như, nhưng không hoàn toàn: đường chỉ, nút, khóa kéo, chi tiết trang trí và hình in.</p><p>Tổng trọng lượng của sản phẩm được tính bằng cách cộng trọng lượng của tất cả các lớp và thành phần chính lại với nhau. Trên cơ sở đó, chúng tôi tính toán xem mỗi vật liệu tạo ra bao nhiêu phần trăm trọng lượng đó. Đối với các sản phẩm theo set &amp; bộ bao gồm nhiều món, tất cả các món sẽ được tính là một sản phẩm trong phép tính.</p><h3>Giải thích cho vật liệu được dùng trong sản phẩm này</h3><p>Acrylic</p><p>Acrylic là một loại sợi tổng hợp được làm từ dầu mỏ (một nguồn tài nguyên hóa thạch).</p><p>Len</p><p>Len là sợi tự nhiên lấy từ lông cừu.</p><p>Polyester tái chế</p><p>Polyester tái chế là polyester được làm từ chai PET hoặc vải phế liệu hết hạn sử dụng. Các chai PET hoặc vải phế liệu được tái chế cơ học và xử lý thành sợi mới.</p><p>Pôlyexte</p><p>Polyester là sợi tổng hợp được làm từ dầu thô (một nguồn tài nguyên hóa thạch).</p><p>Vải thun Elastan</p><p>Elastan là một loại sợi tổng hợp đàn hồi làm từ dầu mỏ (một nguồn tài nguyên hóa thạch).</p>",preserve:"<p>Hướng dẫn chăm sóc sản phẩm</p><p>Bạn cũng có thể giúp bảo vệ môi trường cho một tương lai thời trang bền vững hơn. Hãy mang đem bao quần áo cũ / hàng dệt may bất kỳ không sử dụng nữa đến các cửa hàng H&amp;M tham gia tái chế thời trang.</p><p><a href='https://www2.hm.com/vi_vn/hm-sustainability/take-care.html'>Đọc về cách bạn có thể giữ cho quần áo bền lâu hơn</a></p><h4>Hướng dẫn bảo quản</h4><ul><li>Chỉ tẩy bằng chất không chứa clo khi cần</li><li>Giặt máy ở 30°</li><li>Có thể giặt khô</li><li>Là ủi nhiệt độ thấp</li></ul>",images:"[
+  /images/products/ca520d44-fc65-4d4b-988b-3347ff7436d0_sp1_2.webp,
+  /images/products/8b4488ed-6901-4322-90bd-7269b54063b3_sp1_1.jpg,
+  /images/products/4837e277-93d0-4449-a3b7-c77800ee9aaf_sp1_3.webp
+]",quantity:"20",price:"438900"}) return n
+
+match (a:Product {internalCode:"1192807001"}), (b:Hobby {name:"Kín đáo"}) create (a)-[r:fit]->(b) return a, b, r
+
+match (a:Product {internalCode:"1192807001"}), (b:Hobby {name:"Cá tính"}) create (a)-[r:fit]->(b) return a, b, r
+
+MATCH (a:ImportBill)-[r:have]->(b:Product) WHERE id(a) = 7 AND b.internalCode="1192807001" RETURN r
+
+match (a:ImportBill {internalCode:"MDN0000001"}), (b:Product {internalCode:"1192807001"}) create (a)-[r:have{quantity:"20",price:"399000"}]->(b) return a, b, r
+
+create (n:Product {internalCode:"1196768001",name:"Váy tay bồng may xếp nếp",description:"<p>Váy ôm, ngắn, may xếp nếp bằng viscose dệt thoi với tay ngắn, bồng và cổ tròn, sâu phía trước và sau. Viền chun mảnh trên vai và ở cổ tay cùng viền diềm nhún nhỏ ở cổ tay và gấu. Không có lớp lót.</p><p>Mã số sản phẩm:1196768001</p><p>Kích cỡ:</p><p>Người mẫu cao 178cm/5'10' mặc size S</p><p>Chiều cao:</p><p>Đùi</p><p>Chiều dài tay áo:</p><p>Tay áo ngắn</p><p>Độ vừa vặn:</p><p>Cỡ vừa</p><p>Phong cách:</p><p>Váy bodycon, Chạy chỉ thun</p><p>Đường viền cổ áo:</p><p>Đường viền cổ sâu</p><p>Kiểu tay áo:</p><p>Ống tay vai bồng</p><p>Mô tả:</p><p>Màu đen/Trắng, Kẻ ô</p><p>Nhóm khách hàng:</p><p>DIVIDED</p>",size:"S",material:"<h3>Thành phần</h3><p>Sợi vít-cô 100%</p><h3>Thông tin bổ sung về chất liệu</h3><p>Tổng trọng lượng của sản phẩm này bao gồm:</p><ul><li>100% Viscose LivaEco™</li></ul><p>Chúng tôi loại trừ trọng lượng của các thành phần phụ như, nhưng không hoàn toàn: đường chỉ, nút, khóa kéo, chi tiết trang trí và hình in.</p><p>Tổng trọng lượng của sản phẩm được tính bằng cách cộng trọng lượng của tất cả các lớp và thành phần chính lại với nhau. Trên cơ sở đó, chúng tôi tính toán xem mỗi vật liệu tạo ra bao nhiêu phần trăm trọng lượng đó. Đối với các sản phẩm theo set &amp; bộ bao gồm nhiều món, tất cả các món sẽ được tính là một sản phẩm trong phép tính.</p><h3>Giải thích cho vật liệu được dùng trong sản phẩm này</h3><p>Sợi vít-cô</p><p>Vải Viscose là loại sợi cellulose tái sinh thường lấy từ gỗ, nhưng nguyên liệu thô cũng có thể chứa các vật liệu cellulose khác.</p><p>Viscose LivaEco™</p><p>LivaEco™ viscose là một loại xơ viscose có thương hiệu, được làm từ bột gỗ.</p>",preserve:"<p>Hướng dẫn chăm sóc sản phẩm</p><p>Bạn cũng có thể giúp bảo vệ môi trường cho một tương lai thời trang bền vững hơn. Hãy mang đem bao quần áo cũ / hàng dệt may bất kỳ không sử dụng nữa đến các cửa hàng H&amp;M tham gia tái chế thời trang.</p><p><a href='https://www2.hm.com/vi_vn/hm-sustainability/take-care.html'>Đọc về cách bạn có thể giữ cho quần áo bền lâu hơn</a></p><h4>Hướng dẫn bảo quản</h4><ul><li>Chỉ tẩy bằng chất không chứa clo khi cần</li><li>Giặt máy ở 30°</li><li>Có thể giặt khô</li><li>Là ủi nhiệt độ thấp</li></ul>",images:"[
+  /images/products/dd972ace-11e7-4737-b1a5-80fb986bb333_sp4_4.jpg,
+  /images/products/cc3119a0-0f03-4e67-9ca3-7bfc06856f90_sp4_3.webp,
+  /images/products/050050bb-c604-4e02-9def-f635d045bc19_sp4_2.webp
+]",quantity:"25",price:"328900"}) return n
+
+match (a:Product {internalCode:"1196768001"}), (b:Hobby {name:"Dễ thương"}) create (a)-[r:fit]->(b) return a, b, r
+
+MATCH (a:ImportBill)-[r:have]->(b:Product) WHERE id(a) = 7 AND b.internalCode="1196768001" RETURN r
+
+match (a:ImportBill {internalCode:"MDN0000001"}), (b:Product {internalCode:"1196768001"}) create (a)-[r:have{quantity:"25",price:"299000"}]->(b) return a, b, r
+
+create (n:Product {internalCode:"1151243013",name:"Áo kiểu dáng thụng",description:"<p>Áo kiểu dáng thụng bằng vải dệt thoi hơi óng ánh. Có cổ, khuy dọc thân trước và cầu vai hai lớp với ly hộp phía sau. Vai ráp hơi trễ và tay dài với măng sét cài khuy. Vạt hơi tròn.</p><p>Mã số sản phẩm:1151243013</p><p>Kích cỡ:</p><p>Mặt sau: Chiều dài: 75.5 cm (Kích cỡ M/T), Tay áo: Chiều dài: 61.4 cm (Kích cỡ M/T), Vai: Rộng: 49.0 cm (Kích cỡ M/T)</p><p>Chiều cao:</p><p>Chiều dài bình thường</p><p>Chiều dài tay áo:</p><p>Tay dài</p><p>Độ vừa vặn:</p><p>Quá cỡ</p><p>Cổ áo:</p><p>Cổ bẻ</p><p>Mô tả:</p><p>Màu be xám/Đen, Kẻ sọc</p><p>Nhóm khách hàng:</p><p>EVERYDAY FASHION</p>",size:"S",material:"<h3>Thành phần</h3><p>Pôlyexte 100%</p><h3>Thông tin bổ sung về chất liệu</h3><p>Tổng trọng lượng của sản phẩm này bao gồm:</p><ul><li>63% Polyester tái chế</li></ul><p>Chúng tôi loại trừ trọng lượng của các thành phần phụ như, nhưng không hoàn toàn: đường chỉ, nút, khóa kéo, chi tiết trang trí và hình in.</p><p>Tổng trọng lượng của sản phẩm được tính bằng cách cộng trọng lượng của tất cả các lớp và thành phần chính lại với nhau. Trên cơ sở đó, chúng tôi tính toán xem mỗi vật liệu tạo ra bao nhiêu phần trăm trọng lượng đó. Đối với các sản phẩm theo set &amp; bộ bao gồm nhiều món, tất cả các món sẽ được tính là một sản phẩm trong phép tính.</p><h3>Giải thích cho vật liệu được dùng trong sản phẩm này</h3><p>Polyester tái chế</p><p>Polyester tái chế là polyester được làm từ chai PET hoặc vải phế liệu hết hạn sử dụng. Các chai PET hoặc vải phế liệu được tái chế cơ học và xử lý thành sợi mới.</p><p>Pôlyexte</p><p>Polyester là sợi tổng hợp được làm từ dầu thô (một nguồn tài nguyên hóa thạch).</p>",preserve:"<p>Bạn cũng có thể giúp bảo vệ môi trường cho một tương lai thời trang bền vững hơn. Hãy mang đem bao quần áo cũ / hàng dệt may bất kỳ không sử dụng nữa đến các cửa hàng H&amp;M tham gia tái chế thời trang.</p><p><a href='https://www2.hm.com/vi_vn/hm-sustainability/take-care.html'>Đọc về cách bạn có thể giữ cho quần áo bền lâu hơn</a></p><h4>Hướng dẫn bảo quản</h4><ul><li>Phơi khô</li><li>Chỉ tẩy bằng chất không chứa clo khi cần</li><li>Giặt máy ở 40°</li><li>Có thể giặt khô</li><li>Là ủi nhiệt độ thấp</li></ul>",images:"[
+  /images/products/34d996a2-285c-4d6e-8131-4ef6eb0e61c8_sp2_1.jpg,
+  /images/products/257c1e60-bd77-4388-923e-c18ea7273dd1_sp2_2.webp,
+  /images/products/50a266c7-d387-48ab-bd8d-95155afbd2cb_sp2_3.webp
+]",quantity:"25",price:"548900"}) return n
+
+match (a:Product {internalCode:"1151243013"}), (b:Hobby {name:"Cá tính"}) create (a)-[r:fit]->(b) return a, b, r
+
+match (a:Product {internalCode:"1151243013"}), (b:Hobby {name:"Kín đáo"}) create (a)-[r:fit]->(b) return a, b, r
+
+MATCH (a:ImportBill)-[r:have]->(b:Product) WHERE id(a) = 7 AND b.internalCode="1151243013" RETURN r
+
+match (a:ImportBill {internalCode:"MDN0000001"}), (b:Product {internalCode:"1151243013"}) create (a)-[r:have{quantity:"25",price:"499000"}]->(b) return a, b, r
+
+create (n:Product {internalCode:"1160381006",name:"Áo kiểu hao văn",description:"<p>Áo kiểu hoa văn bằng vải crêpe dệt thoi xuyên thấu với cổ đứng nhỏ và phần mở kiểu lỗ khoá có khuy bọc sau gáy. Tay dài may nhún vải ở vai và măng sét có khuy bọc. Vạt hơi tròn.</p><p>Mã số sản phẩm:1160381006</p><p>Kích cỡ:</p><p>Vai: Rộng: 36.6 cm (Kích cỡ M/T), Mặt sau: Chiều dài: 68.0 cm (Kích cỡ M/T), Tay áo: Chiều dài: 65.9 cm (Kích cỡ M/T)</p><p>Chiều cao:</p><p>Chiều dài bình thường</p><p>Chiều dài tay áo:</p><p>Tay dài</p><p>Độ vừa vặn:</p><p>Ôm vừa</p><p>Cổ áo:</p><p>Cổ đứng</p><p>Phong cách:</p><p>Áo keyhole</p><p>Mô tả:</p><p>Màu kem/Đen, Mẫu họa tiết</p><p>Nhóm khách hàng:</p><p>EVERYDAY FASHION</p>",size:"S",material:"<h3>Thành phần</h3><p>Pôlyexte 100%</p><h3>Thông tin bổ sung về chất liệu</h3><p>Tổng trọng lượng của sản phẩm này bao gồm:</p><ul><li>100% Polyester tái chế</li></ul><p>Chúng tôi loại trừ trọng lượng của các thành phần phụ như, nhưng không hoàn toàn: đường chỉ, nút, khóa kéo, chi tiết trang trí và hình in.</p><p>Tổng trọng lượng của sản phẩm được tính bằng cách cộng trọng lượng của tất cả các lớp và thành phần chính lại với nhau. Trên cơ sở đó, chúng tôi tính toán xem mỗi vật liệu tạo ra bao nhiêu phần trăm trọng lượng đó. Đối với các sản phẩm theo set &amp; bộ bao gồm nhiều món, tất cả các món sẽ được tính là một sản phẩm trong phép tính.</p><h3>Giải thích cho vật liệu được dùng trong sản phẩm này</h3><p>Polyester tái chế</p><p>Polyester tái chế là polyester được làm từ chai PET hoặc vải phế liệu hết hạn sử dụng. Các chai PET hoặc vải phế liệu được tái chế cơ học và xử lý thành sợi mới.</p><p>Pôlyexte</p><p>Polyester là sợi tổng hợp được làm từ dầu thô (một nguồn tài nguyên hóa thạch).</p>",preserve:"<p>Bạn cũng có thể giúp bảo vệ môi trường cho một tương lai thời trang bền vững hơn. Hãy mang đem bao quần áo cũ / hàng dệt may bất kỳ không sử dụng nữa đến các cửa hàng H&amp;M tham gia tái chế thời trang.</p><p><a href='https://www2.hm.com/vi_vn/hm-sustainability/take-care.html'>Đọc về cách bạn có thể giữ cho quần áo bền lâu hơn</a></p><h4>Hướng dẫn bảo quản</h4><ul><li>Phơi khô</li><li>Chỉ tẩy bằng chất không chứa clo khi cần</li><li>Giặt máy ở 40°</li><li>Có thể giặt khô</li><li>Là ủi nhiệt độ thấp</li></ul>",images:"[
+  /images/products/10414daf-c62b-48f2-bf27-0d12e9218a84_hmgoepprod.webp,
+  /images/products/b63ec5f9-620f-44b6-b24d-3dfb7daef897_hmgoepprod%20(1).webp,
+  /images/products/a90b17b4-d892-46cd-b373-124df16312c2_hmgoepprod%20(2).jpg
+]",quantity:"15",price:"658900"}) return n
+
+match (a:Product {internalCode:"1160381006"}), (b:Hobby {name:"Cá tính"}) create (a)-[r:fit]->(b) return a, b, r
+
+match (a:Product {internalCode:"1160381006"}), (b:Hobby {name:"Kín đáo"}) create (a)-[r:fit]->(b) return a, b, r
+
+MATCH (a:ImportBill)-[r:have]->(b:Product) WHERE id(a) = 7 AND b.internalCode="1160381006" RETURN r
+
+match (a:ImportBill {internalCode:"MDN0000001"}), (b:Product {internalCode:"1160381006"}) create (a)-[r:have{quantity:"15",price:"599000"}]->(b) return a, b, r
+
+match (n:Product {internalCode:"1160381006"}) set n.internalCode="1160381006",n.name="Áo khoác mỏng dệt kim mịn",n.description="<p>Áo kiểu hoa văn bằng vải crêpe dệt thoi xuyên thấu với cổ đứng nhỏ và phần mở kiểu lỗ khoá có khuy bọc sau gáy. Tay dài may nhún vải ở vai và măng sét có khuy bọc. Vạt hơi tròn.</p><p>Mã số sản phẩm:1160381006</p><p>Kích cỡ:</p><p>Vai: Rộng: 36.6 cm (Kích cỡ M/T), Mặt sau: Chiều dài: 68.0 cm (Kích cỡ M/T), Tay áo: Chiều dài: 65.9 cm (Kích cỡ M/T)</p><p>Chiều cao:</p><p>Chiều dài bình thường</p><p>Chiều dài tay áo:</p><p>Tay dài</p><p>Độ vừa vặn:</p><p>Ôm vừa</p><p>Cổ áo:</p><p>Cổ đứng</p><p>Phong cách:</p><p>Áo keyhole</p><p>Mô tả:</p><p>Màu kem/Đen, Mẫu họa tiết</p><p>Nhóm khách hàng:</p><p>EVERYDAY FASHION</p>",n.size="S",n.material="<h3>Thành phần</h3><p>Sợi vít-cô 70%, Poliamit 30%</p><h3>Thông tin bổ sung về chất liệu</h3><p>Tổng trọng lượng của sản phẩm này bao gồm:</p><ul><li>70% Viscose LivaEco™</li></ul><p>Chúng tôi loại trừ trọng lượng của các thành phần phụ như, nhưng không hoàn toàn: đường chỉ, nút, khóa kéo, chi tiết trang trí và hình in.</p><p>Tổng trọng lượng của sản phẩm được tính bằng cách cộng trọng lượng của tất cả các lớp và thành phần chính lại với nhau. Trên cơ sở đó, chúng tôi tính toán xem mỗi vật liệu tạo ra bao nhiêu phần trăm trọng lượng đó. Đối với các sản phẩm theo set &amp; bộ bao gồm nhiều món, tất cả các món sẽ được tính là một sản phẩm trong phép tính.</p><h3>Giải thích cho vật liệu được dùng trong sản phẩm này</h3><p>Poliamit</p><p>Polyamide, còn gọi là nylon, là một loại sợi tổng hợp được làm từ dầu mỏ (một nguồn tài nguyên hóa thạch).</p><p>Sợi vít-cô</p><p>Vải Viscose là loại sợi cellulose tái sinh thường lấy từ gỗ, nhưng nguyên liệu thô cũng có thể chứa các vật liệu cellulose khác.</p><p>Viscose LivaEco™</p><p>LivaEco™ viscose là một loại xơ viscose có thương hiệu, được làm từ bột gỗ.</p><p><br>&nbsp;</p>",n.preserve="<p>Bạn cũng có thể giúp bảo vệ môi trường cho một tương lai thời trang bền vững hơn. Hãy mang đem bao quần áo cũ / hàng dệt may bất kỳ không sử dụng nữa đến các cửa hàng H&amp;M tham gia tái chế thời trang.</p><p><a href="https://www2.hm.com/vi_vn/hm-sustainability/take-care.html">Đọc về cách bạn có thể giữ cho quần áo bền lâu hơn</a></p><h4>Hướng dẫn bảo quản</h4><ul><li>Phơi khô</li><li>Chỉ tẩy bằng chất không chứa clo khi cần</li><li>Giặt máy ở 40°</li><li>Là ủi nhiệt độ trung bình</li><li>Có thể giặt khô</li><li>Giặt chung với màu tương tự</li></ul>",n.images="[
+  "/images/products/eff5f52d-b24a-4177-ad5a-e8e3899e0ebc_sp11_1.jpg",
+  "/images/products/dbef01a3-e311-4d45-aaeb-a7a8f4ea954a_sp11_2.webp",
+  "/images/products/3b1d55cc-eeb6-4d02-a31c-a8a4f8d406fe_sp11_3.webp"
+]",n.quantity="35",n.price="328900" return n
+
+create (n:Customer {gender:"Nam",phone:"2001200553",password:"123456",name:"Phạm Tấn Thuận",dateBirth:"2000-01-01",address:"Hồ Chí Minh"}) return n
+
+create (n:User {userName:"2001200553",password:"123456"}) return n
+
+match (a:Customer {gender:"Nam",phone:"2001200553",password:"123456",name:"Phạm Tấn Thuận",dateBirth:"2000-01-01",address:"Hồ Chí Minh"}), (b:User {userName:"2001200553",password:"123456"}) create (a)-[r:own]->(b) return a, b, r
+
+match (a:Customer {gender:"Nam",phone:"2001200553",password:"123456",name:"Phạm Tấn Thuận",dateBirth:"2000-01-01",address:"Hồ Chí Minh"}), (b:Hobby {name:"Cá tính"}) create (a)-[r:have]->(b) return a, b, r
+
+create (n:ImportBill {internalCode:"MDN0000002",dateImport:"2023-10-19",distributor:"Siêu cấp",contactPhone:"0215487563",price:"2790000",isActive:"True"}) return n
+
+match (a:Employee {internalCode:"2001200584"}), (b:ImportBill {internalCode:"MDN0000002"}) create (a)-[r:import]->(b) return a, b, r
+
+create (n:Product {internalCode:"BS283_BL",name:"MỘT MẢNH SÁT NÁCH BỤNG NHÚN - ĐEN",description:"<p>Áo khoác mỏng bằng sợi lụa nhân tạo pha trộn, dệt kim mịn, mềm, khuy dọc thân trước và gân nổi ở viền cổ, cổ tay và gấu áo.</p><p>Mã số sản phẩm:BS283_BL</p><p>Chiều cao:</p><p>Chiều dài bình thường</p><p>Chiều dài tay áo:</p><p>Tay dài</p><p>Độ vừa vặn:</p><p>Ôm vừa</p><p>Mô tả:</p><p>Màu đen, Màu trơn</p><p>Nhóm khách hàng:</p><p>BASICS</p>",size:"S",material:"<h3>Thành phần</h3><p>Sợi vít-cô 70%, Poliamit 30%</p><h3>Thông tin bổ sung về chất liệu</h3><p>Tổng trọng lượng của sản phẩm này bao gồm:</p><ul><li>70% Viscose LivaEco™</li></ul><p>Chúng tôi loại trừ trọng lượng của các thành phần phụ như, nhưng không hoàn toàn: đường chỉ, nút, khóa kéo, chi tiết trang trí và hình in.</p><p>Tổng trọng lượng của sản phẩm được tính bằng cách cộng trọng lượng của tất cả các lớp và thành phần chính lại với nhau. Trên cơ sở đó, chúng tôi tính toán xem mỗi vật liệu tạo ra bao nhiêu phần trăm trọng lượng đó. Đối với các sản phẩm theo set &amp; bộ bao gồm nhiều món, tất cả các món sẽ được tính là một sản phẩm trong phép tính.</p><h3>Giải thích cho vật liệu được dùng trong sản phẩm này</h3><p>Poliamit</p><p>Polyamide, còn gọi là nylon, là một loại sợi tổng hợp được làm từ dầu mỏ (một nguồn tài nguyên hóa thạch).</p><p>Sợi vít-cô</p><p>Vải Viscose là loại sợi cellulose tái sinh thường lấy từ gỗ, nhưng nguyên liệu thô cũng có thể chứa các vật liệu cellulose khác.</p><p>Viscose LivaEco™</p><p>LivaEco™ viscose là một loại xơ viscose có thương hiệu, được làm từ bột gỗ.</p>",preserve:"<p>Bạn cũng có thể giúp bảo vệ môi trường cho một tương lai thời trang bền vững hơn. Hãy mang đem bao quần áo cũ / hàng dệt may bất kỳ không sử dụng nữa đến các cửa hàng H&amp;M tham gia tái chế thời trang.</p><p><a href='https://www2.hm.com/vi_vn/hm-sustainability/take-care.html'>Đọc về cách bạn có thể giữ cho quần áo bền lâu hơn</a></p><h4>Hướng dẫn bảo quản</h4><ul><li>Phơi khô</li><li>Chỉ tẩy bằng chất không chứa clo khi cần</li><li>Giặt máy ở 40°</li><li>Là ủi nhiệt độ trung bình</li><li>Có thể giặt khô</li><li>Giặt chung với màu tương tự</li></ul>",images:"[
+  /images/products/b1983745-5a7c-4e32-917e-52e6c4396f14_sp5_1.jpeg,
+  /images/products/fc64e54b-688a-4d59-9794-740596e4e5fe_sp5_2.jpeg,
+  /images/products/954d2bd7-5953-422f-afd4-7f340b271b48_sp5_3.jpeg
+]",quantity:"10",price:"328900"}) return n
+
+match (a:Product {internalCode:"BS283_BL"}), (b:Hobby {name:"Nóng bỏng"}) create (a)-[r:fit]->(b) return a, b, r
+
+MATCH (a:ImportBill)-[r:have]->(b:Product) WHERE id(a) = 14 AND b.internalCode="BS283_BL" RETURN r
+
+match (a:ImportBill {internalCode:"MDN0000002"}), (b:Product {internalCode:"BS283_BL"}) create (a)-[r:have{quantity:"10",price:"299000"}]->(b) return a, b, r
+
+create (n:Product {internalCode:"BG083_LB",name:"ÁO TẬP CROPTOP 3 LỖ",description:"<p>Áo khoác mỏng bằng sợi lụa nhân tạo pha trộn, dệt kim mịn, mềm, khuy dọc thân trước và gân nổi ở viền cổ, cổ tay và gấu áo.</p><p>Mã số sản phẩm:BG083_LB</p><p>Chiều cao:</p><p>Chiều dài bình thường</p><p>Chiều dài tay áo:</p><p>Tay dài</p><p>Độ vừa vặn:</p><p>Ôm vừa</p><p>Mô tả:</p><p>Màu đen, Màu trơn</p><p>Nhóm khách hàng:</p><p>BASICS</p>",size:"S",material:"<h3>Thành phần</h3><p>Sợi vít-cô 70%, Poliamit 30%</p><h3>Thông tin bổ sung về chất liệu</h3><p>Tổng trọng lượng của sản phẩm này bao gồm:</p><ul><li>70% Viscose LivaEco™</li></ul><p>Chúng tôi loại trừ trọng lượng của các thành phần phụ như, nhưng không hoàn toàn: đường chỉ, nút, khóa kéo, chi tiết trang trí và hình in.</p><p>Tổng trọng lượng của sản phẩm được tính bằng cách cộng trọng lượng của tất cả các lớp và thành phần chính lại với nhau. Trên cơ sở đó, chúng tôi tính toán xem mỗi vật liệu tạo ra bao nhiêu phần trăm trọng lượng đó. Đối với các sản phẩm theo set &amp; bộ bao gồm nhiều món, tất cả các món sẽ được tính là một sản phẩm trong phép tính.</p><h3>Giải thích cho vật liệu được dùng trong sản phẩm này</h3><p>Poliamit</p><p>Polyamide, còn gọi là nylon, là một loại sợi tổng hợp được làm từ dầu mỏ (một nguồn tài nguyên hóa thạch).</p><p>Sợi vít-cô</p><p>Vải Viscose là loại sợi cellulose tái sinh thường lấy từ gỗ, nhưng nguyên liệu thô cũng có thể chứa các vật liệu cellulose khác.</p><p>Viscose LivaEco™</p><p>LivaEco™ viscose là một loại xơ viscose có thương hiệu, được làm từ bột gỗ.</p>",preserve:"<p>Bạn cũng có thể giúp bảo vệ môi trường cho một tương lai thời trang bền vững hơn. Hãy mang đem bao quần áo cũ / hàng dệt may bất kỳ không sử dụng nữa đến các cửa hàng H&amp;M tham gia tái chế thời trang.</p><p><a href='https://www2.hm.com/vi_vn/hm-sustainability/take-care.html'>Đọc về cách bạn có thể giữ cho quần áo bền lâu hơn</a></p><h4>Hướng dẫn bảo quản</h4><ul><li>Phơi khô</li><li>Chỉ tẩy bằng chất không chứa clo khi cần</li><li>Giặt máy ở 40°</li><li>Là ủi nhiệt độ trung bình</li><li>Có thể giặt khô</li><li>Giặt chung với màu tương tự</li></ul>",images:"[
+  /images/products/46e58bc4-a2c6-4a0a-b06f-a6f96385b355_sp9_1.jpeg,
+  /images/products/24fab9ee-b636-4a8e-b4de-f4bed3527b1d_sp9_2.jpeg,
+  /images/products/cf442079-2362-43aa-8145-c3ac5ba3d62e_sp9_3.jpeg
+]",quantity:"20",price:"658900"}) return n
+
+match (a:Product {internalCode:"BG083_LB"}), (b:Hobby {name:"Nóng bỏng"}) create (a)-[r:fit]->(b) return a, b, r
+
+match (a:Product {internalCode:"BG083_LB"}), (b:Hobby {name:"Cá tính"}) create (a)-[r:fit]->(b) return a, b, r
+
+MATCH (a:ImportBill)-[r:have]->(b:Product) WHERE id(a) = 14 AND b.internalCode="BG083_LB" RETURN r
+
+match (a:ImportBill {internalCode:"MDN0000002"}), (b:Product {internalCode:"BG083_LB"}) create (a)-[r:have{quantity:"20",price:"599000"}]->(b) return a, b, r
+
+create (n:Product {internalCode:"BS260_HOT",name:"MỘT MẢNH QUẦN SHORT, ÁO TAY DÀI - HOT",description:"<p>Áo khoác mỏng bằng sợi lụa nhân tạo pha trộn, dệt kim mịn, mềm, khuy dọc thân trước và gân nổi ở viền cổ, cổ tay và gấu áo.</p><p>Mã số sản phẩm:BS260_HOT</p><p>Chiều cao:</p><p>Chiều dài bình thường</p><p>Chiều dài tay áo:</p><p>Tay dài</p><p>Độ vừa vặn:</p><p>Ôm vừa</p><p>Mô tả:</p><p>Màu đen, Màu trơn</p><p>Nhóm khách hàng:</p><p>BASICS</p>",size:"S",material:"<h3>Thành phần</h3><p>Sợi vít-cô 70%, Poliamit 30%</p><h3>Thông tin bổ sung về chất liệu</h3><p>Tổng trọng lượng của sản phẩm này bao gồm:</p><ul><li>70% Viscose LivaEco™</li></ul><p>Chúng tôi loại trừ trọng lượng của các thành phần phụ như, nhưng không hoàn toàn: đường chỉ, nút, khóa kéo, chi tiết trang trí và hình in.</p><p>Tổng trọng lượng của sản phẩm được tính bằng cách cộng trọng lượng của tất cả các lớp và thành phần chính lại với nhau. Trên cơ sở đó, chúng tôi tính toán xem mỗi vật liệu tạo ra bao nhiêu phần trăm trọng lượng đó. Đối với các sản phẩm theo set &amp; bộ bao gồm nhiều món, tất cả các món sẽ được tính là một sản phẩm trong phép tính.</p><h3>Giải thích cho vật liệu được dùng trong sản phẩm này</h3><p>Poliamit</p><p>Polyamide, còn gọi là nylon, là một loại sợi tổng hợp được làm từ dầu mỏ (một nguồn tài nguyên hóa thạch).</p><p>Sợi vít-cô</p><p>Vải Viscose là loại sợi cellulose tái sinh thường lấy từ gỗ, nhưng nguyên liệu thô cũng có thể chứa các vật liệu cellulose khác.</p><p>Viscose LivaEco™</p><p>LivaEco™ viscose là một loại xơ viscose có thương hiệu, được làm từ bột gỗ.</p>",preserve:"<p>Bạn cũng có thể giúp bảo vệ môi trường cho một tương lai thời trang bền vững hơn. Hãy mang đem bao quần áo cũ / hàng dệt may bất kỳ không sử dụng nữa đến các cửa hàng H&amp;M tham gia tái chế thời trang.</p><p><a href='https://www2.hm.com/vi_vn/hm-sustainability/take-care.html'>Đọc về cách bạn có thể giữ cho quần áo bền lâu hơn</a></p><h4>Hướng dẫn bảo quản</h4><ul><li>Phơi khô</li><li>Chỉ tẩy bằng chất không chứa clo khi cần</li><li>Giặt máy ở 40°</li><li>Là ủi nhiệt độ trung bình</li><li>Có thể giặt khô</li><li>Giặt chung với màu tương tự</li></ul>",images:"[
+  /images/products/34262d8a-fe8c-44fb-8008-9a0f5c9a6b14_sp6_1.jpeg,
+  /images/products/bd0dbd53-2b04-4f1d-a45a-de1606fa359b_sp6_2.jpeg,
+  /images/products/5a70aa1b-301f-40b4-8b9a-8a8eaf66670e_sp6_3.jpeg
+]",quantity:"30",price:"218900"}) return n
+
+match (a:Product {internalCode:"BS260_HOT"}), (b:Hobby {name:"Nóng bỏng"}) create (a)-[r:fit]->(b) return a, b, r
+
+match (a:Product {internalCode:"BS260_HOT"}), (b:Hobby {name:"Dễ thương"}) create (a)-[r:fit]->(b) return a, b, r
+
+match (a:Product {internalCode:"BS260_HOT"}), (b:Hobby {name:"Bơi lội"}) create (a)-[r:fit]->(b) return a, b, r
+
+MATCH (a:ImportBill)-[r:have]->(b:Product) WHERE id(a) = 14 AND b.internalCode="BS260_HOT" RETURN r
+
+match (a:ImportBill {internalCode:"MDN0000002"}), (b:Product {internalCode:"BS260_HOT"}) create (a)-[r:have{quantity:"30",price:"199000"}]->(b) return a, b, r
+
+create (n:Product {internalCode:"BS202_GN",name:"ÁO LẺ TAY DÀI BASIC - XANH LÁ CÂY",description:"<p>Áo khoác mỏng bằng sợi lụa nhân tạo pha trộn, dệt kim mịn, mềm, khuy dọc thân trước và gân nổi ở viền cổ, cổ tay và gấu áo.</p><p>Mã số sản phẩm:BS202_GN</p><p>Chiều cao:</p><p>Chiều dài bình thường</p><p>Chiều dài tay áo:</p><p>Tay dài</p><p>Độ vừa vặn:</p><p>Ôm vừa</p><p>Mô tả:</p><p>Màu đen, Màu trơn</p><p>Nhóm khách hàng:</p><p>BASICS</p>",size:"S",material:"<h3>Thành phần</h3><p>Sợi vít-cô 70%, Poliamit 30%</p><h3>Thông tin bổ sung về chất liệu</h3><p>Tổng trọng lượng của sản phẩm này bao gồm:</p><ul><li>70% Viscose LivaEco™</li></ul><p>Chúng tôi loại trừ trọng lượng của các thành phần phụ như, nhưng không hoàn toàn: đường chỉ, nút, khóa kéo, chi tiết trang trí và hình in.</p><p>Tổng trọng lượng của sản phẩm được tính bằng cách cộng trọng lượng của tất cả các lớp và thành phần chính lại với nhau. Trên cơ sở đó, chúng tôi tính toán xem mỗi vật liệu tạo ra bao nhiêu phần trăm trọng lượng đó. Đối với các sản phẩm theo set &amp; bộ bao gồm nhiều món, tất cả các món sẽ được tính là một sản phẩm trong phép tính.</p><h3>Giải thích cho vật liệu được dùng trong sản phẩm này</h3><p>Poliamit</p><p>Polyamide, còn gọi là nylon, là một loại sợi tổng hợp được làm từ dầu mỏ (một nguồn tài nguyên hóa thạch).</p><p>Sợi vít-cô</p><p>Vải Viscose là loại sợi cellulose tái sinh thường lấy từ gỗ, nhưng nguyên liệu thô cũng có thể chứa các vật liệu cellulose khác.</p><p>Viscose LivaEco™</p><p>LivaEco™ viscose là một loại xơ viscose có thương hiệu, được làm từ bột gỗ.</p>",preserve:"<p>Bạn cũng có thể giúp bảo vệ môi trường cho một tương lai thời trang bền vững hơn. Hãy mang đem bao quần áo cũ / hàng dệt may bất kỳ không sử dụng nữa đến các cửa hàng H&amp;M tham gia tái chế thời trang.</p><p><a href='https://www2.hm.com/vi_vn/hm-sustainability/take-care.html'>Đọc về cách bạn có thể giữ cho quần áo bền lâu hơn</a></p><h4>Hướng dẫn bảo quản</h4><ul><li>Phơi khô</li><li>Chỉ tẩy bằng chất không chứa clo khi cần</li><li>Giặt máy ở 40°</li><li>Là ủi nhiệt độ trung bình</li><li>Có thể giặt khô</li><li>Giặt chung với màu tương tự</li></ul>",images:"[
+  /images/products/55f4e251-09cd-4a34-8d89-0a39556c4364_sp7_1.jpg,
+  /images/products/4fe8b6e8-60b8-493d-8e64-9e87a84cd669_sp7_2.jpg,
+  /images/products/3c9a37ac-3736-4af2-bc2d-daf5a77430da_sp7_3.jpg
+]",quantity:"10",price:"306900"}) return n
+
+match (a:Product {internalCode:"BS202_GN"}), (b:Hobby {name:"Nóng bỏng"}) create (a)-[r:fit]->(b) return a, b, r
+
+match (a:Product {internalCode:"BS202_GN"}), (b:Hobby {name:"Dễ thương"}) create (a)-[r:fit]->(b) return a, b, r
+
+match (a:Product {internalCode:"BS202_GN"}), (b:Hobby {name:"Bơi lội"}) create (a)-[r:fit]->(b) return a, b, r
+
+MATCH (a:ImportBill)-[r:have]->(b:Product) WHERE id(a) = 14 AND b.internalCode="BS202_GN" RETURN r
+
+match (a:ImportBill {internalCode:"MDN0000002"}), (b:Product {internalCode:"BS202_GN"}) create (a)-[r:have{quantity:"10",price:"279000"}]->(b) return a, b, r
+
+match (n:ImportBill {internalCode:"MDN0000002"}) set n.isActive="True" return n
+
+create (n:ImportBill {internalCode:"MDN0000003",dateImport:"2023-10-19",distributor:"Tiên tiến",contactPhone:"0254789635",price:"23970000",isActive:"True"}) return n
+
+match (a:Employee {internalCode:"2001200584"}), (b:ImportBill {internalCode:"MDN0000003"}) create (a)-[r:import]->(b) return a, b, r
+
+create (n:Product {internalCode:"0762558274",name:"Áo thun ngoại cỡ in họa tiết",description:"<p>Áo thun ngoại cỡ bằng vải trơn mềm làm từ sợi bông có in họa tiết ở thân trước, đường viền cổ tròn có bo viền bằng len gân và vai xuôi nhẹ.</p><p>Mã số sản phẩm:0762558274</p><p>Chiều cao:</p><p>Chiều dài bình thường</p><p>Chiều dài tay áo:</p><p>Tay áo ngắn</p><p>Độ vừa vặn:</p><p>Quá cỡ</p><p>Đường viền cổ áo:</p><p>Cổ tròn</p><p>Mô tả:</p><p>Màu xám đậm/Hồng/Trắng, Nirvana, Thiên thần, Nirvana</p>",size:"S",material:"<h3>Thành phần</h3><p>Bông 100%</p><h3>Thông tin bổ sung về chất liệu</h3><p>Tổng trọng lượng của sản phẩm này bao gồm:</p><ul><li>20% Cotton tái chế</li></ul><p>Chúng tôi loại trừ trọng lượng của các thành phần phụ như, nhưng không hoàn toàn: đường chỉ, nút, khóa kéo, chi tiết trang trí và hình in.</p><p>Tổng trọng lượng của sản phẩm được tính bằng cách cộng trọng lượng của tất cả các lớp và thành phần chính lại với nhau. Trên cơ sở đó, chúng tôi tính toán xem mỗi vật liệu tạo ra bao nhiêu phần trăm trọng lượng đó. Đối với các sản phẩm theo set &amp; bộ bao gồm nhiều món, tất cả các món sẽ được tính là một sản phẩm trong phép tính.</p><p>Chất liệu:</p><p>Jersey</p><h3>Giải thích cho vật liệu được dùng trong sản phẩm này</h3><p>Bông</p><p>Bông là loại sợi tự nhiên mềm và linh hoạt được thu hoạch từ cây bông.</p><p>Cotton tái chế</p><p>Bông tái chế là bông được làm từ vải phế liệu trong quá trình sản xuất hoặc từ vải phế liệu hết hạn sử dụng. Phế liệu được tái chế cơ học và kéo thành sợi mới.</p>",preserve:"<h3>Thành phần</h3><p>Bông 100%</p><h3>Thông tin bổ sung về chất liệu</h3><p>Tổng trọng lượng của sản phẩm này bao gồm:</p><ul><li>20% Cotton tái chế</li></ul><p>Chúng tôi loại trừ trọng lượng của các thành phần phụ như, nhưng không hoàn toàn: đường chỉ, nút, khóa kéo, chi tiết trang trí và hình in.</p><p>Tổng trọng lượng của sản phẩm được tính bằng cách cộng trọng lượng của tất cả các lớp và thành phần chính lại với nhau. Trên cơ sở đó, chúng tôi tính toán xem mỗi vật liệu tạo ra bao nhiêu phần trăm trọng lượng đó. Đối với các sản phẩm theo set &amp; bộ bao gồm nhiều món, tất cả các món sẽ được tính là một sản phẩm trong phép tính.</p><p>Chất liệu:</p><p>Jersey</p><h3>Giải thích cho vật liệu được dùng trong sản phẩm này</h3><p>Bông</p><p>Bông là loại sợi tự nhiên mềm và linh hoạt được thu hoạch từ cây bông.</p><p>Cotton tái chế</p><p>Bông tái chế là bông được làm từ vải phế liệu trong quá trình sản xuất hoặc từ vải phế liệu hết hạn sử dụng. Phế liệu được tái chế cơ học và kéo thành sợi mới.</p>",images:"[
+  /images/products/86719a07-0bf1-4d7d-b41b-0290c59f78b5_sp20_3.webp,
+  /images/products/ed4f263f-c97f-4dc3-9822-dd8f3a1e391d_sp20_1.jpg,
+  /images/products/b9ec47e0-cccc-4ab6-87f0-807d7db8ce82_sp20_2.webp
+]",quantity:"10",price:"328900"}) return n
+
+match (a:Product {internalCode:"0762558274"}), (b:Hobby {name:"Cá tính"}) create (a)-[r:fit]->(b) return a, b, r
+
+match (a:Product {internalCode:"0762558274"}), (b:Hobby {name:"Dễ thương"}) create (a)-[r:fit]->(b) return a, b, r
+
+MATCH (a:ImportBill)-[r:have]->(b:Product) WHERE id(a) = 19 AND b.internalCode="0762558274" RETURN r
+
+match (a:ImportBill {internalCode:"MDN0000003"}), (b:Product {internalCode:"0762558274"}) create (a)-[r:have{quantity:"10",price:"299000"}]->(b) return a, b, r
+
+create (n:Product {internalCode:"0939703055",name:"Áo kiểu cổ chữ V",description:"<p>Áo kiểu cổ chữ V bằng vải dệt thoi hơi óng ánh. Có cổ, khuy dọc thân trước, tay dài với nẹp tay áo, măng sét cài khuy và vạt áo tròn.</p><p>Mã số sản phẩm:0939703055</p><p>Kích cỡ:</p><p>Mặt sau: Chiều dài: 64.6 cm (Kích cỡ M/T), Tay áo: Chiều dài: 61.4 cm (Kích cỡ M/T), Vai: Rộng: 40.2 cm (Kích cỡ M/T)</p><p>Chiều cao:</p><p>Chiều dài bình thường</p><p>Chiều dài tay áo:</p><p>Tay dài</p><p>Độ vừa vặn:</p><p>Ôm vừa</p><p>Cổ áo:</p><p>Cổ bẻ</p><p>Đường viền cổ áo:</p><p>Cổ chữ V</p><p>Mô tả:</p><p>Màu kem, Màu trơn</p><p>Nhóm khách hàng:</p><p>MODERN CLASSIC</p>",size:"X",material:"<h3>Thành phần</h3><p>Pôlyexte 96%, Vải thun Elastan 4%</p><h3>Thông tin bổ sung về chất liệu</h3><p>Tổng trọng lượng của sản phẩm này bao gồm:</p><ul><li>96% Polyester tái chế từ sản phẩm dệt may</li></ul><p>Chúng tôi loại trừ trọng lượng của các thành phần phụ như, nhưng không hoàn toàn: đường chỉ, nút, khóa kéo, chi tiết trang trí và hình in.</p><p>Tổng trọng lượng của sản phẩm được tính bằng cách cộng trọng lượng của tất cả các lớp và thành phần chính lại với nhau. Trên cơ sở đó, chúng tôi tính toán xem mỗi vật liệu tạo ra bao nhiêu phần trăm trọng lượng đó. Đối với các sản phẩm theo set &amp; bộ bao gồm nhiều món, tất cả các món sẽ được tính là một sản phẩm trong phép tính.</p><h3>Giải thích cho vật liệu được dùng trong sản phẩm này</h3><p>Polyester tái chế từ sản phẩm dệt may</p><p>Polyester tái chế là polyester được làm từ vải phế liệu hết hạn sử dụng. Phế liệu được tái chế cơ học và xử lý thành sợi mới.</p><p>Pôlyexte</p><p>Polyester là sợi tổng hợp được làm từ dầu thô (một nguồn tài nguyên hóa thạch).</p><p>Vải thun Elastan</p><p>Elastan là một loại sợi tổng hợp đàn hồi làm từ dầu mỏ (một nguồn tài nguyên hóa thạch).</p>",preserve:"<p>Bạn cũng có thể giúp bảo vệ môi trường cho một tương lai thời trang bền vững hơn. Hãy mang đem bao quần áo cũ / hàng dệt may bất kỳ không sử dụng nữa đến các cửa hàng H&amp;M tham gia tái chế thời trang.</p><p><a href='https://www2.hm.com/vi_vn/hm-sustainability/take-care.html'>Đọc về cách bạn có thể giữ cho quần áo bền lâu hơn</a></p><h4>Hướng dẫn bảo quản</h4><ul><li>Phơi khô</li><li>Chỉ tẩy bằng chất không chứa clo khi cần</li><li>Giặt máy ở 40°</li><li>Có thể giặt khô</li><li>Là ủi nhiệt độ thấp</li></ul>",images:"[
+  /images/products/6da9806b-832b-4375-b140-2c3fbe35d4bb_sp19_1.jpg,
+  /images/products/4fff928d-4091-46f0-b87b-71aaeae4e9a7_sp19_2.webp,
+  /images/products/62d0b14c-bc21-49c0-9179-c327185108c8_sp19_3.webp
+]",quantity:"15",price:"878900"}) return n
+
+match (a:Product {internalCode:"0939703055"}), (b:Hobby {name:"Cá tính"}) create (a)-[r:fit]->(b) return a, b, r
+
+match (a:Product {internalCode:"0939703055"}), (b:Hobby {name:"Kín đáo"}) create (a)-[r:fit]->(b) return a, b, r
+
+MATCH (a:ImportBill)-[r:have]->(b:Product) WHERE id(a) = 19 AND b.internalCode="0939703055" RETURN r
+
+match (a:ImportBill {internalCode:"MDN0000003"}), (b:Product {internalCode:"0939703055"}) create (a)-[r:have{quantity:"15",price:"799000"}]->(b) return a, b, r
+
+match (n:Product {internalCode:"0939703055"}) set n.internalCode="0939703055",n.name="Áo hoodie với hoạ tiết phía trước",n.description="<p>Áo hoodie dài tay bằng vải nỉ có hoạ tiết ở thân trước. Mũ lót vải jersey có dây rút, túi kangaroo, vai ráp trễ và cổ tay và gấu bo gân nổi. Mặt trái chải xù mềm.</p><p>Mã số sản phẩm:1091235029</p><p>Chiều cao:</p><p>Chiều dài bình thường</p><p>Chiều dài tay áo:</p><p>Tay dài</p><p>Độ vừa vặn:</p><p>Cỡ rộng</p><p>Phong cách:</p><p>Áo dài tay có mũ</p><p>Mô tả:</p><p>Màu xám đậm/Vàng/Đỏ/Xám nhạt, Def Leppard, Animal, Báo hoa, Def Leppard</p>",n.size="L",n.material="<h3>Thành phần</h3><h4>Mặt ngoài:</h4><p>Bông 82%, Pôlyexte 18%</p><h4>Lớp lót mũ trùm:</h4><p>Bông 100%</p><p>Chất liệu:</p><p>Vải thun vảy cá</p><h3>Giải thích cho vật liệu được dùng trong sản phẩm này</h3><p>Bông</p><p>Bông là loại sợi tự nhiên mềm và linh hoạt được thu hoạch từ cây bông.</p><p>Pôlyexte</p><p>Polyester là sợi tổng hợp được làm từ dầu thô (một nguồn tài nguyên hóa thạch).</p>",n.preserve="<p>Bạn cũng có thể giúp bảo vệ môi trường cho một tương lai thời trang bền vững hơn. Hãy mang đem bao quần áo cũ / hàng dệt may bất kỳ không sử dụng nữa đến các cửa hàng H&amp;M tham gia tái chế thời trang.</p><p><a href="https://www2.hm.com/vi_vn/hm-sustainability/take-care.html">Đọc về cách bạn có thể giữ cho quần áo bền lâu hơn</a></p><h4>Hướng dẫn bảo quản</h4><ul><li>Chỉ tẩy bằng chất không chứa clo khi cần</li><li>Giặt máy ở 40°</li><li>Là ủi nhiệt độ trung bình</li><li>Không giặt khô</li><li>Sấy khô bằng nhiệt độ trung bình</li></ul>",n.images="[
+  "/images/products/81133d77-05c6-4fa3-b29e-4f72789d6b76_sp13_3.webp",
+  "/images/products/d94fdee8-8558-45b6-aeb6-5b13fa8dcf17_sp15_2.webp",
+  "/images/products/728cc517-7251-468d-867c-fc03cabcc11a_sp15_1.jpg"
+]",n.quantity="40",n.price="988900" return n
+
+create (n:ImportBill {internalCode:"MDN0000004",dateImport:"2023-10-19",distributor:"Trung cấp",contactPhone:"0215489658",price:"5650000",isActive:"True"}) return n
+
+match (a:Employee {internalCode:"2001200584"}), (b:ImportBill {internalCode:"MDN0000004"}) create (a)-[r:import]->(b) return a, b, r
+
+create (n:Product {internalCode:"1191225001",name:"Chân váy vải bouclé",description:"<p>Chân váy ngắn bằng vải bouclé dệt thoi. Cạp thường với chun ẩn, khoá kéo ẩn và khuy phía sau và gấu hơi xoè. Lót vải jersey.</p><p>Mã số sản phẩm:1191225001</p><p>Chiều cao:</p><p>Đùi</p><p>Chiều cao hông:</p><p>Cạp thường</p><p>Độ vừa vặn:</p><p>Ôm vừa</p><p>Phong cách:</p><p>Ống loe, Áo keyhole</p><p>Mô tả:</p><p>Màu trắng, Màu trơn</p><p>Nhóm khách hàng:</p><p>MODERN CLASSIC</p>",size:"S",material:"<h3>Thành phần</h3><h4>Lớp lót:</h4><p>Pôlyexte 100%</p><h4>Mặt ngoài:</h4><p>Pôlyexte 100%</p><h3>Thông tin bổ sung về chất liệu</h3><p>Tổng trọng lượng của sản phẩm này bao gồm:</p><ul><li>54% Polyester tái chế</li></ul><p>Chúng tôi loại trừ trọng lượng của các thành phần phụ như, nhưng không hoàn toàn: đường chỉ, nút, khóa kéo, chi tiết trang trí và hình in.</p><p>Tổng trọng lượng của sản phẩm được tính bằng cách cộng trọng lượng của tất cả các lớp và thành phần chính lại với nhau. Trên cơ sở đó, chúng tôi tính toán xem mỗi vật liệu tạo ra bao nhiêu phần trăm trọng lượng đó. Đối với các sản phẩm theo set &amp; bộ bao gồm nhiều món, tất cả các món sẽ được tính là một sản phẩm trong phép tính.</p><p>Chất liệu:</p><p>Bouclé</p><h3>Giải thích cho vật liệu được dùng trong sản phẩm này</h3><p>Polyester tái chế</p><p>Polyester tái chế là polyester được làm từ chai PET hoặc vải phế liệu hết hạn sử dụng. Các chai PET hoặc vải phế liệu được tái chế cơ học và xử lý thành sợi mới.</p><p>Pôlyexte</p><p>Polyester là sợi tổng hợp được làm từ dầu thô (một nguồn tài nguyên hóa thạch).</p>",preserve:"<p>Bạn cũng có thể giúp bảo vệ môi trường cho một tương lai thời trang bền vững hơn. Hãy mang đem bao quần áo cũ / hàng dệt may bất kỳ không sử dụng nữa đến các cửa hàng H&amp;M tham gia tái chế thời trang.</p><p><a href='https://www2.hm.com/vi_vn/hm-sustainability/take-care.html'>Đọc về cách bạn có thể giữ cho quần áo bền lâu hơn</a></p><h4>Hướng dẫn bảo quản</h4><ul><li>Phơi khô</li><li>Chỉ tẩy bằng chất không chứa clo khi cần</li><li>Giặt máy ở 40°</li><li>Là ủi nhiệt độ trung bình</li><li>Có thể giặt khô</li></ul>",images:"[
+  /images/products/96d07742-19b2-4510-aa29-0ad68155dcf1_sp25_1.jpg,
+  /images/products/614e97a1-c7a5-4066-853a-d061b9995b55_sp25_3.webp,
+  /images/products/18d14c94-6575-4efb-9431-bbc1127d0355_sp25_2.webp
+]",quantity:"30",price:"1098900"}) return n
+
+match (a:Product {internalCode:"1191225001"}), (b:Hobby {name:"Dễ thương"}) create (a)-[r:fit]->(b) return a, b, r
+
+match (a:Product {internalCode:"1191225001"}), (b:Hobby {name:"Nóng bỏng"}) create (a)-[r:fit]->(b) return a, b, r
+
+MATCH (a:ImportBill)-[r:have]->(b:Product) WHERE id(a) = 22 AND b.internalCode="1191225001" RETURN r
+
+match (a:ImportBill {internalCode:"MDN0000004"}), (b:Product {internalCode:"1191225001"}) create (a)-[r:have{quantity:"30",price:"999000"}]->(b) return a, b, r
+
+create (n:Product {internalCode:"1037529004",name:"Áo khoác trenchcoat hai hàng khuy",description:"<p>Áo khoác trenchcoat hai hàng khuy, dài ngang gối bằng vải dệt thoi. Cổ áo có khoá móc cài ẩn ở đằng trước, túi mổ viền và thắt lưng vải có thể tháo rời ở eo. Có lớp lót.</p><p>Mã số sản phẩm:1037529004</p><p>Chiều cao:</p><p>Dài ngang gối</p><p>Chiều dài tay áo:</p><p>Tay dài</p><p>Độ vừa vặn:</p><p>Ôm nhẹ</p><p>Phong cách:</p><p>Hai hàng khuy, Áo khoác Trenchcoat</p><p>Mô tả:</p><p>Màu be, Màu trơn</p><p>Nhóm khách hàng:</p><p>EVERYDAY FASHION</p>",size:"S",material:"<h3>Thành phần</h3><h4>Lớp lót:</h4><p>Pôlyexte 100%</p><h4>Mặt ngoài:</h4><p>Pôlyexte 100%</p><h3>Thông tin bổ sung về chất liệu</h3><p>Tổng trọng lượng của sản phẩm này bao gồm:</p><ul><li>54% Polyester tái chế</li></ul><p>Chúng tôi loại trừ trọng lượng của các thành phần phụ như, nhưng không hoàn toàn: đường chỉ, nút, khóa kéo, chi tiết trang trí và hình in.</p><p>Tổng trọng lượng của sản phẩm được tính bằng cách cộng trọng lượng của tất cả các lớp và thành phần chính lại với nhau. Trên cơ sở đó, chúng tôi tính toán xem mỗi vật liệu tạo ra bao nhiêu phần trăm trọng lượng đó. Đối với các sản phẩm theo set &amp; bộ bao gồm nhiều món, tất cả các món sẽ được tính là một sản phẩm trong phép tính.</p><p>Chất liệu:</p><p>Bouclé</p><h3>Giải thích cho vật liệu được dùng trong sản phẩm này</h3><p>Polyester tái chế</p><p>Polyester tái chế là polyester được làm từ chai PET hoặc vải phế liệu hết hạn sử dụng. Các chai PET hoặc vải phế liệu được tái chế cơ học và xử lý thành sợi mới.</p><p>Pôlyexte</p><p>Polyester là sợi tổng hợp được làm từ dầu thô (một nguồn tài nguyên hóa thạch).</p>",preserve:"<p>Bạn cũng có thể giúp bảo vệ môi trường cho một tương lai thời trang bền vững hơn. Hãy mang đem bao quần áo cũ / hàng dệt may bất kỳ không sử dụng nữa đến các cửa hàng H&amp;M tham gia tái chế thời trang.</p><p><a href='https://www2.hm.com/vi_vn/hm-sustainability/take-care.html'>Đọc về cách bạn có thể giữ cho quần áo bền lâu hơn</a></p><h4>Hướng dẫn bảo quản</h4><ul><li>Phơi khô</li><li>Chỉ tẩy bằng chất không chứa clo khi cần</li><li>Giặt máy ở 40°</li><li>Là ủi nhiệt độ trung bình</li><li>Có thể giặt khô</li></ul>",images:"[
+  /images/products/50e42900-ac6a-4aff-94b2-94801c3b3008_sp30_1.jpg,
+  /images/products/e8ad6fab-9f06-424e-9aa9-be0f1a53da4c_sp30_2.webp,
+  /images/products/fb79ca76-d435-4aef-886f-c78dac14b2b6_sp30_3.webp
+]",quantity:"20",price:"658900"}) return n
+
+match (a:Product {internalCode:"1037529004"}), (b:Hobby {name:"Cá tính"}) create (a)-[r:fit]->(b) return a, b, r
+
+match (a:Product {internalCode:"1037529004"}), (b:Hobby {name:"Kín đáo"}) create (a)-[r:fit]->(b) return a, b, r
+
+MATCH (a:ImportBill)-[r:have]->(b:Product) WHERE id(a) = 22 AND b.internalCode="1037529004" RETURN r
+
+match (a:ImportBill {internalCode:"MDN0000004"}), (b:Product {internalCode:"1037529004"}) create (a)-[r:have{quantity:"20",price:"599000"}]->(b) return a, b, r
+
+create (n:Product {internalCode:"0939703065",name:"Áo kiểu cổ chữ V",description:"<p>Áo kiểu cổ chữ V bằng vải dệt thoi hơi óng ánh. Có cổ, khuy dọc thân trước, tay dài với nẹp tay áo, măng sét cài khuy và vạt áo tròn.</p><p>Mã số sản phẩm:0939703065</p><p>Kích cỡ:</p><p>Mặt sau: Chiều dài: 64.6 cm (Kích cỡ M/T), Tay áo: Chiều dài: 61.4 cm (Kích cỡ M/T), Vai: Rộng: 40.2 cm (Kích cỡ M/T)</p><p>Chiều cao:</p><p>Chiều dài bình thường</p><p>Chiều dài tay áo:</p><p>Tay dài</p><p>Độ vừa vặn:</p><p>Ôm vừa</p><p>Cổ áo:</p><p>Cổ bẻ</p><p>Đường viền cổ áo:</p><p>Cổ chữ V</p><p>Mô tả:</p><p>Màu xanh lá nhạt, Màu trơn</p><p>Nhóm khách hàng:</p><p>MODERN CLASSIC</p>",size:"S",material:"<h3>Thành phần</h3><h4>Lớp lót:</h4><p>Pôlyexte 100%</p><h4>Mặt ngoài:</h4><p>Pôlyexte 100%</p><h3>Thông tin bổ sung về chất liệu</h3><p>Tổng trọng lượng của sản phẩm này bao gồm:</p><ul><li>54% Polyester tái chế</li></ul><p>Chúng tôi loại trừ trọng lượng của các thành phần phụ như, nhưng không hoàn toàn: đường chỉ, nút, khóa kéo, chi tiết trang trí và hình in.</p><p>Tổng trọng lượng của sản phẩm được tính bằng cách cộng trọng lượng của tất cả các lớp và thành phần chính lại với nhau. Trên cơ sở đó, chúng tôi tính toán xem mỗi vật liệu tạo ra bao nhiêu phần trăm trọng lượng đó. Đối với các sản phẩm theo set &amp; bộ bao gồm nhiều món, tất cả các món sẽ được tính là một sản phẩm trong phép tính.</p><p>Chất liệu:</p><p>Bouclé</p><h3>Giải thích cho vật liệu được dùng trong sản phẩm này</h3><p>Polyester tái chế</p><p>Polyester tái chế là polyester được làm từ chai PET hoặc vải phế liệu hết hạn sử dụng. Các chai PET hoặc vải phế liệu được tái chế cơ học và xử lý thành sợi mới.</p><p>Pôlyexte</p><p>Polyester là sợi tổng hợp được làm từ dầu thô (một nguồn tài nguyên hóa thạch).</p>",preserve:"<p>Bạn cũng có thể giúp bảo vệ môi trường cho một tương lai thời trang bền vững hơn. Hãy mang đem bao quần áo cũ / hàng dệt may bất kỳ không sử dụng nữa đến các cửa hàng H&amp;M tham gia tái chế thời trang.</p><p><a href='https://www2.hm.com/vi_vn/hm-sustainability/take-care.html'>Đọc về cách bạn có thể giữ cho quần áo bền lâu hơn</a></p><h4>Hướng dẫn bảo quản</h4><ul><li>Phơi khô</li><li>Chỉ tẩy bằng chất không chứa clo khi cần</li><li>Giặt máy ở 40°</li><li>Là ủi nhiệt độ trung bình</li><li>Có thể giặt khô</li></ul>",images:"[
+  /images/products/cda6d135-9063-4052-ae27-1a77dcf99ffc_sp31_3.webp,
+  /images/products/324877a9-5b3e-4685-ad78-f24d3880f998_sp31_2.webp,
+  /images/products/1a9db0f7-74a9-4f9f-ac17-d6962c6c409d_sp31_1.jpg
+]",quantity:"30",price:"382800"}) return n
+
+match (a:Product {internalCode:"0939703065"}), (b:Hobby {name:"Cá tính"}) create (a)-[r:fit]->(b) return a, b, r
+
+match (a:Product {internalCode:"0939703065"}), (b:Hobby {name:"Kín đáo"}) create (a)-[r:fit]->(b) return a, b, r
+
+MATCH (a:ImportBill)-[r:have]->(b:Product) WHERE id(a) = 22 AND b.internalCode="0939703065" RETURN r
+
+match (a:ImportBill {internalCode:"MDN0000004"}), (b:Product {internalCode:"0939703065"}) create (a)-[r:have{quantity:"30",price:"348000"}]->(b) return a, b, r
+
+create (n:Product {internalCode:"1169063001",name:"Áo jersey tay xoè rủ",description:"<p>Áo ôm bằng cotton jersey mềm có cổ tròn và tay xoè rủ viền ren.</p><p>Mã số sản phẩm:1169063001</p><p>Chiều cao:</p><p>Chiều dài bình thường</p><p>Chiều dài tay áo:</p><p>Tay áo ngắn</p><p>Độ vừa vặn:</p><p>Cỡ vừa</p><p>Đường viền cổ áo:</p><p>Cổ tròn</p><p>Kiểu tay áo:</p><p>Ống tay bèo</p><p>Mô tả:</p><p>Màu trắng, Màu trơn</p>",size:"X",material:"<h3>Thành phần</h3><h4>Lớp lót:</h4><p>Pôlyexte 100%</p><h4>Mặt ngoài:</h4><p>Pôlyexte 100%</p><h3>Thông tin bổ sung về chất liệu</h3><p>Tổng trọng lượng của sản phẩm này bao gồm:</p><ul><li>54% Polyester tái chế</li></ul><p>Chúng tôi loại trừ trọng lượng của các thành phần phụ như, nhưng không hoàn toàn: đường chỉ, nút, khóa kéo, chi tiết trang trí và hình in.</p><p>Tổng trọng lượng của sản phẩm được tính bằng cách cộng trọng lượng của tất cả các lớp và thành phần chính lại với nhau. Trên cơ sở đó, chúng tôi tính toán xem mỗi vật liệu tạo ra bao nhiêu phần trăm trọng lượng đó. Đối với các sản phẩm theo set &amp; bộ bao gồm nhiều món, tất cả các món sẽ được tính là một sản phẩm trong phép tính.</p><p>Chất liệu:</p><p>Bouclé</p><h3>Giải thích cho vật liệu được dùng trong sản phẩm này</h3><p>Polyester tái chế</p><p>Polyester tái chế là polyester được làm từ chai PET hoặc vải phế liệu hết hạn sử dụng. Các chai PET hoặc vải phế liệu được tái chế cơ học và xử lý thành sợi mới.</p><p>Pôlyexte</p><p>Polyester là sợi tổng hợp được làm từ dầu thô (một nguồn tài nguyên hóa thạch).</p>",preserve:"<p>Bạn cũng có thể giúp bảo vệ môi trường cho một tương lai thời trang bền vững hơn. Hãy mang đem bao quần áo cũ / hàng dệt may bất kỳ không sử dụng nữa đến các cửa hàng H&amp;M tham gia tái chế thời trang.</p><p><a href='https://www2.hm.com/vi_vn/hm-sustainability/take-care.html'>Đọc về cách bạn có thể giữ cho quần áo bền lâu hơn</a></p><h4>Hướng dẫn bảo quản</h4><ul><li>Phơi khô</li><li>Chỉ tẩy bằng chất không chứa clo khi cần</li><li>Giặt máy ở 40°</li><li>Là ủi nhiệt độ trung bình</li><li>Có thể giặt khô</li></ul>",images:"[
+  /images/products/929a310a-215f-40a7-927d-2c168a1508bb_sp33_3.webp,
+  /images/products/f0273424-3fa2-4985-aca9-d9ce82f6f8ba_sp33_2.webp,
+  /images/products/9e097882-6e24-4ee8-a33e-64e0c94767cd_sp33_1.jpg
+]",quantity:"25",price:"328900"}) return n
+
+match (a:Product {internalCode:"1169063001"}), (b:Hobby {name:"Cá tính"}) create (a)-[r:fit]->(b) return a, b, r
+
+match (a:Product {internalCode:"1169063001"}), (b:Hobby {name:"Kín đáo"}) create (a)-[r:fit]->(b) return a, b, r
+
+MATCH (a:ImportBill)-[r:have]->(b:Product) WHERE id(a) = 22 AND b.internalCode="1169063001" RETURN r
+
+match (a:ImportBill {internalCode:"MDN0000004"}), (b:Product {internalCode:"1169063001"}) create (a)-[r:have{quantity:"25",price:"299000"}]->(b) return a, b, r
+
+create (n:Product {internalCode:"1206330001",name:"Áo hai dây viền nhún bèo",description:"<p>Áo dệt thoi xuyên thấu có cổ chữ V, dây vai kiểu mì ống có thể điều chỉnh và nhún bèo chéo to bản ở đằng trước. Không có lớp lót.</p><p>Mã số sản phẩm:1206330001</p><p>Chiều cao:</p><p>Chiều dài bình thường</p><p>Chiều dài tay áo:</p><p>Sát nách</p><p>Độ vừa vặn:</p><p>Ôm vừa</p><p>Phong cách:</p><p>Áo hai dây</p><p>Đường viền cổ áo:</p><p>Cổ chữ V</p><p>Mô tả:</p><p>Màu đen/Màu kem, Đốm</p><p>Nhóm khách hàng:</p><p>EVERYDAY FASHION</p>",size:"X",material:"<h3>Thành phần</h3><h4>Lớp lót:</h4><p>Pôlyexte 100%</p><h4>Mặt ngoài:</h4><p>Pôlyexte 100%</p><h3>Thông tin bổ sung về chất liệu</h3><p>Tổng trọng lượng của sản phẩm này bao gồm:</p><ul><li>54% Polyester tái chế</li></ul><p>Chúng tôi loại trừ trọng lượng của các thành phần phụ như, nhưng không hoàn toàn: đường chỉ, nút, khóa kéo, chi tiết trang trí và hình in.</p><p>Tổng trọng lượng của sản phẩm được tính bằng cách cộng trọng lượng của tất cả các lớp và thành phần chính lại với nhau. Trên cơ sở đó, chúng tôi tính toán xem mỗi vật liệu tạo ra bao nhiêu phần trăm trọng lượng đó. Đối với các sản phẩm theo set &amp; bộ bao gồm nhiều món, tất cả các món sẽ được tính là một sản phẩm trong phép tính.</p><p>Chất liệu:</p><p>Bouclé</p><h3>Giải thích cho vật liệu được dùng trong sản phẩm này</h3><p>Polyester tái chế</p><p>Polyester tái chế là polyester được làm từ chai PET hoặc vải phế liệu hết hạn sử dụng. Các chai PET hoặc vải phế liệu được tái chế cơ học và xử lý thành sợi mới.</p><p>Pôlyexte</p><p>Polyester là sợi tổng hợp được làm từ dầu thô (một nguồn tài nguyên hóa thạch).</p>",preserve:"<p>Bạn cũng có thể giúp bảo vệ môi trường cho một tương lai thời trang bền vững hơn. Hãy mang đem bao quần áo cũ / hàng dệt may bất kỳ không sử dụng nữa đến các cửa hàng H&amp;M tham gia tái chế thời trang.</p><p><a href='https://www2.hm.com/vi_vn/hm-sustainability/take-care.html'>Đọc về cách bạn có thể giữ cho quần áo bền lâu hơn</a></p><h4>Hướng dẫn bảo quản</h4><ul><li>Phơi khô</li><li>Chỉ tẩy bằng chất không chứa clo khi cần</li><li>Giặt máy ở 40°</li><li>Là ủi nhiệt độ trung bình</li><li>Có thể giặt khô</li></ul>",images:"[
+  /images/products/75731756-4475-424d-9ce1-03a0d6f9a22d_sp34_1.jpg,
+  /images/products/3a8eb7d2-b77b-4ae7-b3c1-5642843e7c31_sp34_2.webp,
+  /images/products/c6928b36-36de-443a-aac7-6544ec1c4e07_sp34_3.webp
+]",quantity:"10",price:"621500"}) return n
+
+match (a:Product {internalCode:"1206330001"}), (b:Hobby {name:"Dễ thương"}) create (a)-[r:fit]->(b) return a, b, r
+
+match (a:Product {internalCode:"1206330001"}), (b:Hobby {name:"Cá tính"}) create (a)-[r:fit]->(b) return a, b, r
+
+MATCH (a:ImportBill)-[r:have]->(b:Product) WHERE id(a) = 22 AND b.internalCode="1206330001" RETURN r
+
+match (a:ImportBill {internalCode:"MDN0000004"}), (b:Product {internalCode:"1206330001"}) create (a)-[r:have{quantity:"10",price:"565000"}]->(b) return a, b, r
+
+match (n:ImportBill {internalCode:"MDN0000004"}) set n.isActive="True" return n
+
+create (n:ImportBill {internalCode:"MDN0000005",dateImport:"2023-10-19",distributor:"Tân thành",contactPhone:"021458796",price:"17450000",isActive:"True"}) return n
+
+match (a:Employee {internalCode:"2001200584"}), (b:ImportBill {internalCode:"MDN0000005"}) create (a)-[r:import]->(b) return a, b, r
+
+create (n:Product {internalCode:"1163094004",name:"Áo hoodie kéo khoá in hình dáng thụng",description:"<p>Hàng mới về</p><p>Áo hoodie kéo khoá dáng thụng bằng vải nỉ với mặt trái chải xù mềm và hoạ tiết in ở thân trước. Mũ hai lớp có dây rút, khoá kéo ẩn dọc thân trước, vai ráp trễ nhiều và tay dài. Túi kangaroo, cổ tay và gấu bo gân nổi.</p><p>Mã số sản phẩm:1163094004</p><p>Chiều cao:</p><p>Dài</p><p>Chiều dài tay áo:</p><p>Tay dài</p><p>Độ vừa vặn:</p><p>Quá cỡ</p><p>Phong cách:</p><p>Áo khoác có mũ</p><p>Mô tả:</p><p>Màu xám nhạt đốm/Xanh bạc hà, France</p><p>Nhóm khách hàng:</p><p>DIVIDED</p>",size:"S",material:"<h3>Thành phần</h3><h4>Lớp lót mũ trùm:</h4><p>Bông 50%, Pôlyexte 50%</p><h4>Mặt ngoài:</h4><p>Bông 50%, Pôlyexte 50%</p><h3>Thông tin bổ sung về chất liệu</h3><p>Tổng trọng lượng của sản phẩm này bao gồm:</p><ul><li>44% Polyester tái chế</li></ul><p>Chúng tôi loại trừ trọng lượng của các thành phần phụ như, nhưng không hoàn toàn: đường chỉ, nút, khóa kéo, chi tiết trang trí và hình in.</p><p>Tổng trọng lượng của sản phẩm được tính bằng cách cộng trọng lượng của tất cả các lớp và thành phần chính lại với nhau. Trên cơ sở đó, chúng tôi tính toán xem mỗi vật liệu tạo ra bao nhiêu phần trăm trọng lượng đó. Đối với các sản phẩm theo set &amp; bộ bao gồm nhiều món, tất cả các món sẽ được tính là một sản phẩm trong phép tính.</p><p>Chất liệu:</p><p>Vải thun vảy cá</p><h3>Giải thích cho vật liệu được dùng trong sản phẩm này</h3><p>Bông</p><p>Bông là loại sợi tự nhiên mềm và linh hoạt được thu hoạch từ cây bông.</p><p>Polyester tái chế</p><p>Polyester tái chế là polyester được làm từ chai PET hoặc vải phế liệu hết hạn sử dụng. Các chai PET hoặc vải phế liệu được tái chế cơ học và xử lý thành sợi mới.</p><p>Pôlyexte</p><p>Polyester là sợi tổng hợp được làm từ dầu thô (một nguồn tài nguyên hóa thạch).</p>",preserve:"<p>Bạn cũng có thể giúp bảo vệ môi trường cho một tương lai thời trang bền vững hơn. Hãy mang đem bao quần áo cũ / hàng dệt may bất kỳ không sử dụng nữa đến các cửa hàng H&amp;M tham gia tái chế thời trang.</p><p><a href='https://www2.hm.com/vi_vn/hm-sustainability/take-care.html'>Đọc về cách bạn có thể giữ cho quần áo bền lâu hơn</a></p><h4>Hướng dẫn bảo quản</h4><ul><li>Phơi khô</li><li>Chỉ tẩy bằng chất không chứa clo khi cần</li><li>Không giặt</li><li>Không giặt khô</li><li>Không là ủi</li></ul>",images:"[
+  /images/products/3ab3ff41-eaa7-4ad2-9d1a-b86695be4cd5_sp35_3.webp,
+  /images/products/6174ac7a-9b8b-4cfb-8ecb-f8bf64f761de_sp35_2.webp,
+  /images/products/42f23896-c455-45be-aab6-8686f20922cd_sp35_4.jpg
+]",quantity:"40",price:"878900"}) return n
+
+match (a:Product {internalCode:"1163094004"}), (b:Hobby {name:"Kín đáo"}) create (a)-[r:fit]->(b) return a, b, r
+
+match (a:Product {internalCode:"1163094004"}), (b:Hobby {name:"Cá tính"}) create (a)-[r:fit]->(b) return a, b, r
+
+match (a:Product {internalCode:"1163094004"}), (b:Hobby {name:"Dễ thương"}) create (a)-[r:fit]->(b) return a, b, r
+
+MATCH (a:ImportBill)-[r:have]->(b:Product) WHERE id(a) = 28 AND b.internalCode="1163094004" RETURN r
+
+match (a:ImportBill {internalCode:"MDN0000005"}), (b:Product {internalCode:"1163094004"}) create (a)-[r:have{quantity:"40",price:"799000"}]->(b) return a, b, r
+
+create (n:Product {internalCode:"1161768008",name:"Jumper",description:"<p>Áo jumper dệt kim mềm với cổ tròn, viền gân nổi, vai ráp trễ nhiều và tay dài. Cổ tay và gấu bo gân nổi.</p><p>Mã số sản phẩm:1161768008</p><p>Chiều cao:</p><p>Chiều dài bình thường</p><p>Chiều dài tay áo:</p><p>Tay dài</p><p>Độ vừa vặn:</p><p>Ôm vừa</p><p>Đường viền cổ áo:</p><p>Cổ tròn</p><p>Mô tả:</p><p>Màu xám đốm/Tím nhạt, Kẻ sọc</p><p>Nhóm khách hàng:</p><p>DIVIDED</p>",size:"S",material:"<h3>Thành phần</h3><h4>Lớp lót mũ trùm:</h4><p>Bông 50%, Pôlyexte 50%</p><h4>Mặt ngoài:</h4><p>Bông 50%, Pôlyexte 50%</p><h3>Thông tin bổ sung về chất liệu</h3><p>Tổng trọng lượng của sản phẩm này bao gồm:</p><ul><li>44% Polyester tái chế</li></ul><p>Chúng tôi loại trừ trọng lượng của các thành phần phụ như, nhưng không hoàn toàn: đường chỉ, nút, khóa kéo, chi tiết trang trí và hình in.</p><p>Tổng trọng lượng của sản phẩm được tính bằng cách cộng trọng lượng của tất cả các lớp và thành phần chính lại với nhau. Trên cơ sở đó, chúng tôi tính toán xem mỗi vật liệu tạo ra bao nhiêu phần trăm trọng lượng đó. Đối với các sản phẩm theo set &amp; bộ bao gồm nhiều món, tất cả các món sẽ được tính là một sản phẩm trong phép tính.</p><p>Chất liệu:</p><p>Vải thun vảy cá</p><h3>Giải thích cho vật liệu được dùng trong sản phẩm này</h3><p>Bông</p><p>Bông là loại sợi tự nhiên mềm và linh hoạt được thu hoạch từ cây bông.</p><p>Polyester tái chế</p><p>Polyester tái chế là polyester được làm từ chai PET hoặc vải phế liệu hết hạn sử dụng. Các chai PET hoặc vải phế liệu được tái chế cơ học và xử lý thành sợi mới.</p><p>Pôlyexte</p><p>Polyester là sợi tổng hợp được làm từ dầu thô (một nguồn tài nguyên hóa thạch).</p>",preserve:"<p>Bạn cũng có thể giúp bảo vệ môi trường cho một tương lai thời trang bền vững hơn. Hãy mang đem bao quần áo cũ / hàng dệt may bất kỳ không sử dụng nữa đến các cửa hàng H&amp;M tham gia tái chế thời trang.</p><p><a href='https://www2.hm.com/vi_vn/hm-sustainability/take-care.html'>Đọc về cách bạn có thể giữ cho quần áo bền lâu hơn</a></p><h4>Hướng dẫn bảo quản</h4><ul><li>Phơi khô</li><li>Chỉ tẩy bằng chất không chứa clo khi cần</li><li>Không giặt</li><li>Không giặt khô</li><li>Không là ủi</li></ul>",images:"[
+  /images/products/42be1720-bbc9-4770-be38-38adc6e7967c_sp36_1.jpg,
+  /images/products/d09bea18-f93b-4ac7-ac82-1b221ef2dadf_sp36_2.webp,
+  /images/products/f378c50c-0fbd-42a4-b9e7-9c81d3f39ac8_sp36_3.webp
+]",quantity:"25",price:"646800"}) return n
+
+match (a:Product {internalCode:"1161768008"}), (b:Hobby {name:"Cá tính"}) create (a)-[r:fit]->(b) return a, b, r
+
+match (a:Product {internalCode:"1161768008"}), (b:Hobby {name:"Dễ thương"}) create (a)-[r:fit]->(b) return a, b, r
+
+MATCH (a:ImportBill)-[r:have]->(b:Product) WHERE id(a) = 28 AND b.internalCode="1161768008" RETURN r
+
+match (a:ImportBill {internalCode:"MDN0000005"}), (b:Product {internalCode:"1161768008"}) create (a)-[r:have{quantity:"25",price:"588000"}]->(b) return a, b, r
+
+create (n:Product {internalCode:"1204277009",name:"Áo jumper dáng thụng dệt vặn thừng",description:"<p>Áo jumper dáng thụng dệt kim mềm với thân trước và tay áo dệt vặn thừng. Cổ tròn, viền gân nổi, vai ráp trễ và tay dài. Cổ tay và gấu bo gân nổi.</p><p>Mã số sản phẩm:1204277009</p><p>Chiều cao:</p><p>Dài</p><p>Chiều dài tay áo:</p><p>Tay dài</p><p>Độ vừa vặn:</p><p>Quá cỡ</p><p>Đường viền cổ áo:</p><p>Cổ tròn</p><p>Mô tả:</p><p>Màu tím, Màu trơn</p><p>Nhóm khách hàng:</p><p>DIVIDED</p>",size:"L",material:"<h3>Thành phần</h3><h4>Lớp lót mũ trùm:</h4><p>Bông 50%, Pôlyexte 50%</p><h4>Mặt ngoài:</h4><p>Bông 50%, Pôlyexte 50%</p><h3>Thông tin bổ sung về chất liệu</h3><p>Tổng trọng lượng của sản phẩm này bao gồm:</p><ul><li>44% Polyester tái chế</li></ul><p>Chúng tôi loại trừ trọng lượng của các thành phần phụ như, nhưng không hoàn toàn: đường chỉ, nút, khóa kéo, chi tiết trang trí và hình in.</p><p>Tổng trọng lượng của sản phẩm được tính bằng cách cộng trọng lượng của tất cả các lớp và thành phần chính lại với nhau. Trên cơ sở đó, chúng tôi tính toán xem mỗi vật liệu tạo ra bao nhiêu phần trăm trọng lượng đó. Đối với các sản phẩm theo set &amp; bộ bao gồm nhiều món, tất cả các món sẽ được tính là một sản phẩm trong phép tính.</p><p>Chất liệu:</p><p>Vải thun vảy cá</p><h3>Giải thích cho vật liệu được dùng trong sản phẩm này</h3><p>Bông</p><p>Bông là loại sợi tự nhiên mềm và linh hoạt được thu hoạch từ cây bông.</p><p>Polyester tái chế</p><p>Polyester tái chế là polyester được làm từ chai PET hoặc vải phế liệu hết hạn sử dụng. Các chai PET hoặc vải phế liệu được tái chế cơ học và xử lý thành sợi mới.</p><p>Pôlyexte</p><p>Polyester là sợi tổng hợp được làm từ dầu thô (một nguồn tài nguyên hóa thạch).</p>",preserve:"<p>Bạn cũng có thể giúp bảo vệ môi trường cho một tương lai thời trang bền vững hơn. Hãy mang đem bao quần áo cũ / hàng dệt may bất kỳ không sử dụng nữa đến các cửa hàng H&amp;M tham gia tái chế thời trang.</p><p><a href='https://www2.hm.com/vi_vn/hm-sustainability/take-care.html'>Đọc về cách bạn có thể giữ cho quần áo bền lâu hơn</a></p><h4>Hướng dẫn bảo quản</h4><ul><li>Phơi khô</li><li>Chỉ tẩy bằng chất không chứa clo khi cần</li><li>Không giặt</li><li>Không giặt khô</li><li>Không là ủi</li></ul>",images:"[
+  /images/products/b29521dd-1182-4503-9677-1d08c7774db9_37_1.jpg,
+  /images/products/6707ee66-09fe-42e1-9738-1f4826cbb414_37_2.webp,
+  /images/products/122be4be-b4e2-4874-b7f1-73d14b4c9aec_37_3.webp
+]",quantity:"10",price:"768900"}) return n
+
+match (a:Product {internalCode:"1204277009"}), (b:Hobby {name:"Cá tính"}) create (a)-[r:fit]->(b) return a, b, r
+
+match (a:Product {internalCode:"1204277009"}), (b:Hobby {name:"Kín đáo"}) create (a)-[r:fit]->(b) return a, b, r
+
+MATCH (a:ImportBill)-[r:have]->(b:Product) WHERE id(a) = 28 AND b.internalCode="1204277009" RETURN r
+
+match (a:ImportBill {internalCode:"MDN0000005"}), (b:Product {internalCode:"1204277009"}) create (a)-[r:have{quantity:"10",price:"699000"}]->(b) return a, b, r
+
+create (n:Product {internalCode:"1191195002",name:"Áo blazer hai hàng khuy",description:"<p>Áo blazer ôm, hai hàng khuy bằng vải dệt thoi có ve chữ V và khuy bọc ở thân trước. Độn vai, tay dài, ly chiết định hình ở phía trước và sau cùng túi trước mổ viền có nắp. Có lớp lót.</p><p>Mã số sản phẩm:1191195002</p><p>Chiều cao:</p><p>Chiều dài bình thường</p><p>Chiều dài tay áo:</p><p>Tay dài</p><p>Độ vừa vặn:</p><p>Cỡ vừa</p><p>Cổ áo:</p><p>Ve chữ V</p><p>Phong cách:</p><p>Hai hàng khuy</p><p>Đường viền cổ áo:</p><p>Cổ chữ V</p><p>Mô tả:</p><p>Màu đen/Trắng, Họa tiết xương cá</p><p>Nhóm khách hàng:</p><p>MODERN CLASSIC</p>",size:"L",material:"<h3>Thành phần</h3><h4>Lớp lót mũ trùm:</h4><p>Bông 50%, Pôlyexte 50%</p><h4>Mặt ngoài:</h4><p>Bông 50%, Pôlyexte 50%</p><h3>Thông tin bổ sung về chất liệu</h3><p>Tổng trọng lượng của sản phẩm này bao gồm:</p><ul><li>44% Polyester tái chế</li></ul><p>Chúng tôi loại trừ trọng lượng của các thành phần phụ như, nhưng không hoàn toàn: đường chỉ, nút, khóa kéo, chi tiết trang trí và hình in.</p><p>Tổng trọng lượng của sản phẩm được tính bằng cách cộng trọng lượng của tất cả các lớp và thành phần chính lại với nhau. Trên cơ sở đó, chúng tôi tính toán xem mỗi vật liệu tạo ra bao nhiêu phần trăm trọng lượng đó. Đối với các sản phẩm theo set &amp; bộ bao gồm nhiều món, tất cả các món sẽ được tính là một sản phẩm trong phép tính.</p><p>Chất liệu:</p><p>Vải thun vảy cá</p><h3>Giải thích cho vật liệu được dùng trong sản phẩm này</h3><p>Bông</p><p>Bông là loại sợi tự nhiên mềm và linh hoạt được thu hoạch từ cây bông.</p><p>Polyester tái chế</p><p>Polyester tái chế là polyester được làm từ chai PET hoặc vải phế liệu hết hạn sử dụng. Các chai PET hoặc vải phế liệu được tái chế cơ học và xử lý thành sợi mới.</p><p>Pôlyexte</p><p>Polyester là sợi tổng hợp được làm từ dầu thô (một nguồn tài nguyên hóa thạch).</p>",preserve:"<p>Bạn cũng có thể giúp bảo vệ môi trường cho một tương lai thời trang bền vững hơn. Hãy mang đem bao quần áo cũ / hàng dệt may bất kỳ không sử dụng nữa đến các cửa hàng H&amp;M tham gia tái chế thời trang.</p><p><a href='https://www2.hm.com/vi_vn/hm-sustainability/take-care.html'>Đọc về cách bạn có thể giữ cho quần áo bền lâu hơn</a></p><h4>Hướng dẫn bảo quản</h4><ul><li>Phơi khô</li><li>Chỉ tẩy bằng chất không chứa clo khi cần</li><li>Không giặt</li><li>Không giặt khô</li><li>Không là ủi</li></ul>",images:"[
+  /images/products/8aac9f6c-dcc1-4e4e-8267-5b0502aac4cd_sp39_1.jpg,
+  /images/products/df1ba2fd-dc28-4419-bf7c-5954222cdda0_sp39_2.webp,
+  /images/products/ac6462c2-ec9a-40ed-a2b0-0454f6380945_sp39_3.webp
+]",quantity:"50",price:"878900"}) return n
+
+match (a:Product {internalCode:"1191195002"}), (b:Hobby {name:"Cá tính"}) create (a)-[r:fit]->(b) return a, b, r
+
+match (a:Product {internalCode:"1191195002"}), (b:Hobby {name:"Kín đáo"}) create (a)-[r:fit]->(b) return a, b, r
+
+MATCH (a:ImportBill)-[r:have]->(b:Product) WHERE id(a) = 28 AND b.internalCode="1191195002" RETURN r
+
+match (a:ImportBill {internalCode:"MDN0000005"}), (b:Product {internalCode:"1191195002"}) create (a)-[r:have{quantity:"50",price:"799000"}]->(b) return a, b, r
+
+create (n:Product {internalCode:"1206348001",name:"Áo sơ mi denim dáng thụng",description:"<p>Áo sơ mi dáng thụng bằng cotton denim, có cổ, khuy bấm dọc thân trước và cầu vai hai lớp với một ly hộp sau lưng. Vai ráp trễ, tay dài với măng sét cài khuy bấm và túi ngực có nắp cài khuy bấm. Vạt hơi tròn.</p><p>Mã số sản phẩm:1206348001</p><p>Chiều cao:</p><p>Chiều dài bình thường</p><p>Chiều dài tay áo:</p><p>Tay dài</p><p>Độ vừa vặn:</p><p>Quá cỡ</p><p>Cổ áo:</p><p>Cổ bẻ</p><p>Mô tả:</p><p>Màu xanh denim, Màu trơn</p><p>Nhóm khách hàng:</p><p>EVERYDAY FASHION</p>",size:"S",material:"<h3>Thành phần</h3><h4>Lớp lót mũ trùm:</h4><p>Bông 50%, Pôlyexte 50%</p><h4>Mặt ngoài:</h4><p>Bông 50%, Pôlyexte 50%</p><h3>Thông tin bổ sung về chất liệu</h3><p>Tổng trọng lượng của sản phẩm này bao gồm:</p><ul><li>44% Polyester tái chế</li></ul><p>Chúng tôi loại trừ trọng lượng của các thành phần phụ như, nhưng không hoàn toàn: đường chỉ, nút, khóa kéo, chi tiết trang trí và hình in.</p><p>Tổng trọng lượng của sản phẩm được tính bằng cách cộng trọng lượng của tất cả các lớp và thành phần chính lại với nhau. Trên cơ sở đó, chúng tôi tính toán xem mỗi vật liệu tạo ra bao nhiêu phần trăm trọng lượng đó. Đối với các sản phẩm theo set &amp; bộ bao gồm nhiều món, tất cả các món sẽ được tính là một sản phẩm trong phép tính.</p><p>Chất liệu:</p><p>Vải thun vảy cá</p><h3>Giải thích cho vật liệu được dùng trong sản phẩm này</h3><p>Bông</p><p>Bông là loại sợi tự nhiên mềm và linh hoạt được thu hoạch từ cây bông.</p><p>Polyester tái chế</p><p>Polyester tái chế là polyester được làm từ chai PET hoặc vải phế liệu hết hạn sử dụng. Các chai PET hoặc vải phế liệu được tái chế cơ học và xử lý thành sợi mới.</p><p>Pôlyexte</p><p>Polyester là sợi tổng hợp được làm từ dầu thô (một nguồn tài nguyên hóa thạch).</p>",preserve:"<p>Bạn cũng có thể giúp bảo vệ môi trường cho một tương lai thời trang bền vững hơn. Hãy mang đem bao quần áo cũ / hàng dệt may bất kỳ không sử dụng nữa đến các cửa hàng H&amp;M tham gia tái chế thời trang.</p><p><a href='https://www2.hm.com/vi_vn/hm-sustainability/take-care.html'>Đọc về cách bạn có thể giữ cho quần áo bền lâu hơn</a></p><h4>Hướng dẫn bảo quản</h4><ul><li>Phơi khô</li><li>Chỉ tẩy bằng chất không chứa clo khi cần</li><li>Không giặt</li><li>Không giặt khô</li><li>Không là ủi</li></ul>",images:"[
+  /images/products/f82a066d-1dca-4d30-8f15-f1350716e6bd_sp40_2.webp,
+  /images/products/3bdad199-3cbb-4d89-96a8-d0c2538c838a_sp40_1.jpg,
+  /images/products/edee37bf-8fa9-4efd-84ee-62f24b50b97d_sp40_.webp
+]",quantity:"25",price:"767800"}) return n
+
+match (a:Product {internalCode:"1206348001"}), (b:Hobby {name:"Cá tính"}) create (a)-[r:fit]->(b) return a, b, r
+
+MATCH (a:ImportBill)-[r:have]->(b:Product) WHERE id(a) = 28 AND b.internalCode="1206348001" RETURN r
+
+match (a:ImportBill {internalCode:"MDN0000005"}), (b:Product {internalCode:"1206348001"}) create (a)-[r:have{quantity:"25",price:"698000"}]->(b) return a, b, r
+
+match (n:ImportBill {internalCode:"MDN0000005"}) set n.isActive="True" return n
+
