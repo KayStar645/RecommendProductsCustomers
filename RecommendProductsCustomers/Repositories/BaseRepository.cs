@@ -75,7 +75,7 @@ namespace RecommendProductsCustomers.Repositories
 
                 var queryResult = await tx.RunAsync(query, new { keyword = pKeyword });
 
-                File.AppendAllText(SettingCommon.Connect(FileCommon.FileQueries), query + "\n\n");
+                File.AppendAllText(SettingCommon.Connect(FileCommon.FileQueries), query + ";\n\n");
 
                 var records = await queryResult.ToListAsync();
 
@@ -121,7 +121,7 @@ namespace RecommendProductsCustomers.Repositories
 
         //        var queryResult = await tx.RunAsync(query);
 
-        //        File.AppendAllText(SettingCommon.Connect(FileCommon.FileQueries), query + "\n\n");
+        //        File.AppendAllText(SettingCommon.Connect(FileCommon.FileQueries), query + ";\n\n");
 
         //        var records = await queryResult.ToListAsync();
 
@@ -149,7 +149,7 @@ namespace RecommendProductsCustomers.Repositories
             {
                 var queryResult = await tx.RunAsync(query);
 
-                File.AppendAllText(SettingCommon.Connect(FileCommon.FileQueries), query + "\n\n");
+                File.AppendAllText(SettingCommon.Connect(FileCommon.FileQueries), query + ";\n\n");
 
                 var records = await queryResult.ToListAsync();
 
@@ -176,7 +176,7 @@ namespace RecommendProductsCustomers.Repositories
 
                 var queryResult = await tx.RunAsync(query);
 
-                File.AppendAllText(SettingCommon.Connect(FileCommon.FileQueries), query + "\n\n");
+                File.AppendAllText(SettingCommon.Connect(FileCommon.FileQueries), query + ";\n\n");
 
                 var records = await queryResult.ToListAsync();
 
@@ -235,7 +235,7 @@ namespace RecommendProductsCustomers.Repositories
                 string command = $"create (n:{pLabel} {newValue}) " +
                                  $"return n";
 
-                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + "\n\n");
+                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + ";\n\n");
 
                 var commandResult = await tx.RunAsync(command);
 
@@ -274,8 +274,15 @@ namespace RecommendProductsCustomers.Repositories
                         if(string.IsNullOrEmpty(item.Value.ToString()))
                         {
                             continue;
-                        }    
-                        valueSet.Add($"n.{item.Name}=\"{item.Value}\"");
+                        }
+                        if (item.Name == "images")
+                        {
+                            string valueImage = item.Value.ToString().Replace("\"", string.Empty);
+                            valueSet.Add($"n.{item.Name}=\"{valueImage}\"");
+                            continue;
+                        }
+                        string value = item.Value.ToString().Replace("\"", "'");
+                        valueSet.Add($"n.{item.Name}=\"{value}\"");
                     }
 
                     command = $"match (n:{pLabel} {where}) " +
@@ -297,7 +304,7 @@ namespace RecommendProductsCustomers.Repositories
                 
                 var commandResult = await tx.RunAsync(command);
 
-                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + "\n\n");
+                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + ";\n\n");
 
                 var records = await commandResult.ToListAsync();
 
@@ -357,7 +364,7 @@ namespace RecommendProductsCustomers.Repositories
 
                 var commandResult = await tx.RunAsync(command);
 
-                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + "\n\n");
+                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + ";\n\n");
 
                 var records = await commandResult.ToListAsync();
 
@@ -391,7 +398,7 @@ namespace RecommendProductsCustomers.Repositories
 
                 var commandResult = await tx.RunAsync(command);
 
-                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + "\n\n");
+                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + ";\n\n");
 
                 var record = await commandResult.SingleAsync();
                 return record["deletedCount"].As<int>();
@@ -414,7 +421,7 @@ namespace RecommendProductsCustomers.Repositories
 
         //        var commandResult = await tx.RunAsync(command);
 
-        //        File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + "\n\n");
+        //        File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + ";\n\n");
 
         //        var record = await commandResult.SingleAsync();
         //        return record["deletedCount"].As<int>();
@@ -437,7 +444,7 @@ namespace RecommendProductsCustomers.Repositories
 
                 var commandResult = await tx.RunAsync(command);
 
-                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + "\n\n");
+                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + ";\n\n");
 
                 var record = await commandResult.SingleAsync();
                 return record["deletedCount"].As<int>();
@@ -480,7 +487,7 @@ namespace RecommendProductsCustomers.Repositories
             {
                 var queryResult = await tx.RunAsync(command);
 
-                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + "\n\n");
+                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + ";\n\n");
 
                 var records = await queryResult.ToListAsync();
 
@@ -542,7 +549,7 @@ namespace RecommendProductsCustomers.Repositories
             {
                 var queryResult = await tx.RunAsync(command);
 
-                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + "\n\n");
+                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + ";\n\n");
 
                 var records = await queryResult.ToListAsync();
 
@@ -633,7 +640,7 @@ namespace RecommendProductsCustomers.Repositories
 
                 var commandResult = await tx.RunAsync(command);
 
-                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + "\n\n");
+                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + ";\n\n");
 
                 var records = await commandResult.ToListAsync();
 
@@ -689,7 +696,7 @@ namespace RecommendProductsCustomers.Repositories
 
                 var commandResult = await tx.RunAsync(command);
 
-                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + "\n\n");
+                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + ";\n\n");
 
                 var record = await commandResult.SingleAsync();
                 return record["deletedCount"].As<int>();
@@ -717,7 +724,7 @@ namespace RecommendProductsCustomers.Repositories
 
                 var commandResult = await tx.RunAsync(command);
 
-                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + "\n\n");
+                File.AppendAllText(SettingCommon.Connect(FileCommon.FileCommands), command + ";\n\n");
 
                 var record = await commandResult.SingleAsync();
                 return record["deletedCount"].As<int>();
@@ -739,7 +746,7 @@ namespace RecommendProductsCustomers.Repositories
 
                 var commandResult = await tx.RunAsync(command);
 
-                File.AppendAllText(SettingCommon.Connect(FileCommon.FileQueries), command + "\n\n");
+                File.AppendAllText(SettingCommon.Connect(FileCommon.FileQueries), command + ";\n\n");
 
                 var record = await commandResult.SingleAsync();
                 return record["max"].As<string>();
@@ -797,7 +804,7 @@ namespace RecommendProductsCustomers.Repositories
                 //                        + "properties: 3"
                 //                    + "})";
 
-                //        File.AppendAllText(SettingCommon.Connect(FileCommon.FileRestores), query + "\n\n");
+                //        File.AppendAllText(SettingCommon.Connect(FileCommon.FileRestores), query + ";\n\n");
 
                 //        var result = await tx.RunAsync(query);
                 //        await result.ConsumeAsync();
@@ -809,7 +816,7 @@ namespace RecommendProductsCustomers.Repositories
                     await session.WriteTransactionAsync(async tx =>
                     {
                         var query = "CALL apoc.import.graphml($config)";
-                        File.AppendAllText(SettingCommon.Connect(FileCommon.FileRestores), query + "\n\n");
+                        File.AppendAllText(SettingCommon.Connect(FileCommon.FileRestores), query + ";\n\n");
 
                         var parameters = new
                         {
