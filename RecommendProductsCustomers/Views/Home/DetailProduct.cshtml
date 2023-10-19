@@ -1,4 +1,119 @@
-﻿@{
+﻿@using RecommendProductsCustomers.Models;
+@{
     Layout = "~/Views/Shared/Customer/_Layout.cshtml";
     ViewData["Title"] = "Format - Chi tiết sản phẩm";
+    var product = ViewData["product"] as ProductModel;
+    var reProduct = ViewData["listProduct"] as List<ProductModel>;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Additional CSS Files -->
+<link rel="stylesheet" href="~/assets/css/fontawesome.css">
+<link rel="stylesheet" href="~/assets/css/tooplate-main.css">
+<link rel="stylesheet" href="~/assets/css/owl.css">
+
+<!-- Page Content -->
+<!-- Single Starts Here -->
+<div class="single-product">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <div class="line-dec"></div>
+                    <h1>@product?.name</h1>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-slider">
+                    <div id="slider" class="flexslider">
+                        <ul class="slides">
+                            <li style="list-style-type:none">
+                                <img src="@product?.images[0]" style="width: 540px;height: 700px;" />
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="carousel" class="flexslider">
+                        <ul class="d-flex">
+                            @if (product != null)
+                            {
+                                @for (int i = 0; i < product?.images.Count; i++)
+                                {
+                                    <li style="list-style-type:none" class="p-3">
+                                        <img src="@product.images[i]" style="width: 140px;height: 200px;" />
+                                    </li>
+                                }
+                            }
+                            <!-- items mirrored twice, total of 12 -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="right-content">
+                    <h4>@product?.name</h4>
+                    <h6>@String.Format("{0:N0}", product?.price) đ</h6>
+                    @* <div class="mt-3">
+                        <h5>Mô tả</h5>
+                        <p>@Html.Raw(product?.description)</p>
+                    </div> *@
+                    <div class="mt-3">
+                        <h5>Chất liệu</h5>
+                        <p>@Html.Raw(product?.material)</p>
+                    </div>
+                    <div class="mt-3">
+                        <h5>Bảo quản</h5>
+                        <p>@Html.Raw(product?.preserve)</p>
+                    </div>
+
+                    <form action="" method="get">
+                        <label for="quantity">Quantity:</label>
+                        <input name="quantity" type="quantity" class="quantity-text" id="quantity"
+                               onfocus="if(this.value == '1') { this.value = ''; }"
+                               onBlur="if(this.value == '') { this.value = '1';}"
+                               value="1">
+                        @* <input type="submit" class="button" value="Order Now!"> *@
+                    </form>
+                    <div class="down-content">
+                        <div class="categories">
+                            <h6>Category: <span><a href="#">Pants</a>,<a href="#">Women</a>,<a href="#">Lifestyle</a></span></h6>
+                        </div>
+                        <div class="share">
+                            <h6>Share: <span><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-twitter"></i></a></span></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Single Page Ends Here -->
+<!-- Similar Starts Here -->
+@if (reProduct != null)
+{
+    <div class="featured-items">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <div class="line-dec"></div>
+                        <h1>Cũng có thể bạn thích</h1>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="owl-carousel owl-theme">
+                        @foreach (var item in reProduct)
+                        {
+                            <a href="/Home/DetailProduct?pId=@item?.id">
+                                <div class="featured-item">
+                                    <img src="@item.images[0]" height="300" />
+                                    <h4 style="height:40px">@item?.name</h4>
+                                    <h6>@String.Format("{0:N0}", item?.price) đ</h6>
+                                </div>
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 }

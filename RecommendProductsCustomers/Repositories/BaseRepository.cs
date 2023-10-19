@@ -16,13 +16,15 @@ namespace RecommendProductsCustomers.Repositories
         }
 
         [Obsolete]
-        public async Task<int> CalculateTotalPages(string pLabel, int itemsPerPage)
+        public async Task<int> CalculateTotalPages(string pLabel, string pKeyword, int itemsPerPage)
         {
             using var session = _driver.AsyncSession();
 
             int totalItems = await session.WriteTransactionAsync(async tx =>
             {
-                string query = $"MATCH (n:{pLabel}) RETURN count(*) as number";
+                string query = $"MATCH (n:{pLabel}) " +
+                               $"WHERE ANY(key in keys(n) WHERE toString(n[key]) CONTAINS \"{pKeyword}\" ) " +
+                               $"RETURN count(*) as number";
                 var queryResult = await tx.RunAsync(query);
 
                 var records = await queryResult.ToListAsync();

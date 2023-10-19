@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RecommendProductsCustomers.Common;
 using RecommendProductsCustomers.Models;
-using RecommendProductsCustomers.Services;
 using RecommendProductsCustomers.Services.Interfaces;
 
 namespace RecommendProductsCustomers.Controllers.Customer
@@ -50,9 +49,22 @@ namespace RecommendProductsCustomers.Controllers.Customer
 
         public async Task<IActionResult> Products([FromQuery] string? pKeyword = "", int? pPage = 1)
         {
-            int pLimit = 5;
+            int pLimit = 10;
             ViewData["listProduct"] = await _productService.GetList(pKeyword, pPage, pLimit);
-            ViewData["totalPages"] = await _productService.CalculateTotalPages(pLimit);
+            ViewData["totalPages"] = await _productService.CalculateTotalPages(pKeyword, pLimit);
+            return View();
+        }
+
+        public async Task<IActionResult> DetailProduct([FromQuery] string pId)
+        {
+            List<ProductModel> list = await _productService.GetList();
+            ViewData["product"] = list.Find(x => x.id == pId);
+
+            if (Request.Cookies.TryGetValue("userName", out string userName))
+            {
+                ViewData["listProduct"] = await _productService.RecommendedProducts(userName);
+            }
+
             return View();
         }
     }

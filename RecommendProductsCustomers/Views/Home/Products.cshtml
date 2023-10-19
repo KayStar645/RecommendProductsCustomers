@@ -85,13 +85,13 @@
     <div class="row posts">
         @if(productList != null)
         {
-            foreach(var item in productList)
+            @foreach (var item in productList)
             {
                 <div id="@item?.id" class="item new col-2dot4">
-                    <a href="single-product.html">
+                    <a href="/Home/DetailProduct?pId=@item?.id">
                         <div class="featured-item">
                             <img src="@item?.images[0]" height="300" />
-                            <h4>@item?.name</h4>
+                            <h4 style="height:40px">@item?.name</h4>
                             <h6>@String.Format("{0:N0}", item?.price) đ</h6>
                         </div>
                     </a>
@@ -101,7 +101,7 @@
     </div>
 </div>
 
-<div class="page-navigation">
+<div id="pageProduct" class="page-navigation">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -172,6 +172,9 @@
 
                     var $newHobbyTable = $hiddenContainer.find("#contentProduct");
                     $("#contentProduct").html($newHobbyTable.html());
+
+                    var $page = $hiddenContainer.find("#pageProduct");
+                    $("#pageProduct").html($page.html());
                 }
             });
         }, 800);

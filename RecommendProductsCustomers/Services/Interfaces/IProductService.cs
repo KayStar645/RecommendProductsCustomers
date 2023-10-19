@@ -12,6 +12,6 @@ namespace RecommendProductsCustomers.Services.Interfaces
         Task<List<ProductModel>> RecommendedProducts(string pUserName, string? pKeyword = "", int? pPage = 1, int? pLimit = 100);
 
         Task<ProductModel> GetDetail(string pIdentity);
-        Task<int> CalculateTotalPages(int itemsPerPage);
+        Task<int> CalculateTotalPages(string pKeyword, int itemsPerPage);
     }
 }

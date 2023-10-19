@@ -714,3 +714,351 @@ match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toL
 
 match (a:Product ) return a skip 0 limit 5;
 
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 5;
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("váy")) return a skip 0 limit 5;
+
+match (a:Product ) return a skip 0 limit 5;
+
+match (a:User {userName:"0329641343",password:"2001200553"}) return a skip 0 limit 100;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 5;
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("váy")) return a skip 0 limit 5;
+
+match (a:Product ) return a skip 0 limit 5;
+
+match (a:User {userName:"0329641343",password:"2001200553"}) return a skip 0 limit 100;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:Product ) return a skip 10 limit 10;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:Product ) return a skip 0 limit 10;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 10;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("váy")) return a skip 0 limit 10;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:Product ) return a skip 0 limit 10;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 100;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 100;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 100;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 100;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:Product ) return a skip 0 limit 100;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 100;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 100;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+

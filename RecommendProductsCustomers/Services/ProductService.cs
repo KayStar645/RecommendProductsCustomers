@@ -118,9 +118,9 @@ namespace RecommendProductsCustomers.Services
             return products;
         }
 
-        public async Task<int> CalculateTotalPages(int itemsPerPage)
+        public async Task<int> CalculateTotalPages(string pKeyword, int itemsPerPage)
         {
-            return await Repo.CalculateTotalPages(LabelCommon.Product, itemsPerPage);
+            return await Repo.CalculateTotalPages(LabelCommon.Product, pKeyword, itemsPerPage);
         }
 
         public async Task<List<ProductModel>> RecommendedProducts(string pUserName, string? pKeyword = "", int? pPage = 1, int? pLimit = 100)
