@@ -125,9 +125,9 @@ namespace RecommendProductsCustomers.Services
 
         public async Task<List<ProductModel>> RecommendedProducts(string pUserName, string? pKeyword = "", int? pPage = 1, int? pLimit = 100)
         {
-            string query = $"MATCH (a:Product), (b:Customer {{phone:{pUserName}}}), (c:Hobby) " +
+            string query = $"MATCH (a:Product), (b:Customer {{phone:\"{pUserName}\"}}), (c:Hobby) " +
                            $"WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) " +
-                           $"RETURN a";
+                           $"RETURN DISTINCT a";
             var result = await Repo.GetQuery(query);
 
             var JObjects = result.Select(record =>
