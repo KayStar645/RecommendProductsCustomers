@@ -1,0 +1,376 @@
+﻿match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"2001200553"}) return a skip 0 limit 100
+
+MATCH (n:User {userName:"0329641343"})-[:own]-(b) RETURN labels(b) AS label
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("váy")) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("váy")) return a skip 100 limit 100
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("váy")) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("á")) return a skip 100 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("váy")) return a skip 100 limit 100
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("váy")) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("váy")) return a skip 0 limit 100
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("váy")) return a skip 100 limit 100
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("váy")) return a skip 0 limit 100
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("váy")) return a skip 100 limit 100
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("váy")) return a skip 0 limit 100
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("váy")) return a skip 200 limit 100
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("váy")) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("váy")) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("120")) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("x")) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("áo")) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 4
+
+match (a:Product ) return a skip 4 limit 4
+
+match (a:Product ) return a skip 8 limit 4
+
+match (a:Product ) return a skip 0 limit 4
+
+match (a:Product ) return a skip 4 limit 4
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 15
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 5
+
+match (a:Product ) return a skip 5 limit 5
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("váy")) return a skip 0 limit 5
+
+match (a:Product ) return a skip 0 limit 5
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"2001200553"}) return a skip 0 limit 100
+
+MATCH (n:User {userName:"0329641343"})-[:own]-(b) RETURN labels(b) AS label
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 100
+
+match (a:Product ) return a skip 0 limit 5
+
+match (a:Product ) return a skip 5 limit 5
+
+match (a:Product ) return a skip 0 limit 5
+

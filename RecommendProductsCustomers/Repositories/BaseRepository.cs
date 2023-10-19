@@ -1,6 +1,8 @@
 ﻿using Neo4j.Driver;
 using Newtonsoft.Json.Linq;
 using RecommendProductsCustomers.Common;
+using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
+using System.Reflection.Emit;
 
 namespace RecommendProductsCustomers.Repositories
 {
@@ -13,10 +15,29 @@ namespace RecommendProductsCustomers.Repositories
             _driver = GraphDatabase.Driver(pUri, AuthTokens.Basic(pUserName, pPassword));
         }
 
-        public int CalculateTotalPages(int totalItems, int itemsPerPage)
+        [Obsolete]
+        public async Task<int> CalculateTotalPages(string pLabel, int itemsPerPage)
         {
-            int totalPages = (totalItems + itemsPerPage - 1) / itemsPerPage;
-            return totalPages;
+            using var session = _driver.AsyncSession();
+
+            int totalItems = await session.WriteTransactionAsync(async tx =>
+            {
+                string query = $"MATCH (n:{pLabel}) RETURN count(*) as number";
+                var queryResult = await tx.RunAsync(query);
+
+                var records = await queryResult.ToListAsync();
+                var record = records.FirstOrDefault();
+
+                if (record != null && record.Keys.Contains("number"))
+                {
+                    var number = record["number"].As<int>();
+                    return number;
+                }
+
+                return 0;
+            });
+
+            return (totalItems + itemsPerPage - 1) / itemsPerPage;
         }
 
 

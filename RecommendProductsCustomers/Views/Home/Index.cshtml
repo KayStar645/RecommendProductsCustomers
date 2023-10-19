@@ -58,12 +58,12 @@
         </div>
 
         <div class="featured container no-gutter">
-            <div id="product-list" class="row posts">
+            <div id="product-list" class="col-12 posts">
                 @if (reProducts != null)
                 {
                     foreach (var item in reProducts)
                     {
-                        <div id="@item?.id" class="item new col-md-4">
+                        <div id="@item?.id" class="item new col-4">
                             <a href="single-product.html">
                                 <div class="featured-item">
                                     <img src="@item?.images?.FirstOrDefault()" height="300" />

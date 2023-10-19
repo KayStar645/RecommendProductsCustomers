@@ -85,9 +85,50 @@ namespace RecommendProductsCustomers.Services
             throw new NotImplementedException();
         }
 
-        public async Task<List<ProductModel>> GetList(string? pKeyword = "", int? pPage = 1)
+        public async Task<List<ProductModel>> GetList(string? pKeyword = "", int? pPage = 1, int? pLimit = 100)
         {
-            var listJObject = await Repo.Get(LabelCommon.Product, null, "", "", null, 100, pKeyword, pPage); ;
+            var listJObject = await Repo.Get(LabelCommon.Product, null, "", "", null, pLimit, pKeyword, pPage);
+
+            var products = listJObject.Select(p =>
+            {
+                var productModel = new ProductModel()
+                {
+                    id = p["id"]?.Value<string>(),
+                    internalCode = p["internalCode"]?.Value<string>(),
+                    name = p["name"]?.Value<string>(),
+                    description = p["description"]?.Value<string>(),
+                    size = p["size"]?.Value<string>(),
+                    material = p["material"]?.Value<string>(),
+                    preserve = p["preserve"]?.Value<string>(),
+                    quantity = p["quantity"]?.Value<int>(),
+                    price = p["price"]?.Value<long>()
+                };
+
+                string? str = p["images"]?.Value<string>();
+                string cleanedInput = Regex.Replace(str, @"\s+", "").Trim('[', ']');
+
+                productModel.images = cleanedInput.Split(',')
+                                                  .Select(url => url.Trim('\''))
+                                                  .ToList();
+
+                return productModel;
+            }).ToList();
+
+            return products;
+        }
+
+        public async Task<int> CalculateTotalPages(int itemsPerPage)
+        {
+            return await Repo.CalculateTotalPages(LabelCommon.Product, itemsPerPage);
+        }
+
+        public async Task<List<ProductModel>> RecommendedProducts(string? pKeyword = "", int? pPage = 1, int? pLimit = 100)
+        {
+            // Vấn đề nằm ở đây
+            var listJObject = await Repo.Get(LabelCommon.Product, null, "", "", null, pLimit, pKeyword, pPage);
+
+            // Tìm sản phẩm có chung danh sách sở thích với khách hàng
+
 
             var products = listJObject.Select(p =>
             {

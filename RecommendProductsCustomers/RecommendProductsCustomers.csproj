@@ -25,7 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Files\" />
     <Folder Include="wwwroot\images\products\" />
     <Folder Include="wwwroot\db\" />
   </ItemGroup>

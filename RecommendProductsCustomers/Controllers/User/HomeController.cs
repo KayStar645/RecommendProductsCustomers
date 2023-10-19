@@ -48,9 +48,11 @@ namespace RecommendProductsCustomers.Controllers.Customer
             return View();
         }
 
-        public async Task<IActionResult> Products([FromQuery] string? pKeyword = "")
+        public async Task<IActionResult> Products([FromQuery] string? pKeyword = "", int? pPage = 1)
         {
-            ViewData["listProduct"] = await _productService.GetList(pKeyword);
+            int pLimit = 5;
+            ViewData["listProduct"] = await _productService.GetList(pKeyword, pPage, pLimit);
+            ViewData["totalPages"] = await _productService.CalculateTotalPages(pLimit);
             return View();
         }
     }

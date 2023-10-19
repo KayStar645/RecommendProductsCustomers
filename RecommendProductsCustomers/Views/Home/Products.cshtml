@@ -3,6 +3,7 @@
     Layout = "~/Views/Shared/Customer/_Layout.cshtml";
     ViewData["Title"] = "Format - Sản phẩm";
     var productList = ViewData["listProduct"] as List<ProductModel>;
+    var totalPages = (int)ViewData["totalPages"];
 }
 
 <style>
@@ -48,7 +49,7 @@
         box-shadow: #d1d5db;
     }
 </style>
-
+<link href="~/css/col-2dot4.css" rel="stylesheet" />
 <!-- Page Content -->
 <!-- Items Starts Here -->
 <div class="featured-page">
@@ -80,16 +81,16 @@
     </div>
 </div>
 
-<div class="featured container no-gutter">
+<div id="contentProduct" class="featured container no-gutter">
     <div class="row posts">
         @if(productList != null)
         {
             foreach(var item in productList)
             {
-                <div id="@item?.id" class="item new col-md-4">
+                <div id="@item?.id" class="item new col-2dot4">
                     <a href="single-product.html">
                         <div class="featured-item">
-                            <img src="@item?.images[0]" height="450" />
+                            <img src="@item?.images[0]" height="300" />
                             <h4>@item?.name</h4>
                             <h6>@String.Format("{0:N0}", item?.price) đ</h6>
                         </div>
@@ -105,12 +106,75 @@
         <div class="row">
             <div class="col-md-12">
                 <ul>
-                    <li class="current-page"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                    @for (int index = 1; index <= totalPages; index++)
+                    {
+                        if(index == 1)
+                        {
+                            <li class="current-page nav-item">
+                                <a href="#">@index</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a href="#">@index</a>
+                            </li>
+                        }
+                    }
                 </ul>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $(".nav-item a").on("click", function (e) {
+            e.preventDefault();
+
+            $(".nav-item").removeClass("current-page");
+            $(this).parent().addClass("current-page");
+
+            var search = document.getElementById("search").value;;
+            var currentPage = document.querySelector(".current-page a").innerHTML
+
+            $.ajax({
+                url: "/Home/Products?pKeyword=" + search + "&pPage=" + currentPage,
+                method: "GET",
+                success: function (data) {
+                    var $hiddenContainer = $("<div class='d-none'></div>");
+                    $hiddenContainer.html(data);
+
+                    var $newHobbyTable = $hiddenContainer.find("#contentProduct");
+                    $("#contentProduct").html($newHobbyTable.html());
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    var searchInput = document.getElementById("search");
+    var timeoutId;
+
+    searchInput.addEventListener("input", function () {
+        clearTimeout(timeoutId);
+
+        timeoutId = setTimeout(function () {
+            var search = searchInput.value;
+
+            $.ajax({
+                url: "/Home/Products?pKeyword=" + search + "&pPage=1",
+                method: "GET",
+                success: function (data) {
+                    var $hiddenContainer = $("<div class='d-none'></div>");
+                    $hiddenContainer.html(data);
+
+                    var $newHobbyTable = $hiddenContainer.find("#contentProduct");
+                    $("#contentProduct").html($newHobbyTable.html());
+                }
+            });
+        }, 800);
+    });
+
+</script>

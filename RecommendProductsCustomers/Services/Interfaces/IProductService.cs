@@ -8,8 +8,10 @@ namespace RecommendProductsCustomers.Services.Interfaces
         Task<ProductModel> GetDetailByUserName(string pUserName);
 
         Task<bool> Update(UpdateProductVM pProduct);
-        Task<List<ProductModel>> GetList(string? pKeyword = "", int? pPage = 1);
+        Task<List<ProductModel>> GetList(string? pKeyword = "", int? pPage = 1, int? pLimit = 100);
+        Task<List<ProductModel>> RecommendedProducts(string? pKeyword = "", int? pPage = 1, int? pLimit = 100);
 
         Task<ProductModel> GetDetail(string pIdentity);
+        Task<int> CalculateTotalPages(int itemsPerPage);
     }
 }
