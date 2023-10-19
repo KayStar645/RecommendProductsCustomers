@@ -20,7 +20,7 @@ namespace RecommendProductsCustomers.Controllers.Customer
         {
             if (Request.Cookies.TryGetValue("userName", out string userName))
             {
-                bool flag = await _authService.Login(new UserModel() { userName = userName, password = userName });
+                bool flag = await _authService.Login(new UserModel() { userName = userName });
 
                 if (flag)
                 {
@@ -34,10 +34,10 @@ namespace RecommendProductsCustomers.Controllers.Customer
                     {
                         Expires = DateTime.Now.AddYears(10)
                     });
-                    if (label == LabelCommon.Product)
+                    if (label == LabelCommon.Customer)
                     {
                         // Sản phẩm gợi ý
-                        ViewData["recommendedProducts"] = await _productService.GetList(pKeyword);
+                        ViewData["recommendedProducts"] = await _productService.RecommendedProducts(userName);
                         return View();
                     }
                 }

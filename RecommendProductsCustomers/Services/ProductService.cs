@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Neo4j.Driver;
+using Newtonsoft.Json.Linq;
 using RecommendProductsCustomers.Common;
 using RecommendProductsCustomers.Models;
 using RecommendProductsCustomers.Models.ViewModel;
@@ -122,15 +123,28 @@ namespace RecommendProductsCustomers.Services
             return await Repo.CalculateTotalPages(LabelCommon.Product, itemsPerPage);
         }
 
-        public async Task<List<ProductModel>> RecommendedProducts(string? pKeyword = "", int? pPage = 1, int? pLimit = 100)
+        public async Task<List<ProductModel>> RecommendedProducts(string pUserName, string? pKeyword = "", int? pPage = 1, int? pLimit = 100)
         {
-            // Vấn đề nằm ở đây
-            var listJObject = await Repo.Get(LabelCommon.Product, null, "", "", null, pLimit, pKeyword, pPage);
+            string query = $"MATCH (a:Product), (b:Customer {{phone:{pUserName}}}), (c:Hobby) " +
+                           $"WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) " +
+                           $"RETURN a";
+            var result = await Repo.GetQuery(query);
 
-            // Tìm sản phẩm có chung danh sách sở thích với khách hàng
+            var JObjects = result.Select(record =>
+            {
+                var a = record["a"].As<INode>();
 
+                var products = new JObject();
+                products.Add("id", JToken.FromObject(a.Id.ToString()));
+                foreach (var pair in a.Properties)
+                {
+                    products.Add(pair.Key, JToken.FromObject(pair.Value));
+                }
 
-            var products = listJObject.Select(p =>
+                return products;
+            }).ToList();
+
+            var products = JObjects.Select((JObject p) =>
             {
                 var productModel = new ProductModel()
                 {
@@ -146,11 +160,17 @@ namespace RecommendProductsCustomers.Services
                 };
 
                 string? str = p["images"]?.Value<string>();
-                string cleanedInput = Regex.Replace(str, @"\s+", "").Trim('[', ']');
-
-                productModel.images = cleanedInput.Split(',')
-                                                  .Select(url => url.Trim('\''))
-                                                  .ToList();
+                if (str != null)
+                {
+                    string cleanedInput = Regex.Replace(str, @"\s+", "").Trim('[', ']');
+                    productModel.images = cleanedInput.Split(',')
+                                                      .Select(url => url.Trim('\''))
+                                                      .ToList();
+                }
+                else
+                {
+                    productModel.images = new List<string>();
+                }
 
                 return productModel;
             }).ToList();
