@@ -675,10 +675,10 @@
             data.images.push(image.src);
         });
 
-        var optionElements = document.querySelectorAll('[role="option"]');
+        var optionElements = document.querySelectorAll('.remove-option');
 
         optionElements.forEach(function (optionElement) {
-            data.hobbies.push(optionElement.innerHTML);
+            data.hobbies.push(optionElement.innerHTML.trim());
         });
 
 
