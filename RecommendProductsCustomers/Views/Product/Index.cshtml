@@ -72,6 +72,7 @@
                     <th class="text-center">Kích thước</th>
                     <th class="text-center">Số lượng </th>
                     <th class="text-center">Đơn giá</th>
+                    <th class="text-center">Phù hợp</th>
                 </tr>
             </thead>
             <tbody id="tableProducts">
@@ -96,10 +97,14 @@
                                 <td class="text-center">@item?.size</td>
                                 <td class="text-center">@item?.quantity</td>
                                 <td class="text-center">@String.Format("{0:N0}", item?.price)</td>
-                                <td class="text-center d-none" data-description="@item?.description">@item?.description</td>
-                                <td class="text-center d-none" data-material="@item?.material">@item?.material</td>
-                                <td class="text-center d-none" data-preserve="@item?.preserve">@item?.preserve</td>
-                                <td class="text-center d-none" data-images="@string.Join(",", item?.images)">@(string.Join(",", item?.images))</td>
+                                @if(@item?.hobbies != null)
+                                {
+                                    <td class="text-center">@string.Join(",", @item?.hobbies)</td>
+                                }
+                                else
+                                {
+                                    <td class="text-center"></td>
+                                }
                             </tr>
                         }
                     }

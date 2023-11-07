@@ -1,8 +1,6 @@
 ﻿using Neo4j.Driver;
 using Newtonsoft.Json.Linq;
 using RecommendProductsCustomers.Common;
-using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
-using System.Reflection.Emit;
 
 namespace RecommendProductsCustomers.Repositories
 {
@@ -655,17 +653,6 @@ namespace RecommendProductsCustomers.Repositories
                     jobject.Add("r", JToken.FromObject(record["r"].As<IRelationship>().Properties));
                     return jobject;
                 }).ToList();
-
-                //return records.Select(record =>
-                //{
-                //    // Chuyển đổi mỗi bản ghi thành một đối tượng JObject
-                //    var jobject = new JObject();
-                //    foreach (var pair in record["r"].As<INode>().Properties)
-                //    {
-                //        jobject.Add(pair.Key, JToken.FromObject(pair.Value));
-                //    }
-                //    return jobject;
-                //}).ToList();
             });
 
             return result;

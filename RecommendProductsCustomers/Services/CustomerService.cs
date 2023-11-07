@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Neo4j.Driver;
+using Newtonsoft.Json.Linq;
 using RecommendProductsCustomers.Common;
 using RecommendProductsCustomers.Models;
 using RecommendProductsCustomers.Repositories;
@@ -20,19 +21,46 @@ namespace RecommendProductsCustomers.Services
 			{
 				var customer = new CustomerModel()
 				{
-					phone = jObject.Value<string>("phone"),
+                    id = jObject.Value<string>("id"),
+                    phone = jObject.Value<string>("phone"),
 					name = jObject.Value<string>("name"),
                     gender = jObject.Value<string>("gender"),
                     dateBirth = string.IsNullOrEmpty(jObject.Value<string>("dateBirth")) ? null : DateTime.Parse(jObject.Value<string>("dateBirth")),
 					address = jObject.Value<string>("address"),
 				};
 
-                // Lấy thêm cái sở thích bỏ vô
-
 				return customer;
 			}).ToList();
 
-			return customers;
+            foreach (var item in customers)
+            {
+                string query = $"match(c:Customer)-[:have]->(h:Hobby) where id(c) = {item.id} return h";
+                var result = await Repo.GetQuery(query);
+
+                var JObjects = result.Select(record =>
+                {
+                    var a = record["h"].As<INode>();
+
+                    var products = new JObject();
+                    products.Add("id", JToken.FromObject(a.Id.ToString()));
+                    foreach (var pair in a.Properties)
+                    {
+                        products.Add(pair.Key, JToken.FromObject(pair.Value));
+                    }
+
+                    return products;
+                }).ToList();
+
+                var hobbies = JObjects.Select((JObject p) =>
+                {
+                    return p["name"]?.Value<string>();
+                }).ToList();
+
+                item.hobbies = hobbies;
+
+            }
+
+            return customers;
 		}
 
         public async Task<bool> Create(CustomerModel pCustomer)

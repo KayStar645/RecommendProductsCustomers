@@ -1062,3 +1062,1061 @@ match (a:Product ) return a skip 0 limit 100;
 
 MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
 
+match (a:User {userName:"0329641343",password:"2001200553"}) return a skip 0 limit 100;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a skip 0 limit 100;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a skip 0 limit 100;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:User {userName:"2001200553",password:"2001200553111"}) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:User {userName:"112",password:"2001200553"}) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:User {userName:"0329641343",password:"2001200553"}) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:User {userName:"2001200553",password:"2001200553"}) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match (a:User {userName:"0987654321",password:"123456"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:User {userName:"0971970061",password:"0971970061"}) return a skip 0 limit 100;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:User {userName:"0971970061",password:"0971970061"}) return a skip 0 limit 100;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:Customer ) return a skip 0 limit 100;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("")) return a skip 0 limit 100;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("")) return a skip 0 limit 100;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("")) return a skip 0 limit 100;
+
+MATCH (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) RETURN DISTINCT a, b, collect(c) as products;
+
+match (a:Hobby ) return a skip 0 limit 100;
+
+MATCH (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) WHERE id(a) = 14 RETURN DISTINCT a, b, collect(c) as products;
+
+match (a:Hobby ) -[:fit]-(b:Product {internalCode:"1160381006"}) return a skip 0 limit 100;
+
+match (a:Hobby ) -[:fit]-(b:Product {internalCode:"1151243013"}) return a skip 0 limit 100;
+
+match (a:Hobby ) -[:fit]-(b:Product {internalCode:"1196768001"}) return a skip 0 limit 100;
+
+match (a:Hobby ) -[:fit]-(b:Product {internalCode:"1192807001"}) return a skip 0 limit 100;
+
+match (a:Hobby ) return a skip 0 limit 100;
+
+match (a:Employee ) return a skip 0 limit 100;
+
+match (a:Customer ) return a skip 0 limit 100;
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("")) return a skip 0 limit 100;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("")) return a skip 0 limit 100;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 0 return h;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) RETURN DISTINCT a, b, collect(c) as products;
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("")) return a skip 0 limit 100;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 0 return h;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("")) return a skip 0 limit 100;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 0 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 1 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 2 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 3 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 4 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 6 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 15 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 16 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 17 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 18 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 22 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 23 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 25 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 26 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 28 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 29 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 30 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 31 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 32 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 33 return h;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:Customer ) return a skip 0 limit 100;
+
+match(c:Customer)-[:have]->(h:Hobby) where id(p) =  return h;
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("")) return a skip 0 limit 100;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 0 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 1 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 2 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 3 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 4 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 6 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 15 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 16 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 17 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 18 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 22 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 23 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 25 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 26 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 28 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 29 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 30 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 31 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 32 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 33 return h;
+
+match (a:Customer ) return a skip 0 limit 100;
+
+match(c:Customer)-[:have]->(h:Hobby) where id(p) =  return h;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:Customer ) return a skip 0 limit 100;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:Customer ) return a skip 0 limit 100;
+
+match(c:Customer)-[:have]->(h:Hobby) where id(p) = 19 return h;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:Customer ) return a skip 0 limit 100;
+
+match(c:Customer)-[:have]->(h:Hobby) where id(p) = 19 return h;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:Customer ) return a skip 0 limit 100;
+
+match(c:Customer)-[:have]->(h:Hobby) where id(c) = 19 return h;
+
+match(c:Customer)-[:have]->(h:Hobby) where id(c) = 34 return h;
+
+match (a:User {userName:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 0 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 1 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 2 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 3 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 4 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 6 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 15 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 16 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 17 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 18 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 22 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 23 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 25 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 26 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 28 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 29 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 30 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 31 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 32 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 33 return h;
+
+match (a:User {userName:"0987654321",password:"123456"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 0 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 1 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 2 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 3 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 4 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 6 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 15 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 16 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 17 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 18 return h;
+
+match (a:Product ) return a skip 10 limit 10;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 22 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 23 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 25 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 26 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 28 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 29 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 30 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 31 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 32 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 33 return h;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 0 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 1 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 2 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 3 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 4 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 6 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 15 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 16 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 17 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 18 return h;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 0 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 1 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 2 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 3 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 4 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 6 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 15 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 16 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 17 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 18 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 22 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 23 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 25 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 26 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 28 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 29 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 30 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 31 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 32 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 33 return h;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:Customer ) return a skip 0 limit 100;
+
+match(c:Customer)-[:have]->(h:Hobby) where id(c) = 19 return h;
+
+match(c:Customer)-[:have]->(h:Hobby) where id(c) = 34 return h;
+
+MATCH (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) RETURN DISTINCT a, b, collect(c) as products;
+
+match (a:Hobby ) return a skip 0 limit 100;
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("")) return a skip 0 limit 100;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 0 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 1 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 2 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 3 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 4 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 6 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 15 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 16 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 17 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 18 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 22 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 23 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 25 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 26 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 28 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 29 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 30 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 31 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 32 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 33 return h;
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("")) return a skip 0 limit 100;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 0 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 1 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 2 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 3 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 4 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 6 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 15 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 16 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 17 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 18 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 22 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 23 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 25 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 26 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 28 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 29 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 30 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 31 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 32 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 33 return h;
+
+MATCH (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) RETURN DISTINCT a, b, collect(c) as products;
+
+match (a:Hobby ) return a skip 0 limit 100;
+
+match (a:ImportBill) with a return max(a.internalCode) as max;
+
+match (a:Employee ) -[:own]-(b:User {userName:"2001200584"}) return a skip 0 limit 1;
+
+match (a:Customer ) return a skip 0 limit 100;
+
+match(c:Customer)-[:have]->(h:Hobby) where id(c) = 19 return h;
+
+match(c:Customer)-[:have]->(h:Hobby) where id(c) = 34 return h;
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("")) return a skip 0 limit 100;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 0 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 1 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 2 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 3 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 4 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 6 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 15 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 16 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 17 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 18 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 22 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 23 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 25 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 26 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 28 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 29 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 30 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 31 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 32 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 33 return h;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:Customer ) return a skip 0 limit 100;
+
+match(c:Customer)-[:have]->(h:Hobby) where id(c) = 19 return h;
+
+match(c:Customer)-[:have]->(h:Hobby) where id(c) = 34 return h;
+
+MATCH (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) RETURN DISTINCT a, b, collect(c) as products;
+
+match (a:Hobby ) return a skip 0 limit 100;
+
+match (a:ImportBill) with a return max(a.internalCode) as max;
+
+match (a:Employee ) -[:own]-(b:User {userName:"2001200584"}) return a skip 0 limit 1;
+
+MATCH (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) RETURN DISTINCT a, b, collect(c) as products;
+
+match (a:Hobby ) return a skip 0 limit 100;
+
+MATCH (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) WHERE id(a) = 5 RETURN DISTINCT a, b, collect(c) as products;
+
+match (a:Hobby ) -[:fit]-(b:Product {internalCode:"1206348001"}) return a skip 0 limit 100;
+
+match (a:Hobby ) -[:fit]-(b:Product {internalCode:"1191195002"}) return a skip 0 limit 100;
+
+match (a:Hobby ) -[:fit]-(b:Product {internalCode:"1204277009"}) return a skip 0 limit 100;
+
+match (a:Hobby ) -[:fit]-(b:Product {internalCode:"1161768008"}) return a skip 0 limit 100;
+
+match (a:Hobby ) -[:fit]-(b:Product {internalCode:"1163094004"}) return a skip 0 limit 100;
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("")) return a skip 0 limit 100;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 0 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 1 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 2 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 3 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 4 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 6 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 15 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 16 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 17 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 18 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 22 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 23 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 25 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 26 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 28 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 29 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 30 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 31 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 32 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 33 return h;
+
+match (a:Employee ) return a skip 0 limit 100;
+
+match (a:Hobby ) return a skip 0 limit 100;
+
+match (a:User {userName:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 0 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 1 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 2 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 3 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 4 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 6 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 15 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 16 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 17 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 18 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 22 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 23 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 25 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 26 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 28 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 29 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 30 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 31 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 32 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 33 return h;
+
+match (a:Hobby ) return a skip 0 limit 100;
+
+match (a:Hobby ) return a skip 0 limit 100;
+
+match (a:User {userName:"0987654321",password:"123456"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 0 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 1 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 2 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 3 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 4 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 6 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 15 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 16 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 17 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 18 return h;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 0 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 1 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 2 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 3 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 4 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 6 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 15 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 16 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 17 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 18 return h;
+
+match (a:User {userName:"0987654321"}) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 10;
+
+MATCH (n:User {userName:"0987654321"})-[:own]-(b) RETURN labels(b) AS label;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 0 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 1 return h;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 2 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 3 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 4 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 6 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 15 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 16 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 17 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 18 return h;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 0 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 1 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 2 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 3 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 4 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 6 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 15 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 16 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 17 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 18 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 22 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 23 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 25 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 26 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 28 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 29 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 30 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 31 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 32 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 33 return h;
+
+MATCH (a:Product), (b:Customer {phone:"0987654321"}), (c:Hobby) WHERE (b)-[:have]-(c) AND (c)-[:fit]-(a) RETURN DISTINCT a;
+
+match (a:User {userName:"0987654321",password:"0987654321"}) return a skip 0 limit 100;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:Customer ) return a skip 0 limit 100;
+
+match(c:Customer)-[:have]->(h:Hobby) where id(c) = 19 return h;
+
+match(c:Customer)-[:have]->(h:Hobby) where id(c) = 34 return h;
+
+MATCH (a:ImportBill), (b:Employee), (c:Product), (a)-[x:import]-(b), (a)-[y:have]-(c) RETURN DISTINCT a, b, collect(c) as products;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:User {userName:"0329641343",password:"0329641343"}) return a skip 0 limit 100;
+
+match (a:Product ) return a skip 0 limit 100;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 0 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 1 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 2 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 3 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 4 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 6 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 15 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 16 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 17 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 18 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 22 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 23 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 25 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 26 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 28 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 29 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 30 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 31 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 32 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 33 return h;
+
+match (a:Product ) return a skip 0 limit 10;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 0 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 1 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 2 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 3 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 4 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 6 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 15 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 16 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 17 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 18 return h;
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("áo")) return a skip 0 limit 10;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 0 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 1 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 2 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 3 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 4 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 6 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 15 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 16 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 17 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 18 return h;
+
+match (a:Product ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("váy")) return a skip 0 limit 10;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 0 return h;
+
+match(p:Product)-[:fit]->(h:Hobby) where id(p) = 16 return h;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:User {userName:"2001200584",password:"2001200584"}) return a skip 0 limit 100;
+
+MATCH (n:User {userName:"2001200584"})-[:own]-(b) RETURN labels(b) AS label;
+
+match (a:Hobby ) return a skip 0 limit 100;
+
+match (a:Hobby ) -[:bơi]-(b: ) return a skip 0 limit 100;
+
+match (a:Hobby ) -[:bơi]-(b: ) return a skip 0 limit 100;
+
+match (a:Customer ) return a skip 0 limit 100;
+
+match(c:Customer)-[:have]->(h:Hobby) where id(c) = 19 return h;
+
+match(c:Customer)-[:have]->(h:Hobby) where id(c) = 34 return h;
+
+match (a:Customer ) where any(prop in keys(a) where toLower(a[prop]) CONTAINS toLower("thuận")) return a skip 0 limit 100;
+
+match(c:Customer)-[:have]->(h:Hobby) where id(c) = 19 return h;
+

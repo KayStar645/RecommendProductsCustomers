@@ -115,6 +115,34 @@ namespace RecommendProductsCustomers.Services
                 return productModel;
             }).ToList();
 
+            foreach (var item in products)
+            {
+                string query = $"match(p:Product)-[:fit]->(h:Hobby) where id(p) = {item.id} return h";
+                var result = await Repo.GetQuery(query);
+
+                var JObjects = result.Select(record =>
+                {
+                    var a = record["h"].As<INode>();
+
+                    var products = new JObject();
+                    products.Add("id", JToken.FromObject(a.Id.ToString()));
+                    foreach (var pair in a.Properties)
+                    {
+                        products.Add(pair.Key, JToken.FromObject(pair.Value));
+                    }
+
+                    return products;
+                }).ToList();
+
+                var hobbies = JObjects.Select((JObject p) =>
+                {
+                    return p["name"]?.Value<string>();
+                }).ToList();
+
+                item.hobbies = hobbies;
+
+            }    
+
             return products;
         }
 

@@ -66,10 +66,11 @@
                         <tr>
                             <th class="min-vw-10"></th>
                             <th class="text-center">Họ tên</th>
+                            <th class="text-center">Giới tính</th>
                             <th class="text-center">Số điện thoại</th>
                             <th class="text-center">Ngày sinh</th>
-                            <th class="text-center">Sở thích</th>
                             <th class="text-center">Địa chỉ</th>
+                            <th class="text-center">sở thích</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -85,7 +86,7 @@
                                 <td class="text-center">@customer?.phone</td>
                                 <td class="text-center">@string.Format("{0:dd/MM/yyyy}", customer.dateBirth)</td>
                                 <td class="text-center">@customer?.address</td>
-                                <td class="text-center">@customer?.address</td>
+                                <td class="text-center">@string.Join(",", @customer?.hobbies)</td>
                             </tr>
                         }
                     </tbody>
